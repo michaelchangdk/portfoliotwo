@@ -1,20 +1,18 @@
-import React, { useRef } from "react";
-import { IndexBackground } from "../styles/global";
-import Header from "./section/Header";
-import Tech from "./section/Tech";
+import React from "react";
+// Component Import
+import Intro from "./section/Intro";
+import Bio from "./section/Bio";
 import Featured from "./section/Featured";
-import AllProjects from "./section/AllProjects";
+// Styling Import
+import { PageWrapper } from "../styles/global";
 
 const Index = () => {
-  const ref = useRef(null);
-
   return (
-    <IndexBackground ref={ref}>
-      <Header constraintsRef={ref} />
-      <Tech constraintsRef={ref} />
-      <Featured constraintsRef={ref} />
-      <AllProjects constraintsRef={ref} />
-    </IndexBackground>
+    <PageWrapper>
+      <Intro />
+      <Bio />
+      <Featured />
+    </PageWrapper>
   );
 };
 
