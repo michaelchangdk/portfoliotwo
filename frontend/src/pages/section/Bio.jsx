@@ -1,44 +1,85 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
+// Styling & Asset Imports
+import styled from "styled-components";
 import { H2, P, SectionWrapper } from "../../styles/global";
 import profile from "../../assets/profile.jpeg";
 
 const Bio = () => {
   const { ref, inView } = useInView();
-  const controls = useAnimation();
+  const leftControls = useAnimation();
+  const rightControls = useAnimation();
+  const transformControls = useAnimation();
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible");
-    } else if (!inView) {
-      controls.start("hidden");
+      leftControls.start("visible");
+      rightControls.start("visible");
+      transformControls.start("visible");
     }
+    // else if (!inView) {
+    //   leftControls.start("hidden");
+    //   rightControls.start("hidden");
+    //  transformControls.start("hidden");
+    // }
   });
 
-  const item = {
-    hidden: { x: 100, opacity: 0 },
+  const leftItem = {
+    hidden: { x: -100, opacity: 0 },
     visible: (i) => {
-      const delay = (1 + i) * 0.5;
+      const delay = i * 0.5;
       return {
-        x: inView ? 0 : 20,
-        opacity: inView ? 1 : 0,
+        x: 0,
+        opacity: 1,
         transition: { duration: 0.5, delay: delay },
       };
     },
   };
 
-  console.log(inView);
+  const rightItem = {
+    hidden: { x: 100, opacity: 0 },
+    visible: (i) => {
+      const delay = i * 0.5;
+      return {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.5, delay: delay },
+      };
+    },
+  };
+
+  const rightTransform = {
+    hidden: { scale: 0.8, rotate: -90, borderRadius: "50%" },
+    visible: (i) => {
+      const delay = i * 0.5;
+      return {
+        scale: 1,
+        rotate: 0,
+        borderRadius: "20%",
+        transition: { duration: 1.5, delay: delay },
+      };
+    },
+  };
 
   return (
     <SectionWrapper>
       <BioWrapper ref={ref}>
         <TextWrapper>
-          <H2 initial="hidden" animate={controls} variants={item} custom={1}>
+          <H2
+            initial="hidden"
+            animate={leftControls}
+            variants={leftItem}
+            custom={1}
+          >
             About me
           </H2>
-          <P initial="hidden" animate={controls} variants={item} custom={2}>
+          <P
+            initial="hidden"
+            animate={leftControls}
+            variants={leftItem}
+            custom={2}
+          >
             My name is Michael Chang, and I'm a front-end developer with a
             strong background in project management and customer service. I've
             always been interested in both technology and the arts, ever since I
@@ -51,7 +92,12 @@ const Bio = () => {
         change, back when I was trying to customize my Myspace page and first
         Wordpress blog with in-line styling and injecting simple scripts.
       </P> */}
-          <P initial="hidden" animate={controls} variants={item} custom={3}>
+          <P
+            initial="hidden"
+            animate={leftControls}
+            variants={leftItem}
+            custom={3}
+          >
             Fast-forward to today, and I've just completed a 24 week long
             bootcamp, where we coded a new project each week, and for my final
             project I've had the privilege of creating an e-learning platform
@@ -63,13 +109,18 @@ const Bio = () => {
             portfolio, and a weather applet I made with OpenAI's API.
           </P> */}
         </TextWrapper>
-        <ImageWrapper>
+        <ImageWrapper
+          initial="hidden"
+          animate={rightControls}
+          variants={rightItem}
+          custom={4}
+        >
           <ProfileImage
             src={profile}
             alt="Michael Chang"
             initial="hidden"
-            animate={controls}
-            variants={item}
+            animate={transformControls}
+            variants={rightTransform}
             custom={4}
           />
         </ImageWrapper>
