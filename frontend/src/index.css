@@ -1,0 +1,187 @@
+/* Pre-set Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
+}
+
+/* CSS Reset */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Font Import 'Space Mono', monospace; fw 400 700*/
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+/* Font Import 'Prompt', sans-serif; fw 100, 200, 300, 400, 500 */
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap");
+/* Font Import 'Source Code Pro', monospace; fw 300 400 500 600*/
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600&display=swap");
+
+/* Table Styling */
+table th + th {
+  border-left: 1px solid #343a40;
+}
+
+table td + td {
+  border-left: 1px solid #343a40;
+  border-right: none;
+  border-bottom: none;
+  border-top: none;
+}
+
+/* Custom Scrollbar CSS */
+/* Table scrollbar. */
+/* div ::-webkit-scrollbar {
+  height: 24px;
+}
+div ::-webkit-scrollbar-thumb {
+  background: rgb(206, 212, 218);
+  background: linear-gradient(
+    180deg,
+    rgba(206, 212, 218, 1) 0%,
+    rgba(108, 117, 125, 1) 100%
+  );
+  border-top: 1px solid #343a40;
+  border-left: 1px solid #343a40;
+  border-right: 1px solid #343a40;
+  border-bottom: none;
+} */
+/* the draggable scrolling handle. */
+/* div ::-webkit-scrollbar-track {
+  background: #dee2e6;
+} */
+/* the track (progress bar) of the scrollbar. */
+/* div ::-webkit-scrollbar-track-piece {
+  background: #dee2e6;
+  border-top: 1px solid #343a40;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+} */
+/* the track (progress bar) NOT covered by the handle. */
