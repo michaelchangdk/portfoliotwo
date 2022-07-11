@@ -59,7 +59,7 @@ export const SectionWrapper = styled(motion.section)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 12px 0;
+  padding: 24px 0;
   position: relative;
 
   :nth-of-type(odd) {

@@ -88,10 +88,9 @@ const Intro = () => {
               // onHoverStart={() => setIsHovered(true)}
               // onHoverEnd={() => setIsHovered(false)}
               onClick={() =>
-                window.scrollBy({
-                  top: document.documentElement.clientHeight,
-                  behavior: "smooth",
-                })
+                document
+                  .getElementById("bio_section")
+                  .scrollIntoView({ behavior: "smooth" })
               }
             >
               <motion.svg
