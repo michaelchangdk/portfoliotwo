@@ -7,7 +7,7 @@ import Accordion from "../../components/Accordion";
 import { FetchSection } from "../../services/clientFunctions";
 // Styling Imports
 import styled from "styled-components/macro";
-import { SectionWrapper } from "../../styles/global";
+import { H2, SectionWrapper } from "../../styles/global";
 const query = `*[_type == "tech" && !(_id in path('drafts.**'))]`;
 
 const Tech = () => {
@@ -71,6 +71,11 @@ const Tech = () => {
 
   return (
     <SectionWrapper>
+      {!loading && (
+        <H2 initial="hidden" animate={controls} variants={bottomItem}>
+          {data[0].title}
+        </H2>
+      )}
       <AccordionWrapper ref={ref}>
         {!loading &&
           data[0].stack.map((item, i) => (
@@ -91,7 +96,7 @@ const Tech = () => {
                   ? rightItem
                   : null
               }
-              custom={i}
+              custom={i + 1}
             >
               <Accordion data={item} />
             </motion.div>

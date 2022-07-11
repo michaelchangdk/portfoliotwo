@@ -1,11 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
-
-// Styling Import
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+// Styling Imports
 import styled from "styled-components/macro";
-import { SectionWrapper } from "../../styles/global";
+import { H2, P, SectionWrapper } from "../../styles/global";
+// Function Imports
+import { FetchSection } from "../../services/clientFunctions";
+import { urlFor } from "../../client";
+// Query Declarations
+const query = `*[_type == "featuredprojects" && !(_id in path('drafts.**'))] {title, featured[]->}`;
 
-const cards = [1, 2, 3, 4, 5];
 const cardVariants = {
   selected: {
     rotateY: 180,
@@ -26,8 +30,32 @@ const cardVariants = {
     transition: { duration: 0.35 },
   }),
 };
+
 const Featured = () => {
   const [selectedCard, setSelectedCard] = useState(null);
+  const [loading, data] = FetchSection(query);
+  const { ref, inView } = useInView();
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  });
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: (i) => {
+      const delay = (1 + i) * 0.5;
+      return {
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.5, delay: delay },
+      };
+    },
+  };
+
+  console.log(loading, data);
 
   const [{ startX, startScrollLeft, isDragging }, setDragStart] = useState({
     startX: undefined,
@@ -58,9 +86,9 @@ const Featured = () => {
     const walk = x - startX;
     containerRef.current.scrollLeft = startScrollLeft - walk;
   };
+
   const selectCard = (card) => {
     setSelectedCard(selectedCard ? null : card);
-
     if (card && !selectedCard) {
       cardRefs.current[card - 1].scrollIntoView({
         behavior: "smooth",
@@ -69,6 +97,7 @@ const Featured = () => {
       });
     }
   };
+
   const handleCardMouseUp = (e, card) => {
     if (isDragging) {
       const x = e.pageX - containerRef.current.offsetLeft;
@@ -79,15 +108,23 @@ const Featured = () => {
 
   return (
     <SectionWrapper>
-      <Flashcards
-        onMouseDown={handleMouseDown}
-        onMouseUp={() =>
-          setDragStart((prev) => ({ ...prev, isDragging: false }))
-        }
-        onMouseMove={handleMouseMove}
-      >
-        <FlashcardsContainer ref={containerRef}>
-          {cards.map((card, i) => (
+      <FeaturedContainer ref={ref}>
+        <H2 initial="hidden" animate="visible" variants={item} custom={1}>
+          {!loading && data[0].title}
+        </H2>
+        <Flashcards
+          onMouseDown={handleMouseDown}
+          onMouseUp={() =>
+            setDragStart((prev) => ({ ...prev, isDragging: false }))
+          }
+          onMouseMove={handleMouseMove}
+          initial="hidden"
+          animate="visible"
+          variants={item}
+          custom={2}
+        >
+          <FlashcardsContainer ref={containerRef}>
+            {/* {cards.map((card, i) => (
             <FlashCard
               key={card}
               ref={(el) => cardRefs.current.push(el)}
@@ -96,20 +133,67 @@ const Featured = () => {
               animate={selectedCard === card ? "selected" : "notSelected"}
               custom={selectedCard ? selectedCard - card : 0}
             >
-              {card === selectedCard && <CardBack>Back</CardBack>}
-              {card !== selectedCard && <CardFront>Front</CardFront>}
+              {card === selectedCard && (
+                <CardBack>
+                  {selectedCard} {i} {card} Back
+                </CardBack>
+              )}
+              {card !== selectedCard && (
+                <CardFront>
+                  {selectedCard} {i} {card} Front
+                </CardFront>
+              )}
             </FlashCard>
-          ))}
-        </FlashcardsContainer>
-      </Flashcards>
+          ))} */}
+            {!loading &&
+              data[0].featured.map((card, i) => (
+                <FlashCard
+                  key={card._id}
+                  ref={(el) => cardRefs.current.push(el)}
+                  onMouseUp={(e) => handleCardMouseUp(e, i + 1)}
+                  variants={cardVariants}
+                  animate={selectedCard === i + 1 ? "selected" : "notSelected"}
+                  custom={selectedCard ? selectedCard - (i + 1) : 0}
+                >
+                  {i + 1 === selectedCard && (
+                    <CardBack>
+                      <P>
+                        This is text that takes up the entire div. This is text
+                        that takes up the entire div. This is text that takes up
+                        the entire div. This is text that takes up the entire
+                        div. This is text that takes up the entire div.
+                      </P>
+                    </CardBack>
+                  )}
+                  {i + 1 !== selectedCard && (
+                    <CardFront>
+                      <CardImage
+                        src={urlFor(card.image.asset._ref)}
+                        alt={card.title}
+                      />
+                    </CardFront>
+                  )}
+                </FlashCard>
+              ))}
+          </FlashcardsContainer>
+        </Flashcards>
+      </FeaturedContainer>
     </SectionWrapper>
   );
 };
 
 export default Featured;
 
-const Flashcards = styled.div`
-  height: 100%;
+const FeaturedContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+`;
+
+const Flashcards = styled(motion.div)`
+  /* height: 100%; */
   width: 100%;
   display: grid;
   place-items: center center;
@@ -126,16 +210,30 @@ const FlashcardsContainer = styled.div`
   perspective: 150px;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  display: flex;
 
   &::-webkit-scrollbar {
     display: none;
   }
 `;
 
-const CardFront = styled.div``;
+const CardFront = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const CardImage = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+`;
 
 const CardBack = styled.div`
   transform: rotateY(180deg);
+  padding: 8px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
 `;
 
 const FlashCard = styled(motion.div)`
@@ -145,6 +243,6 @@ const FlashCard = styled(motion.div)`
   width: 240px;
   background: white;
   margin: 32px 16px;
-  border-radius: 15px;
+  border-radius: 16px;
   cursor: pointer;
 `;
