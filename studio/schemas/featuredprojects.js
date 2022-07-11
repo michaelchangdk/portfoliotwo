@@ -6,14 +6,6 @@ export default {
   fields: [
     { name: "title", title: "Title", type: "string" },
     {
-      name: "color",
-      title: "Header color",
-      type: "color",
-      options: {
-        disableAlpha: true,
-      },
-    },
-    {
       name: "featured",
       title: "Featured projects",
       type: "array",

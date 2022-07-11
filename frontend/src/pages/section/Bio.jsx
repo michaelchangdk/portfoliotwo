@@ -1,16 +1,21 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+// Function Imports
+import { FetchSection } from "../../services/clientFunctions";
+import { urlFor } from "../../client";
 // Styling & Asset Imports
 import styled from "styled-components";
 import { H2, P, SectionWrapper } from "../../styles/global";
-import profile from "../../assets/profile.jpeg";
+
+const query = `*[_type == "bio" && !(_id in path('drafts.**'))]`;
 
 const Bio = () => {
   const { ref, inView } = useInView();
   const leftControls = useAnimation();
   const rightControls = useAnimation();
   const transformControls = useAnimation();
+  const [loading, data] = FetchSection(query);
 
   useEffect(() => {
     if (inView) {
@@ -18,11 +23,6 @@ const Bio = () => {
       rightControls.start("visible");
       transformControls.start("visible");
     }
-    // else if (!inView) {
-    //   leftControls.start("hidden");
-    //   rightControls.start("hidden");
-    //  transformControls.start("hidden");
-    // }
   });
 
   const leftItem = {
@@ -50,14 +50,14 @@ const Bio = () => {
   };
 
   const rightTransform = {
-    hidden: { scale: 0.8, rotate: -90, borderRadius: "50%" },
+    hidden: { scale: 0.8, rotate: 110, borderRadius: "50%" },
     visible: (i) => {
       const delay = i * 0.5;
       return {
         scale: 1,
         rotate: 0,
         borderRadius: "20%",
-        transition: { duration: 1.5, delay: delay },
+        transition: { duration: 1, delay: delay },
       };
     },
   };
@@ -65,65 +65,46 @@ const Bio = () => {
   return (
     <SectionWrapper>
       <BioWrapper ref={ref}>
-        <TextWrapper>
-          <H2
-            initial="hidden"
-            animate={leftControls}
-            variants={leftItem}
-            custom={1}
-          >
-            About me
-          </H2>
-          <P
-            initial="hidden"
-            animate={leftControls}
-            variants={leftItem}
-            custom={2}
-          >
-            My name is Michael Chang, and I'm a front-end developer with a
-            strong background in project management and customer service. I've
-            always been interested in both technology and the arts, ever since I
-            was a kid. I grew up loving science fiction novels and movies, as
-            well as video games and computers. So it only seemed natural to me
-            to want to combine those interests when pivoting into a new career.
-          </P>
-          {/* <P>
-        Turns out my interest in web development began long before this career
-        change, back when I was trying to customize my Myspace page and first
-        Wordpress blog with in-line styling and injecting simple scripts.
-      </P> */}
-          <P
-            initial="hidden"
-            animate={leftControls}
-            variants={leftItem}
-            custom={3}
-          >
-            Fast-forward to today, and I've just completed a 24 week long
-            bootcamp, where we coded a new project each week, and for my final
-            project I've had the privilege of creating an e-learning platform
-            for With Purpose, an organization that works towards bridging the
-            gender gap in the startup ecosystem in the Nordics.
-          </P>
-          {/* <P>
-            I've also enjoyed working on personal side-projects, like this
-            portfolio, and a weather applet I made with OpenAI's API.
-          </P> */}
-        </TextWrapper>
-        <ImageWrapper
-          initial="hidden"
-          animate={rightControls}
-          variants={rightItem}
-          custom={4}
-        >
-          <ProfileImage
-            src={profile}
-            alt="Michael Chang"
-            initial="hidden"
-            animate={transformControls}
-            variants={rightTransform}
-            custom={4}
-          />
-        </ImageWrapper>
+        {!loading && (
+          <>
+            <TextWrapper>
+              <H2
+                initial="hidden"
+                animate={leftControls}
+                variants={leftItem}
+                custom={1}
+              >
+                {data[0].title}
+              </H2>
+              {data[0].about.map((item, i) => (
+                <P
+                  initial="hidden"
+                  animate={leftControls}
+                  variants={leftItem}
+                  custom={i + 2}
+                  key={i}
+                >
+                  {item}
+                </P>
+              ))}
+            </TextWrapper>
+            <ImageWrapper
+              initial="hidden"
+              animate={rightControls}
+              variants={rightItem}
+              custom={4}
+            >
+              <ProfileImage
+                src={urlFor(data[0].image.asset._ref)}
+                alt="Michael Chang"
+                initial="hidden"
+                animate={transformControls}
+                variants={rightTransform}
+                custom={4}
+              />
+            </ImageWrapper>
+          </>
+        )}
       </BioWrapper>
     </SectionWrapper>
   );

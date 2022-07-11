@@ -27,6 +27,7 @@ export const H3 = styled(motion.h3)`
 export const P = styled(motion.p)`
   font-family: "Montserrat", sans-serif;
   line-height: 1.75;
+  font-size: ${(props) => props.size || "16px"};
 `;
 
 // Containers

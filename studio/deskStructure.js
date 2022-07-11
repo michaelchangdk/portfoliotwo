@@ -5,6 +5,13 @@ export default () =>
     .title("Portfolio")
     .items([
       S.listItem()
+        .title("Intro")
+        .child(
+          S.editor()
+            .schemaType("intro")
+            .documentId("eba13347-9b3b-45c1-87b7-c93d2c0bc5e5")
+        ),
+      S.listItem()
         .title("Bio")
         .child(
           S.editor()
@@ -47,6 +54,7 @@ export default () =>
             "featuredprojects",
             "allprojects",
             "projects",
+            "intro",
           ].includes(listItem.getId())
       ),
     ]);
