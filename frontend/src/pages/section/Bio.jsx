@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { FetchSection } from "../../services/clientFunctions";
 import { urlFor } from "../../client";
 // Styling & Asset Imports
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { H2, P, SectionWrapper } from "../../styles/global";
 
 const query = `*[_type == "bio" && !(_id in path('drafts.**'))]`;
@@ -114,8 +114,11 @@ export default Bio;
 
 const BioWrapper = styled(motion.div)`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 48px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const TextWrapper = styled(motion.div)``;

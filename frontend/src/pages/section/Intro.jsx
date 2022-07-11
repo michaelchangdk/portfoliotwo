@@ -63,6 +63,7 @@ const Intro = () => {
               animate="visible"
               variants={item}
               custom={i + 4 + i}
+              style={{ textAlign: "center" }}
             >
               {sentence}
             </P>

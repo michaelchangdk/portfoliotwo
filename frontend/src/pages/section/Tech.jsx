@@ -111,5 +111,11 @@ export default Tech;
 const AccordionWrapper = styled.div`
   display: grid;
   gap: 16px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 `;

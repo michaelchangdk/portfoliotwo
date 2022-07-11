@@ -198,8 +198,13 @@ const FlashcardsContainer = styled.div`
 `;
 
 const CardFront = styled.div`
-  height: 340px;
-  width: 340px;
+  height: 300px;
+  width: 300px;
+
+  @media (min-width: 768px) {
+    height: 340px;
+    width: 340px;
+  }
 `;
 
 const CardImage = styled.img`
@@ -220,24 +225,40 @@ const CardBack = styled.div`
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: break-word;
-  height: 340px;
-  width: 340px;
+  height: 300px;
+  width: 300px;
+
+  @media (min-width: 768px) {
+    height: 340px;
+    width: 340px;
+  }
 `;
 
 const FlashCard = styled(motion.div)`
   position: relative;
   display: inline-block;
-  height: 340px;
-  width: 340px;
+  height: 300px;
+  width: 300px;
   background: white;
   margin: 32px 16px;
   border-radius: 16px;
   cursor: pointer;
 
   &:first-of-type {
-    margin-left: 264px;
+    margin-left: 28px;
   }
   &:last-of-type {
-    margin-right: 264px;
+    margin-right: 28px;
+  }
+
+  @media (min-width: 768px) {
+    height: 340px;
+    width: 340px;
+    &:first-of-type {
+      margin-left: 264px;
+    }
+    &:last-of-type {
+      margin-right: 264px;
+    }
   }
 `;

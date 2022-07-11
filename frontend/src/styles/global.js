@@ -32,12 +32,20 @@ export const P = styled(motion.p)`
 
 // Containers
 export const PageWrapper = styled.main`
-  width: 900px;
+  width: 90%;
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 1024px) {
+    width: 900px;
+    margin: 0 auto;
+  }
 `;
 
 export const SectionWrapper = styled(motion.section)`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
