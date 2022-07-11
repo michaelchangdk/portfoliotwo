@@ -8,7 +8,7 @@ import {
   P,
   PageWrapper,
   SectionWrapper,
-  SvgButton,
+  DownButton,
 } from "../../styles/global";
 // Query declarations
 const query = `*[_type == "intro" && !(_id in path('drafts.**'))]`;
@@ -82,7 +82,7 @@ const Intro = () => {
                 {sentence}
               </P>
             ))}
-            <SvgButton
+            <DownButton
               animate="visible"
               variants={svgWrapper}
               custom={8}
@@ -114,7 +114,7 @@ const Intro = () => {
                   custom={9}
                 />
               </motion.svg>
-            </SvgButton>
+            </DownButton>
           </>
         )}
       </PageWrapper>

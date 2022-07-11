@@ -107,7 +107,7 @@ export const SectionWrapper = styled(motion.section)`
   }
 `;
 
-export const SvgButton = styled(motion.button)`
+export const DownButton = styled(motion.button)`
   margin-top: 40px;
   cursor: pointer;
   background: transparent;

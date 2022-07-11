@@ -239,6 +239,11 @@ export default Featured;
 const FeaturedDescriptionContainer = styled.div`
   min-height: 200px;
   width: 100%;
+  display: grid;
+
+  @media (min-width: 768px) {
+    grid-template-columns: auto auto;
+  }
 `;
 
 const Flashcards = styled(motion.div)`
