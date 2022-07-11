@@ -71,13 +71,16 @@ export default Accordion;
 const AccordionHeader = styled(motion.header)`
   /* width: 300px;
   height: 80px; */
-  padding: 24px 0;
+  padding: 12px 0;
   display: flex;
   flex-direction: row;
   align-items: center;
   /* justify-content: center; */
   cursor: pointer;
   gap: 8px;
+  @media (min-width: 768px) {
+    padding: 24px 0;
+  }
 `;
 
 const AccordionContent = styled(motion.section)``;

@@ -114,9 +114,10 @@ export default Bio;
 
 const BioWrapper = styled(motion.div)`
   display: grid;
-  gap: 48px;
+  gap: 24px;
 
   @media (min-width: 768px) {
+    gap: 48px;
     grid-template-columns: 1fr 1fr;
   }
 `;
