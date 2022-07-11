@@ -64,7 +64,7 @@ const Featured = () => {
   };
 
   const fadeVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, transition: { duration: 0.7 } },
     visible: (i) => {
       const delay = (1 + i) * 0.5;
       return {
@@ -128,7 +128,8 @@ const Featured = () => {
       setProject(data[0].featured[selectedCard - 1]);
       cardControls.start("visible");
     } else if (selectedCard === null) {
-      setProject([]);
+      // setTimeout(setProject([]), 1000);
+      // setProject([]);
       cardControls.start("hidden");
     }
   }, [selectedCard, data, cardControls]);
@@ -194,6 +195,7 @@ const Featured = () => {
                         </P>
                         {card.stack.map((stack, i) => (
                           <TagSpan
+                            key={i}
                             initial="hidden"
                             animate={cardControls}
                             variants={fadeVariants}
