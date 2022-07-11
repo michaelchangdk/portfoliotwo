@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-// Styling Imports
+// Styling & Asset Imports
 import styled from "styled-components/macro";
 import {
   H2,
@@ -10,6 +10,8 @@ import {
   PageWrapper,
   SectionWrapper,
 } from "../../styles/global";
+import link from "../../assets/share.png";
+import github from "../../assets/github-logo-face.png";
 // Function Imports
 import { FetchSection } from "../../services/clientFunctions";
 import { urlFor } from "../../client";
@@ -51,12 +53,24 @@ const Featured = () => {
     }
   });
 
-  const loadVariants = {
-    hidden: { y: 20, opacity: 0 },
+  const leftItem = {
+    hidden: { x: -100, opacity: 0 },
     visible: (i) => {
-      const delay = (1 + i) * 0.5;
+      const delay = i * 0.5;
       return {
-        y: 0,
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.5, delay: delay },
+      };
+    },
+  };
+
+  const rightItem = {
+    hidden: { x: 100, opacity: 0 },
+    visible: (i) => {
+      const delay = i * 0.5;
+      return {
+        x: 0,
         opacity: 1,
         transition: { duration: 0.5, delay: delay },
       };
@@ -140,7 +154,7 @@ const Featured = () => {
         <H2
           initial="hidden"
           animate={loadControls}
-          variants={loadVariants}
+          variants={leftItem}
           custom={1}
         >
           {!loading && data[0].title}
@@ -155,7 +169,7 @@ const Featured = () => {
             onMouseMove={handleMouseMove}
             initial="hidden"
             animate={loadControls}
-            variants={loadVariants}
+            variants={rightItem}
             custom={2}
           >
             <FlashcardsContainer ref={containerRef}>
@@ -227,6 +241,26 @@ const Featured = () => {
             >
               {project.description}
             </P>
+            <LinkWrapper>
+              <LinkButton
+                initial="hidden"
+                animate={cardControls}
+                variants={fadeVariants}
+                custom={2}
+                whileHover={{ scale: 1.2 }}
+              >
+                <LinkImage src={link} alt="Live link" />
+              </LinkButton>
+              <LinkButton
+                initial="hidden"
+                animate={cardControls}
+                variants={fadeVariants}
+                custom={3}
+                whileHover={{ scale: 1.2 }}
+              >
+                <LinkImage src={github} alt="Github link" />
+              </LinkButton>
+            </LinkWrapper>
           </FeaturedDescriptionContainer>
         </section>
       </PageWrapper>
@@ -237,13 +271,40 @@ const Featured = () => {
 export default Featured;
 
 const FeaturedDescriptionContainer = styled.div`
-  min-height: 200px;
+  min-height: 100px;
   width: 100%;
   display: grid;
+  padding: 0 12px;
+  gap: 16px;
 
   @media (min-width: 768px) {
+    padding: 0;
     grid-template-columns: auto auto;
   }
+`;
+
+const LinkWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+`;
+
+const LinkImage = styled(motion.img)`
+  width: 32px;
+  height: 32px;
+`;
+
+const LinkButton = styled(motion.button)`
+  cursor: pointer;
+  background: transparent;
+  border: none;
 `;
 
 const Flashcards = styled(motion.div)`
