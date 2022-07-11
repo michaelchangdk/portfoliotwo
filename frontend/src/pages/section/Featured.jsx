@@ -108,10 +108,10 @@ const Featured = () => {
 
   return (
     <SectionWrapper>
+      <H2 initial="hidden" animate="visible" variants={item} custom={1}>
+        {!loading && data[0].title}
+      </H2>
       <FeaturedContainer ref={ref}>
-        <H2 initial="hidden" animate="visible" variants={item} custom={1}>
-          {!loading && data[0].title}
-        </H2>
         <Flashcards
           onMouseDown={handleMouseDown}
           onMouseUp={() =>
@@ -124,27 +124,6 @@ const Featured = () => {
           custom={2}
         >
           <FlashcardsContainer ref={containerRef}>
-            {/* {cards.map((card, i) => (
-            <FlashCard
-              key={card}
-              ref={(el) => cardRefs.current.push(el)}
-              onMouseUp={(e) => handleCardMouseUp(e, card)}
-              variants={cardVariants}
-              animate={selectedCard === card ? "selected" : "notSelected"}
-              custom={selectedCard ? selectedCard - card : 0}
-            >
-              {card === selectedCard && (
-                <CardBack>
-                  {selectedCard} {i} {card} Back
-                </CardBack>
-              )}
-              {card !== selectedCard && (
-                <CardFront>
-                  {selectedCard} {i} {card} Front
-                </CardFront>
-              )}
-            </FlashCard>
-          ))} */}
             {!loading &&
               data[0].featured.map((card, i) => (
                 <FlashCard
@@ -157,12 +136,7 @@ const Featured = () => {
                 >
                   {i + 1 === selectedCard && (
                     <CardBack>
-                      <P>
-                        This is text that takes up the entire div. This is text
-                        that takes up the entire div. This is text that takes up
-                        the entire div. This is text that takes up the entire
-                        div. This is text that takes up the entire div.
-                      </P>
+                      <P>{card.title}</P>
                     </CardBack>
                   )}
                   {i + 1 !== selectedCard && (
@@ -185,18 +159,16 @@ const Featured = () => {
 export default Featured;
 
 const FeaturedContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+  width: 100%;
+  /* height: 420px; */
 `;
 
 const Flashcards = styled(motion.div)`
-  /* height: 100%; */
+  height: 100%;
   width: 100%;
   display: grid;
   place-items: center center;
+  /* position: relative; */
 
   &::-webkit-scrollbar {
     display: none;
@@ -204,13 +176,19 @@ const Flashcards = styled(motion.div)`
 `;
 
 const FlashcardsContainer = styled.div`
-  max-width: 100%;
+  min-height: 100%;
+  width: 100%;
   white-space: nowrap;
   overflow-x: scroll;
   perspective: 150px;
   -ms-overflow-style: none;
   scrollbar-width: none;
   display: flex;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  /* justify-content: center safe; */
 
   &::-webkit-scrollbar {
     display: none;
@@ -218,14 +196,20 @@ const FlashcardsContainer = styled.div`
 `;
 
 const CardFront = styled.div`
-  display: flex;
-  flex-direction: column;
+  height: 340px;
+  width: 340px;
 `;
 
 const CardImage = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 16px;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 `;
 
 const CardBack = styled.div`
@@ -234,15 +218,24 @@ const CardBack = styled.div`
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: break-word;
+  height: 340px;
+  width: 340px;
 `;
 
 const FlashCard = styled(motion.div)`
   position: relative;
   display: inline-block;
-  height: 240px;
-  width: 240px;
+  height: 340px;
+  width: 340px;
   background: white;
   margin: 32px 16px;
   border-radius: 16px;
   cursor: pointer;
+
+  &:first-of-type {
+    margin-left: 264px;
+  }
+  &:last-of-type {
+    margin-right: 264px;
+  }
 `;
