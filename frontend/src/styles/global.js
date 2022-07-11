@@ -52,9 +52,22 @@ export const P = styled(motion.p)`
   font-weight: ${(props) => props.weight || "normal"};
 `;
 
+export const TagSpan = styled(motion.div)`
+  background-color: black;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.75;
+  font-weight: 500;
+  margin: 4px 8px;
+  display: inline-block;
+`;
+
 // Containers
 export const Page = styled.main`
   width: 100vw;
+  overflow: hidden;
 `;
 
 export const PageWrapper = styled.main`

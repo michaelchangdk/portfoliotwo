@@ -3,7 +3,13 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 // Styling Imports
 import styled from "styled-components/macro";
-import { H2, P, PageWrapper, SectionWrapper } from "../../styles/global";
+import {
+  H2,
+  P,
+  TagSpan,
+  PageWrapper,
+  SectionWrapper,
+} from "../../styles/global";
 // Function Imports
 import { FetchSection } from "../../services/clientFunctions";
 import { urlFor } from "../../client";
@@ -36,20 +42,32 @@ const Featured = () => {
   const [loading, data] = FetchSection(query);
   const [project, setProject] = useState([]);
   const { ref, inView } = useInView();
-  const controls = useAnimation();
+  const loadControls = useAnimation();
+  const cardControls = useAnimation();
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible");
+      loadControls.start("visible");
     }
   });
 
-  const item = {
+  const loadVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: (i) => {
       const delay = (1 + i) * 0.5;
       return {
         y: 0,
+        opacity: 1,
+        transition: { duration: 0.5, delay: delay },
+      };
+    },
+  };
+
+  const fadeVariants = {
+    hidden: { opacity: 0 },
+    visible: (i) => {
+      const delay = (1 + i) * 0.5;
+      return {
         opacity: 1,
         transition: { duration: 0.5, delay: delay },
       };
@@ -108,18 +126,22 @@ const Featured = () => {
   useEffect(() => {
     if (selectedCard !== null) {
       setProject(data[0].featured[selectedCard - 1]);
+      cardControls.start("visible");
     } else if (selectedCard === null) {
       setProject([]);
+      cardControls.start("hidden");
     }
-  }, [selectedCard, data]);
-
-  console.log(data);
-  console.log(selectedCard);
+  }, [selectedCard, data, cardControls]);
 
   return (
     <SectionWrapper>
       <PageWrapper>
-        <H2 initial="hidden" animate={controls} variants={item} custom={1}>
+        <H2
+          initial="hidden"
+          animate={loadControls}
+          variants={loadVariants}
+          custom={1}
+        >
           {!loading && data[0].title}
           {" ➞"}
         </H2>
@@ -131,8 +153,8 @@ const Featured = () => {
             }
             onMouseMove={handleMouseMove}
             initial="hidden"
-            animate={controls}
-            variants={item}
+            animate={loadControls}
+            variants={loadVariants}
             custom={2}
           >
             <FlashcardsContainer ref={containerRef}>
@@ -150,9 +172,44 @@ const Featured = () => {
                   >
                     {i + 1 === selectedCard && (
                       <CardBack>
-                        <P align="center" weight="500" padding="8px 0">
+                        <P
+                          align="center"
+                          weight="500"
+                          padding="8px 0"
+                          initial="hidden"
+                          animate={cardControls}
+                          variants={fadeVariants}
+                          custom={0}
+                        >
                           {card.title}
                         </P>
+                        <P
+                          initial="hidden"
+                          animate={cardControls}
+                          variants={fadeVariants}
+                          custom={0}
+                        >
+                          {card.shortDescription}
+                        </P>
+                        <P
+                          initial="hidden"
+                          animate={cardControls}
+                          variants={fadeVariants}
+                          custom={1}
+                          padding="0 0 4px 0"
+                        >
+                          Tags:
+                        </P>
+                        {card.stack.map((stack, i) => (
+                          <TagSpan
+                            initial="hidden"
+                            animate={cardControls}
+                            variants={fadeVariants}
+                            custom={i + 2}
+                          >
+                            {stack}
+                          </TagSpan>
+                        ))}
                       </CardBack>
                     )}
                     {i + 1 !== selectedCard && (
@@ -168,8 +225,14 @@ const Featured = () => {
             </FlashcardsContainer>
           </Flashcards>
           <FeaturedDescriptionContainer>
-            <P>{project.title}</P>
-            <P>{project.description}</P>
+            <P
+              initial="hidden"
+              animate={cardControls}
+              variants={fadeVariants}
+              custom={1}
+            >
+              {project.description}
+            </P>
           </FeaturedDescriptionContainer>
         </section>
       </PageWrapper>
@@ -263,7 +326,7 @@ const CardImage = styled.img`
 
 const CardBack = styled.div`
   transform: rotateY(180deg);
-  padding: 8px;
+  padding: 8px 16px;
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: break-word;
