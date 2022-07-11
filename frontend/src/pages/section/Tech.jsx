@@ -115,7 +115,7 @@ const AccordionWrapper = styled.div`
   @media (min-width: 768px) {
   }
 
-  @media (min-width: 1024px) {
+  /* @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  }
+  } */
 `;

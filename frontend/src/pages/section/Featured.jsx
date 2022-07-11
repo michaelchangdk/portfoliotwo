@@ -13,7 +13,7 @@ const query = `*[_type == "featuredprojects" && !(_id in path('drafts.**'))] {ti
 const cardVariants = {
   selected: {
     rotateY: 180,
-    scale: 1.1,
+    scale: 1,
     transition: { duration: 0.35 },
     zIndex: 10,
     boxShadow:
@@ -21,8 +21,8 @@ const cardVariants = {
   },
   notSelected: (i) => ({
     // rotateY: i * 15,
-    scale: 1 - Math.abs(i * 0.15),
-    x: i ? i * 50 : 0,
+    scale: 1 - Math.abs(i * 0.1),
+    x: i ? i * 2 : 0,
     opacity: 1 - Math.abs(i * 0.15),
     zIndex: 10 - Math.abs(i),
     boxShadow:
@@ -227,6 +227,7 @@ const CardBack = styled.div`
   word-break: break-word;
   height: 300px;
   width: 300px;
+  /* cursor: default; */
 
   @media (min-width: 768px) {
     height: 340px;

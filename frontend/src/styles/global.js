@@ -31,6 +31,10 @@ export const P = styled(motion.p)`
 `;
 
 // Containers
+export const Page = styled.main`
+  width: 100vw;
+`;
+
 export const PageWrapper = styled.main`
   width: 90%;
   margin: 0 auto;

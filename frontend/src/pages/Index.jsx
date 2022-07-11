@@ -5,16 +5,18 @@ import Bio from "./section/Bio";
 import Tech from "./section/Tech";
 import Featured from "./section/Featured";
 // Styling Import
-import { PageWrapper } from "../styles/global";
+import { Page, PageWrapper } from "../styles/global";
 
 const Index = () => {
   return (
-    <PageWrapper>
-      <Intro />
-      <Bio />
-      <Tech />
-      <Featured />
-    </PageWrapper>
+    <Page>
+      <PageWrapper>
+        <Intro />
+        <Bio />
+        <Tech />
+        <Featured />
+      </PageWrapper>
+    </Page>
   );
 };
 
