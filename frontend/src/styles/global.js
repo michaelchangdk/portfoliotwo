@@ -59,9 +59,13 @@ export const SectionWrapper = styled(motion.section)`
 `;
 
 export const SvgButton = styled(motion.button)`
-  position: absolute;
-  bottom: 0;
+  margin-top: 40px;
   cursor: pointer;
   background: transparent;
   border: none;
+
+  @media (min-width: 768px) {
+    position: absolute;
+    bottom: 0;
+  }
 `;
