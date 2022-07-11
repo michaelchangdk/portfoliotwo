@@ -106,9 +106,11 @@ const Featured = () => {
     } else selectCard(card);
   };
 
+  console.log(inView);
+
   return (
     <SectionWrapper>
-      <H2 initial="hidden" animate="visible" variants={item} custom={1}>
+      <H2 initial="hidden" animate={controls} variants={item} custom={1}>
         {!loading && data[0].title}
       </H2>
       <FeaturedContainer ref={ref}>
@@ -119,7 +121,7 @@ const Featured = () => {
           }
           onMouseMove={handleMouseMove}
           initial="hidden"
-          animate="visible"
+          animate={controls}
           variants={item}
           custom={2}
         >
