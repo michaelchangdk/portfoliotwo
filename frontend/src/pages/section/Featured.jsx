@@ -188,24 +188,16 @@ const Featured = () => {
                           animate={cardControls}
                           variants={fadeVariants}
                           custom={0}
+                          padding="0 0 8px 0"
                         >
                           {card.shortDescription}
-                        </P>
-                        <P
-                          initial="hidden"
-                          animate={cardControls}
-                          variants={fadeVariants}
-                          custom={1}
-                          padding="0 0 4px 0"
-                        >
-                          Tags:
                         </P>
                         {card.stack.map((stack, i) => (
                           <TagSpan
                             initial="hidden"
                             animate={cardControls}
                             variants={fadeVariants}
-                            custom={i + 2}
+                            custom={i + 1}
                           >
                             {stack}
                           </TagSpan>

@@ -62,6 +62,11 @@ export const TagSpan = styled(motion.div)`
   font-weight: 500;
   margin: 4px 8px;
   display: inline-block;
+  font-size: 14px;
+
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 // Containers
