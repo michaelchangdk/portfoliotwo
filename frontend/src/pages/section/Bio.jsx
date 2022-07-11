@@ -1,12 +1,19 @@
 import React, { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 // Function Imports
 import { FetchSection } from "../../services/clientFunctions";
 import { urlFor } from "../../client";
 // Styling & Asset Imports
-import styled from "styled-components/macro";
-import { H2, P, PageWrapper, SectionWrapper } from "../../styles/global";
+import {
+  H2,
+  P,
+  PageWrapper,
+  SectionWrapper,
+  BioWrapper,
+  ImageWrapper,
+  ProfileImage,
+} from "../../styles/global";
 
 const query = `*[_type == "bio" && !(_id in path('drafts.**'))]`;
 
@@ -68,7 +75,7 @@ const Bio = () => {
         <BioWrapper ref={ref}>
           {!loading && (
             <>
-              <TextWrapper>
+              <div>
                 <H2
                   initial="hidden"
                   animate={leftControls}
@@ -88,7 +95,7 @@ const Bio = () => {
                     {item}
                   </P>
                 ))}
-              </TextWrapper>
+              </div>
               <ImageWrapper
                 initial="hidden"
                 animate={rightControls}
@@ -113,27 +120,3 @@ const Bio = () => {
 };
 
 export default Bio;
-
-const BioWrapper = styled(motion.div)`
-  display: grid;
-  gap: 24px;
-
-  @media (min-width: 768px) {
-    gap: 48px;
-    grid-template-columns: 1fr 1fr;
-  }
-`;
-
-const TextWrapper = styled(motion.div)``;
-
-const ImageWrapper = styled(motion.div)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ProfileImage = styled(motion.img)`
-  width: 100%;
-  border-radius: 4px;
-`;

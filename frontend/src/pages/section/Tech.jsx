@@ -77,7 +77,8 @@ const Tech = () => {
             initial="hidden"
             animate={controls}
             variants={bottomItem}
-            style={{ color: "white" }}
+            color="white"
+            padding="0 0 32px 0"
           >
             {data[0].title}
           </H2>
@@ -93,13 +94,13 @@ const Tech = () => {
                   i === 0
                     ? leftItem
                     : i === 1
-                    ? bottomItem
-                    : i === 2
-                    ? topItem
-                    : i === 3
-                    ? bottomItem
-                    : i === 4
                     ? rightItem
+                    : i === 2
+                    ? leftItem
+                    : i === 3
+                    ? rightItem
+                    : i === 4
+                    ? topItem
                     : null
                 }
                 custom={i + 1}

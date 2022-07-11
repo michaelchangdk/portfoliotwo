@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import styled from "styled-components/macro";
-import { H3, P } from "../styles/global";
+// Styling & Asset Imports
+import { H3, P, AccordionHeader, AccordionIcon } from "../styles/global";
 import plus from "../assets/plus_white.png";
 
 const Accordion = ({ data }) => {
@@ -46,46 +46,24 @@ const Accordion = ({ data }) => {
           animate={isOpen ? "open" : "closed"}
           variants={iconVariants}
         />
-        <H3 style={{ color: "white" }}>{data.category}</H3>
+        <H3 color="white">{data.category}</H3>
       </AccordionHeader>
-      <AccordionContent
+      <motion.section
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={contentVariants}
       >
         {data.items.map((item, i) => (
           <motion.div key={i} variants={itemVariants}>
-            <P size="0.875rem" style={{ color: "white" }}>
+            <P size="0.875rem" color="white">
               {"· "}
               {item}
             </P>
           </motion.div>
         ))}
-      </AccordionContent>
+      </motion.section>
     </>
   );
 };
 
 export default Accordion;
-
-const AccordionHeader = styled(motion.header)`
-  /* width: 300px;
-  height: 80px; */
-  padding: 12px 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* justify-content: center; */
-  cursor: pointer;
-  gap: 8px;
-  @media (min-width: 768px) {
-    padding: 24px 0;
-  }
-`;
-
-const AccordionContent = styled(motion.section)``;
-
-const AccordionIcon = styled(motion.img)`
-  width: 20px;
-  height: 20px;
-`;

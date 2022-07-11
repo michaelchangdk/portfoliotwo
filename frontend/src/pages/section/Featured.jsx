@@ -20,7 +20,7 @@ const cardVariants = {
       "rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
   },
   notSelected: (i) => ({
-    // rotateY: i * 15,
+    rotateY: i * 4,
     scale: 1 - Math.abs(i * 0.1),
     x: i ? i * 2 : 0,
     opacity: 1 - Math.abs(i * 0.15),
@@ -34,6 +34,7 @@ const cardVariants = {
 const Featured = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [loading, data] = FetchSection(query);
+  const [project, setProject] = useState([]);
   const { ref, inView } = useInView();
   const controls = useAnimation();
 
@@ -104,6 +105,17 @@ const Featured = () => {
     } else selectCard(card);
   };
 
+  useEffect(() => {
+    if (selectedCard !== null) {
+      setProject(data[0].featured[selectedCard - 1]);
+    } else if (selectedCard === null) {
+      setProject([]);
+    }
+  }, [selectedCard, data]);
+
+  console.log(data);
+  console.log(selectedCard);
+
   return (
     <SectionWrapper>
       <PageWrapper>
@@ -111,7 +123,7 @@ const Featured = () => {
           {!loading && data[0].title}
           {" ➞"}
         </H2>
-        <FeaturedContainer ref={ref}>
+        <section ref={ref}>
           <Flashcards
             onMouseDown={handleMouseDown}
             onMouseUp={() =>
@@ -138,7 +150,9 @@ const Featured = () => {
                   >
                     {i + 1 === selectedCard && (
                       <CardBack>
-                        <P>{card.title}</P>
+                        <P align="center" weight="500" padding="8px 0">
+                          {card.title}
+                        </P>
                       </CardBack>
                     )}
                     {i + 1 !== selectedCard && (
@@ -153,8 +167,11 @@ const Featured = () => {
                 ))}
             </FlashcardsContainer>
           </Flashcards>
-          <DescriptionContainer></DescriptionContainer>
-        </FeaturedContainer>
+          <FeaturedDescriptionContainer>
+            <P>{project.title}</P>
+            <P>{project.description}</P>
+          </FeaturedDescriptionContainer>
+        </section>
       </PageWrapper>
     </SectionWrapper>
   );
@@ -162,11 +179,7 @@ const Featured = () => {
 
 export default Featured;
 
-const FeaturedContainer = styled.section`
-  width: 100%;
-`;
-
-const DescriptionContainer = styled.div`
+const FeaturedDescriptionContainer = styled.div`
   min-height: 200px;
   width: 100%;
 `;
@@ -176,7 +189,6 @@ const Flashcards = styled(motion.div)`
   width: 100%;
   display: grid;
   place-items: center center;
-  /* position: relative; */
 
   &::-webkit-scrollbar {
     display: none;
@@ -188,18 +200,42 @@ const FlashcardsContainer = styled.div`
   width: 100%;
   white-space: nowrap;
   overflow-x: scroll;
-  perspective: 150px;
+  perspective: 300px;
   -ms-overflow-style: none;
   scrollbar-width: none;
   display: flex;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-  /* justify-content: center safe; */
 
   &::-webkit-scrollbar {
     display: none;
+  }
+`;
+
+const FlashCard = styled(motion.div)`
+  position: relative;
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  background: white;
+  margin: 32px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+
+  &:first-of-type {
+    margin-left: 28px;
+  }
+  &:last-of-type {
+    margin-right: 32px;
+  }
+
+  @media (min-width: 768px) {
+    height: 340px;
+    width: 340px;
+    &:first-of-type {
+      margin-left: 264px;
+    }
+    &:last-of-type {
+      margin-right: 264px;
+    }
   }
 `;
 
@@ -238,34 +274,5 @@ const CardBack = styled.div`
   @media (min-width: 768px) {
     height: 340px;
     width: 340px;
-  }
-`;
-
-const FlashCard = styled(motion.div)`
-  position: relative;
-  display: inline-block;
-  height: 300px;
-  width: 300px;
-  background: white;
-  margin: 32px 16px;
-  border-radius: 16px;
-  cursor: pointer;
-
-  &:first-of-type {
-    margin-left: 28px;
-  }
-  &:last-of-type {
-    margin-right: 28px;
-  }
-
-  @media (min-width: 768px) {
-    height: 340px;
-    width: 340px;
-    &:first-of-type {
-      margin-left: 264px;
-    }
-    &:last-of-type {
-      margin-right: 264px;
-    }
   }
 `;

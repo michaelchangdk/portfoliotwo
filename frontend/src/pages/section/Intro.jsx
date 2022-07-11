@@ -65,7 +65,7 @@ const Intro = () => {
               animate="visible"
               variants={item}
               custom={1}
-              style={{ color: "white" }}
+              color="white"
             >
               {data[0].title}
             </H1>
@@ -76,7 +76,8 @@ const Intro = () => {
                 animate="visible"
                 variants={item}
                 custom={i + 4 + i}
-                style={{ textAlign: "center", color: "white" }}
+                color="white"
+                align="center"
               >
                 {sentence}
               </P>
