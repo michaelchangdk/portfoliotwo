@@ -50,6 +50,7 @@ export const PageWrapper = styled.main`
 
 export const SectionWrapper = styled(motion.section)`
   min-height: 100vh;
+  min-height: --webkit-fill-available;
   display: flex;
   flex-direction: column;
   justify-content: center;
