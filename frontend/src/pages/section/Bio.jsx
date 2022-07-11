@@ -6,7 +6,7 @@ import { FetchSection } from "../../services/clientFunctions";
 import { urlFor } from "../../client";
 // Styling & Asset Imports
 import styled from "styled-components/macro";
-import { H2, P, SectionWrapper } from "../../styles/global";
+import { H2, P, PageWrapper, SectionWrapper } from "../../styles/global";
 
 const query = `*[_type == "bio" && !(_id in path('drafts.**'))]`;
 
@@ -64,48 +64,50 @@ const Bio = () => {
 
   return (
     <SectionWrapper>
-      <BioWrapper ref={ref}>
-        {!loading && (
-          <>
-            <TextWrapper>
-              <H2
-                initial="hidden"
-                animate={leftControls}
-                variants={leftItem}
-                custom={1}
-              >
-                {data[0].title}
-              </H2>
-              {data[0].about.map((item, i) => (
-                <P
+      <PageWrapper>
+        <BioWrapper ref={ref}>
+          {!loading && (
+            <>
+              <TextWrapper>
+                <H2
                   initial="hidden"
                   animate={leftControls}
                   variants={leftItem}
-                  custom={i + 2}
-                  key={i}
+                  custom={1}
                 >
-                  {item}
-                </P>
-              ))}
-            </TextWrapper>
-            <ImageWrapper
-              initial="hidden"
-              animate={rightControls}
-              variants={rightItem}
-              custom={4}
-            >
-              <ProfileImage
-                src={urlFor(data[0].image.asset._ref)}
-                alt="Michael Chang"
+                  {data[0].title}
+                </H2>
+                {data[0].about.map((item, i) => (
+                  <P
+                    initial="hidden"
+                    animate={leftControls}
+                    variants={leftItem}
+                    custom={i + 2}
+                    key={i}
+                  >
+                    {item}
+                  </P>
+                ))}
+              </TextWrapper>
+              <ImageWrapper
                 initial="hidden"
-                animate={transformControls}
-                variants={rightTransform}
+                animate={rightControls}
+                variants={rightItem}
                 custom={4}
-              />
-            </ImageWrapper>
-          </>
-        )}
-      </BioWrapper>
+              >
+                <ProfileImage
+                  src={urlFor(data[0].image.asset._ref)}
+                  alt="Michael Chang"
+                  initial="hidden"
+                  animate={transformControls}
+                  variants={rightTransform}
+                  custom={4}
+                />
+              </ImageWrapper>
+            </>
+          )}
+        </BioWrapper>
+      </PageWrapper>
     </SectionWrapper>
   );
 };

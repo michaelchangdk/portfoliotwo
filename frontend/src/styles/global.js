@@ -38,6 +38,10 @@ export const Page = styled.main`
 export const PageWrapper = styled.main`
   width: 90%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   @media (min-width: 768px) {
   }
@@ -55,8 +59,12 @@ export const SectionWrapper = styled(motion.section)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 48px 0;
+  padding: 12px 0;
   position: relative;
+
+  :nth-of-type(odd) {
+    background-color: black;
+  }
 `;
 
 export const SvgButton = styled(motion.button)`

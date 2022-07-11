@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 // Styling Imports
 import styled from "styled-components/macro";
-import { H2, P, SectionWrapper } from "../../styles/global";
+import { H2, P, PageWrapper, SectionWrapper } from "../../styles/global";
 // Function Imports
 import { FetchSection } from "../../services/clientFunctions";
 import { urlFor } from "../../client";
@@ -55,8 +55,6 @@ const Featured = () => {
     },
   };
 
-  console.log(loading, data);
-
   const [{ startX, startScrollLeft, isDragging }, setDragStart] = useState({
     startX: undefined,
     startScrollLeft: undefined,
@@ -106,54 +104,58 @@ const Featured = () => {
     } else selectCard(card);
   };
 
-  console.log(inView);
-
   return (
     <SectionWrapper>
-      <H2 initial="hidden" animate={controls} variants={item} custom={1}>
-        {!loading && data[0].title}
-      </H2>
-      <FeaturedContainer ref={ref}>
-        <Flashcards
-          onMouseDown={handleMouseDown}
-          onMouseUp={() =>
-            setDragStart((prev) => ({ ...prev, isDragging: false }))
-          }
-          onMouseMove={handleMouseMove}
-          initial="hidden"
-          animate={controls}
-          variants={item}
-          custom={2}
-        >
-          <FlashcardsContainer ref={containerRef}>
-            {!loading &&
-              data[0].featured.map((card, i) => (
-                <FlashCard
-                  key={card._id}
-                  ref={(el) => cardRefs.current.push(el)}
-                  onMouseUp={(e) => handleCardMouseUp(e, i + 1)}
-                  variants={cardVariants}
-                  animate={selectedCard === i + 1 ? "selected" : "notSelected"}
-                  custom={selectedCard ? selectedCard - (i + 1) : 0}
-                >
-                  {i + 1 === selectedCard && (
-                    <CardBack>
-                      <P>{card.title}</P>
-                    </CardBack>
-                  )}
-                  {i + 1 !== selectedCard && (
-                    <CardFront>
-                      <CardImage
-                        src={urlFor(card.image.asset._ref)}
-                        alt={card.title}
-                      />
-                    </CardFront>
-                  )}
-                </FlashCard>
-              ))}
-          </FlashcardsContainer>
-        </Flashcards>
-      </FeaturedContainer>
+      <PageWrapper>
+        <H2 initial="hidden" animate={controls} variants={item} custom={1}>
+          {!loading && data[0].title}
+          {" ➞"}
+        </H2>
+        <FeaturedContainer ref={ref}>
+          <Flashcards
+            onMouseDown={handleMouseDown}
+            onMouseUp={() =>
+              setDragStart((prev) => ({ ...prev, isDragging: false }))
+            }
+            onMouseMove={handleMouseMove}
+            initial="hidden"
+            animate={controls}
+            variants={item}
+            custom={2}
+          >
+            <FlashcardsContainer ref={containerRef}>
+              {!loading &&
+                data[0].featured.map((card, i) => (
+                  <FlashCard
+                    key={card._id}
+                    ref={(el) => cardRefs.current.push(el)}
+                    onMouseUp={(e) => handleCardMouseUp(e, i + 1)}
+                    variants={cardVariants}
+                    animate={
+                      selectedCard === i + 1 ? "selected" : "notSelected"
+                    }
+                    custom={selectedCard ? selectedCard - (i + 1) : 0}
+                  >
+                    {i + 1 === selectedCard && (
+                      <CardBack>
+                        <P>{card.title}</P>
+                      </CardBack>
+                    )}
+                    {i + 1 !== selectedCard && (
+                      <CardFront>
+                        <CardImage
+                          src={urlFor(card.image.asset._ref)}
+                          alt={card.title}
+                        />
+                      </CardFront>
+                    )}
+                  </FlashCard>
+                ))}
+            </FlashcardsContainer>
+          </Flashcards>
+          <DescriptionContainer></DescriptionContainer>
+        </FeaturedContainer>
+      </PageWrapper>
     </SectionWrapper>
   );
 };
@@ -162,7 +164,11 @@ export default Featured;
 
 const FeaturedContainer = styled.section`
   width: 100%;
-  /* height: 420px; */
+`;
+
+const DescriptionContainer = styled.div`
+  min-height: 200px;
+  width: 100%;
 `;
 
 const Flashcards = styled(motion.div)`

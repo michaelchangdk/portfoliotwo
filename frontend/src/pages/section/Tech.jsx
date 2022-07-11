@@ -7,7 +7,7 @@ import Accordion from "../../components/Accordion";
 import { FetchSection } from "../../services/clientFunctions";
 // Styling Imports
 import styled from "styled-components/macro";
-import { H2, SectionWrapper } from "../../styles/global";
+import { H2, PageWrapper, SectionWrapper } from "../../styles/global";
 const query = `*[_type == "tech" && !(_id in path('drafts.**'))]`;
 
 const Tech = () => {
@@ -71,37 +71,44 @@ const Tech = () => {
 
   return (
     <SectionWrapper>
-      {!loading && (
-        <H2 initial="hidden" animate={controls} variants={bottomItem}>
-          {data[0].title}
-        </H2>
-      )}
-      <AccordionWrapper ref={ref}>
-        {!loading &&
-          data[0].stack.map((item, i) => (
-            <motion.div
-              key={i}
-              initial="hidden"
-              animate={controls}
-              variants={
-                i === 0
-                  ? leftItem
-                  : i === 1
-                  ? bottomItem
-                  : i === 2
-                  ? topItem
-                  : i === 3
-                  ? bottomItem
-                  : i === 4
-                  ? rightItem
-                  : null
-              }
-              custom={i + 1}
-            >
-              <Accordion data={item} />
-            </motion.div>
-          ))}
-      </AccordionWrapper>
+      <PageWrapper>
+        {!loading && (
+          <H2
+            initial="hidden"
+            animate={controls}
+            variants={bottomItem}
+            style={{ color: "white" }}
+          >
+            {data[0].title}
+          </H2>
+        )}
+        <AccordionWrapper ref={ref}>
+          {!loading &&
+            data[0].stack.map((item, i) => (
+              <motion.div
+                key={i}
+                initial="hidden"
+                animate={controls}
+                variants={
+                  i === 0
+                    ? leftItem
+                    : i === 1
+                    ? bottomItem
+                    : i === 2
+                    ? topItem
+                    : i === 3
+                    ? bottomItem
+                    : i === 4
+                    ? rightItem
+                    : null
+                }
+                custom={i + 1}
+              >
+                <Accordion data={item} />
+              </motion.div>
+            ))}
+        </AccordionWrapper>
+      </PageWrapper>
     </SectionWrapper>
   );
 };

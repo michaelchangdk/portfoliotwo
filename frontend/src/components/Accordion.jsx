@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components/macro";
 import { H3, P } from "../styles/global";
-import plus from "../assets/plus.png";
+import plus from "../assets/plus_white.png";
 
 const Accordion = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +46,7 @@ const Accordion = ({ data }) => {
           animate={isOpen ? "open" : "closed"}
           variants={iconVariants}
         />
-        <H3>{data.category}</H3>
+        <H3 style={{ color: "white" }}>{data.category}</H3>
       </AccordionHeader>
       <AccordionContent
         initial="closed"
@@ -55,7 +55,7 @@ const Accordion = ({ data }) => {
       >
         {data.items.map((item, i) => (
           <motion.div key={i} variants={itemVariants}>
-            <P size="0.875rem">
+            <P size="0.875rem" style={{ color: "white" }}>
               {"· "}
               {item}
             </P>
