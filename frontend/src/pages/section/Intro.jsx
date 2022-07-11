@@ -75,7 +75,10 @@ const Intro = () => {
             // onHoverStart={() => setIsHovered(true)}
             // onHoverEnd={() => setIsHovered(false)}
             onClick={() =>
-              window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
+              window.scrollBy({
+                top: document.documentElement.clientHeight,
+                behavior: "smooth",
+              })
             }
           >
             <motion.svg
