@@ -133,7 +133,7 @@ export const BioWrapper = styled(motion.div)`
   display: grid;
   gap: 24px;
   padding: 16px;
-  border: 4px solid white;
+  border: 4px solid black;
   background-color: rgba(255, 255, 255, 0.4);
 
   @media (min-width: 768px) {
@@ -158,7 +158,7 @@ export const ImageWrapper = styled(motion.div)`
 export const ProfileImage = styled(motion.img)`
   width: 100%;
   border-radius: 50%;
-  border: 4px solid white;
+  border: 3px solid black;
   position: absolute;
   width: 180px;
   height: 180px;

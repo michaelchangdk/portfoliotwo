@@ -53,7 +53,12 @@ const Contact = () => {
             Get in touch
           </H2>
           <SocialsWrapper>
-            <SocialsButton whileHover={{ scale: 1.1 }}>
+            <SocialsButton
+              whileHover={{ scale: 1.1 }}
+              onClick={() =>
+                window.open("https://github.com/michaelchangdk", "_blank")
+              }
+            >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"
@@ -74,7 +79,12 @@ const Contact = () => {
               </motion.svg>
             </SocialsButton>
 
-            <SocialsButton whileHover={{ scale: 1.1 }}>
+            <SocialsButton
+              whileHover={{ scale: 1.1 }}
+              onClick={() =>
+                window.open("mailto:michaelchangdk@icloud.com?subject=Hello!")
+              }
+            >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"
@@ -98,7 +108,15 @@ const Contact = () => {
               </motion.svg>
             </SocialsButton>
 
-            <SocialsButton whileHover={{ scale: 1.1 }}>
+            <SocialsButton
+              whileHover={{ scale: 1.1 }}
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/in/michaelchangdk/",
+                  "_blank"
+                )
+              }
+            >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"
@@ -152,7 +170,10 @@ const Contact = () => {
               </motion.svg>
             </SocialsButton>
 
-            <SocialsButton whileHover={{ scale: 1.1 }}>
+            <SocialsButton
+              whileHover={{ scale: 1.1 }}
+              onClick={() => window.open("", "_blank")}
+            >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"
@@ -202,7 +223,12 @@ const Contact = () => {
               </motion.svg>
             </SocialsButton>
 
-            <SocialsButton whileHover={{ scale: 1.1 }}>
+            <SocialsButton
+              whileHover={{ scale: 1.1 }}
+              onClick={() =>
+                window.open("https://medium.com/@michaelchangdk", "_blank")
+              }
+            >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"
@@ -223,7 +249,10 @@ const Contact = () => {
               </motion.svg>
             </SocialsButton>
 
-            <SocialsButton whileHover={{ scale: 1.1 }}>
+            <SocialsButton
+              whileHover={{ scale: 1.1 }}
+              onClick={() => window.open("tel:+4542726227")}
+            >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"

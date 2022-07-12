@@ -16,6 +16,9 @@ import {
   ProfileImage,
 } from "../../styles/global";
 import background from "../../assets/images/biobackground.jpg";
+import github from "../../assets/github.png";
+import linkedin from "../../assets/linkedin.png";
+import email from "../../assets/email.png";
 
 const query = `*[_type == "bio" && !(_id in path('drafts.**'))]`;
 
@@ -48,7 +51,7 @@ const Bio = () => {
     },
   };
 
-  const rightTransform = {
+  const fadeIn = {
     hidden: { opacity: 0 },
     visible: (i) => {
       const delay = i * 0.5;
@@ -59,17 +62,17 @@ const Bio = () => {
     },
   };
 
-  const svg = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: (i) => {
-      const delay = (1 + i) * 0.5;
-      return {
-        pathLength: 1,
-        opacity: 1,
-        transition: { duration: 1.5, delay: delay },
-      };
-    },
-  };
+  // const svg = {
+  //   hidden: { pathLength: 0, opacity: 0 },
+  //   visible: (i) => {
+  //     const delay = (1 + i) * 0.5;
+  //     return {
+  //       pathLength: 1,
+  //       opacity: 1,
+  //       transition: { duration: 1.5, delay: delay },
+  //     };
+  //   },
+  // };
 
   return (
     <SectionWrapper id="bio_section">
@@ -77,7 +80,13 @@ const Bio = () => {
         <ParallaxBackground></ParallaxBackground>
       </ParallaxWrap>
       <PageWrapper position="relative">
-        <BioWrapper ref={ref}>
+        <BioWrapper
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={fadeIn}
+          custom={1}
+        >
           {!loading && (
             <>
               <div>
@@ -108,7 +117,7 @@ const Bio = () => {
               // custom={10}
               >
                 <IconsWrapper>
-                  <SocialsButton whileHover={{ scale: 1.1 }}>
+                  {/* <SocialsButton whileHover={{ scale: 1.1 }}>
                     <motion.svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="44"
@@ -204,6 +213,59 @@ const Bio = () => {
                         custom={9}
                       />
                     </motion.svg>
+                  </SocialsButton> */}
+                  <SocialsButton
+                    whileHover={{ scale: 1.1 }}
+                    initial="hidden"
+                    variants={fadeIn}
+                    animate={transformControls}
+                    custom={10}
+                  >
+                    <SocialsImage
+                      src={github}
+                      alt="github"
+                      onClick={() =>
+                        window.open(
+                          "https://github.com/michaelchangdk",
+                          "_blank"
+                        )
+                      }
+                    />
+                  </SocialsButton>
+                  <SocialsButton
+                    whileHover={{ scale: 1.1 }}
+                    initial="hidden"
+                    variants={fadeIn}
+                    animate={transformControls}
+                    custom={11}
+                  >
+                    <SocialsImage
+                      src={email}
+                      alt="email"
+                      onClick={() =>
+                        window.open(
+                          "mailto:michaelchangdk@icloud.com?subject=Hello!"
+                        )
+                      }
+                    />
+                  </SocialsButton>
+                  <SocialsButton
+                    whileHover={{ scale: 1.1 }}
+                    initial="hidden"
+                    variants={fadeIn}
+                    animate={transformControls}
+                    custom={12}
+                  >
+                    <SocialsImage
+                      src={linkedin}
+                      alt="linkedin"
+                      onClick={() =>
+                        window.open(
+                          "https://www.linkedin.com/in/michaelchangdk/",
+                          "_blank"
+                        )
+                      }
+                    />
                   </SocialsButton>
                 </IconsWrapper>
                 <ProfileImage
@@ -211,7 +273,7 @@ const Bio = () => {
                   alt="Michael Chang"
                   initial="hidden"
                   animate={transformControls}
-                  variants={rightTransform}
+                  variants={fadeIn}
                   custom={9}
                 />
               </ImageWrapper>
@@ -244,6 +306,11 @@ const IconsWrapper = styled.div`
     align-items: center;
     justify-content: space-around;
   }
+`;
+
+const SocialsImage = styled.img`
+  width: 44px;
+  height: 44px;
 `;
 
 const SocialsButton = styled(motion.button)`
