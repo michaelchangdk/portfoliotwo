@@ -151,7 +151,7 @@ table {
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 
 /* Global */
-body {
+html body {
   background: black;
   background-color: black;
 }
