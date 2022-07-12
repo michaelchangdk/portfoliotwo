@@ -87,10 +87,10 @@ const Bio = () => {
       id="bio_section"
       style={{
         backgroundImage: `url(${background})`,
-        backgroundSize: "cover",
         backgroundAttachment: "fixed",
+        backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundPositionY: "bottom",
+        backgroundPositionY: "center",
         backgroundPositionX: "center",
       }}
     >
