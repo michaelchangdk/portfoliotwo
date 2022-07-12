@@ -54,7 +54,7 @@ const Contact = () => {
           </H2>
           <SocialsWrapper>
             <SocialsButton
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>
                 window.open("https://github.com/michaelchangdk", "_blank")
               }
@@ -80,7 +80,7 @@ const Contact = () => {
             </SocialsButton>
 
             <SocialsButton
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>
                 window.open("mailto:michaelchangdk@icloud.com?subject=Hello!")
               }
@@ -109,7 +109,7 @@ const Contact = () => {
             </SocialsButton>
 
             <SocialsButton
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>
                 window.open(
                   "https://www.linkedin.com/in/michaelchangdk/",
@@ -171,7 +171,7 @@ const Contact = () => {
             </SocialsButton>
 
             <SocialsButton
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
               onClick={() => window.open("", "_blank")}
             >
               <motion.svg
@@ -224,7 +224,7 @@ const Contact = () => {
             </SocialsButton>
 
             <SocialsButton
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>
                 window.open("https://medium.com/@michaelchangdk", "_blank")
               }
@@ -250,7 +250,7 @@ const Contact = () => {
             </SocialsButton>
 
             <SocialsButton
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, y: -5 }}
               onClick={() => window.open("tel:+4542726227")}
             >
               <motion.svg
