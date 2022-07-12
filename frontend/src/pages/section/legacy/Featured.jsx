@@ -9,12 +9,12 @@ import {
   TagSpan,
   PageWrapper,
   SectionWrapper,
-} from "../../styles/global";
+} from "../../../styles/global";
 import link from "../../assets/share.png";
 import github from "../../assets/github-logo-face.png";
 // Function Imports
-import { FetchSection } from "../../services/clientFunctions";
-import { urlFor } from "../../client";
+import { FetchSection } from "../../../services/clientFunctions";
+import { urlFor } from "../../../client";
 // Query Declarations
 const query = `*[_type == "featuredprojects" && !(_id in path('drafts.**'))] {title, featured[]->}`;
 

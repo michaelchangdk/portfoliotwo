@@ -1,11 +1,13 @@
 import React from "react";
-import { H2, SectionWrapper, PageWrapper } from "../../styles/global";
+import { BungeeH2, SectionWrapper, PageWrapper } from "../../styles/global";
 
 const AllProjects = () => {
   return (
     <SectionWrapper>
       <PageWrapper>
-        <H2 color="white">All projects</H2>
+        <BungeeH2 color="white" size="4rem">
+          All projects
+        </BungeeH2>
       </PageWrapper>
     </SectionWrapper>
   );

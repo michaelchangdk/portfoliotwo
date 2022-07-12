@@ -10,6 +10,11 @@ export default {
       type: "string",
     },
     {
+      name: "headline",
+      title: "Headline",
+      type: "string",
+    },
+    {
       name: "sentences",
       title: "Sentences",
       type: "array",

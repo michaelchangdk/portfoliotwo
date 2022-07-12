@@ -3,7 +3,7 @@ import React from "react";
 import Intro from "./section/Intro";
 import Bio from "./section/Bio";
 import Tech from "./section/Tech";
-import Featured from "./section/Featured";
+import FeaturedProjects from "./section/FeaturedProjects";
 import AllProjects from "./section/AllProjects";
 import Contact from "./section/Contact";
 // Styling Import
@@ -15,7 +15,7 @@ const Index = () => {
       <Intro />
       <Bio />
       <Tech />
-      <Featured />
+      <FeaturedProjects />
       <AllProjects />
       <Contact />
     </Page>

@@ -10,7 +10,7 @@ import Accordion from "../../components/Accordion";
 import { FetchSection } from "../../services/clientFunctions";
 // Styling Imports
 import styled from "styled-components/macro";
-import { H2, PageWrapper, SectionWrapper } from "../../styles/global";
+import { KronaH2, PageWrapper, SectionWrapper } from "../../styles/global";
 const query = `*[_type == "tech" && !(_id in path('drafts.**'))]`;
 
 const Tech = () => {
@@ -95,7 +95,7 @@ const Tech = () => {
         </div>
         <PageWrapper>
           {!loading && (
-            <H2
+            <KronaH2
               initial="hidden"
               animate={controls}
               variants={bottomItem}
@@ -103,7 +103,7 @@ const Tech = () => {
               padding="0 0 32px 0"
             >
               {data[0].title}
-            </H2>
+            </KronaH2>
           )}
           <AccordionWrapper ref={ref}>
             {!loading &&

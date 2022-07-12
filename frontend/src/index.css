@@ -141,6 +141,38 @@ table {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 /* Inter */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* Krona One */
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
+/* Space Grotesk */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+/* Black Ops One */
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
+/* Bungee */
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+
+@font-face {
+  font-family: "BhostraLalaBold";
+  src: local("BhostraLalaBold"),
+    url(./assets/fonts/BhostraLalaBold.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "BhostraLalaExtraBold";
+  src: local("BhostraLalaExtraBold"),
+    url(./assets/fonts/BhostraLalaExtraBold.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "BhostraLalaLight";
+  src: local("BhostraLalaLight"),
+    url(./assets/fonts/BhostraLalaLight.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "BhostraLalaRegular";
+  src: local("BhostraLalaRegular"),
+    url(./assets/fonts/BhostraLalaRegular.otf) format("opentype");
+}
 
 /* Global */
 body {

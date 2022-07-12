@@ -4,8 +4,27 @@ import { motion } from "framer-motion";
 // Typographies
 export const H1 = styled(motion.h1)`
   font-family: "Inter", sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: ${(props) => props.weight || "700"};
+  font-size: ${(props) => props.size || "1.5rem"};
+  line-height: 2;
+  letter-spacing: 0.2rem;
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
+export const BhostraH1 = styled(motion.h1)`
+  font-family: "BhostraLalaExtraBold";
+  font-size: 7rem;
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
+export const KronaH1 = styled(motion.h1)`
+  font-family: "Krona One", sans-serif;
+  font-weight: ${(props) => props.weight || "700"};
+  font-size: ${(props) => props.size || "1.5rem"};
   line-height: 2;
   letter-spacing: 0.2rem;
   color: ${(props) => props.color || "black"};
@@ -17,6 +36,50 @@ export const H2 = styled(motion.h2)`
   font-family: "Inter", sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
+  line-height: 2;
+  letter-spacing: 0.2rem;
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
+export const BhostraH2 = styled(motion.h2)`
+  font-family: "BhostraLalaExtraBold";
+  font-weight: 700;
+  font-size: ${(props) => props.size || "4rem"};
+  line-height: 1;
+  letter-spacing: 0.2rem;
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
+export const KronaH2 = styled(motion.h2)`
+  font-family: "Krona One", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 2;
+  letter-spacing: 0.2rem;
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
+export const BlackOpsH2 = styled(motion.h2)`
+  font-family: "Black Ops One", cursive;
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 2;
+  letter-spacing: 0.2rem;
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
+export const BungeeH2 = styled(motion.h2)`
+  font-family: "Bungee", cursive;
+  font-weight: 400;
+  font-size: ${(props) => props.size || "1.75rem"};
   line-height: 2;
   letter-spacing: 0.2rem;
   color: ${(props) => props.color || "black"};
@@ -46,6 +109,16 @@ export const P = styled(motion.p)`
   font-family: "Montserrat", sans-serif;
   line-height: 1.75;
   font-size: ${(props) => props.size || "16px"};
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+  font-weight: ${(props) => props.weight || "normal"};
+`;
+
+export const SpaceP = styled(motion.p)`
+  font-family: "Space Grotesk", sans-serif;
+  line-height: 1.75;
+  font-size: ${(props) => props.size || "18px"};
   color: ${(props) => props.color || "black"};
   text-align: ${(props) => props.align || "left"};
   padding: ${(props) => props.padding || "0"};
@@ -120,7 +193,7 @@ export const DownButton = styled(motion.button)`
   background: transparent;
   border: none;
   position: absolute;
-  bottom: 20vh;
+  bottom: 10vh;
 
   @media (min-width: 768px) {
     bottom: 0;
@@ -157,13 +230,15 @@ export const ImageWrapper = styled(motion.div)`
 
 export const ProfileImage = styled(motion.img)`
   width: 100%;
-  border-radius: 50%;
-  border: 4px solid white;
+  /* border-radius: 50%;
+  border: 4px solid white; */
+  filter: grayscale(60%);
   position: absolute;
   width: 180px;
   height: 180px;
-  bottom: -20px;
-  right: -20px;
+  bottom: -12px;
+  right: -12px;
+  clip-path: polygon(60% 0, 100% 40%, 85% 80%, 0 100%, 20% 15%);
 
   @media (min-width: 768px) {
     position: absolute;

@@ -7,8 +7,9 @@ import introParticlesConfig from "../../config/introParticlesConfig";
 import { FetchSection } from "../../services/clientFunctions";
 // Styling Import
 import {
-  H1,
-  P,
+  KronaH1,
+  BhostraH1,
+  SpaceP,
   PageWrapper,
   SectionWrapper,
   DownButton,
@@ -92,28 +93,42 @@ const Intro = () => {
         <PageWrapper>
           {!loading && (
             <>
-              <H1
+              <KronaH1
                 initial="hidden"
                 animate="visible"
                 variants={item}
                 custom={1}
                 color="white"
+                align="center"
+                weight="500"
+                size="1.25rem"
+                padding="0 0 8px 0"
               >
                 {data[0].title}
-              </H1>
+              </KronaH1>
+              <BhostraH1
+                initial="hidden"
+                animate="visible"
+                variants={item}
+                custom={3}
+                color="white"
+                align="center"
+              >
+                {data[0].headline}
+              </BhostraH1>
               {data[0].sentences.map((sentence, i) => (
-                <P
+                <SpaceP
                   key={i}
                   initial="hidden"
                   animate="visible"
                   variants={item}
-                  custom={i + 4 + i + i}
+                  custom={i + 6 + i + i}
                   color="white"
                   align="center"
-                  weight="500"
+                  weight="600"
                 >
                   {sentence}
-                </P>
+                </SpaceP>
               ))}
             </>
           )}
@@ -121,7 +136,7 @@ const Intro = () => {
         <DownButton
           animate="visible"
           variants={svgWrapper}
-          custom={12}
+          custom={13}
           // onHoverStart={() => setIsHovered(true)}
           // onHoverEnd={() => setIsHovered(false)}
           onClick={() =>
@@ -147,7 +162,7 @@ const Intro = () => {
               initial="hidden"
               animate="visible"
               variants={svg}
-              custom={12}
+              custom={14}
             />
           </motion.svg>
         </DownButton>

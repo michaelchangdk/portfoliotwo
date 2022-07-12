@@ -3,7 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import styled from "styled-components/macro";
-import { H2, SectionWrapper, PageWrapper } from "../../styles/global";
+import { BhostraH2, SectionWrapper, PageWrapper } from "../../styles/global";
 
 const Contact = () => {
   const { ref, inView } = useInView();
@@ -43,15 +43,16 @@ const Contact = () => {
     <SectionWrapper>
       <PageWrapper>
         <ContactWrapper ref={ref}>
-          <H2
+          <BhostraH2
+            size="5rem"
+            align="center"
             initial="hidden"
             animate={controls}
             variants={title}
             custom={1}
-            padding="0 0 32px 0"
           >
-            Get in touch
-          </H2>
+            FIND ME
+          </BhostraH2>
           <SocialsWrapper>
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
