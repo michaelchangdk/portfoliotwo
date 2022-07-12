@@ -76,7 +76,7 @@ export const Page = styled.main`
 `;
 
 export const PageWrapper = styled.main`
-  position: absolute;
+  position: ${(props) => props.position || "absolute"};
   max-width: 90%;
   margin: 0 auto;
   display: flex;
@@ -95,7 +95,8 @@ export const PageWrapper = styled.main`
 
 export const SectionWrapper = styled(motion.section)`
   min-height: 100vh;
-  min-height: --webkit-fill-available;
+  height: 100%;
+  /* min-height: --webkit-fill-available; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -115,7 +116,7 @@ export const DownButton = styled(motion.button)`
   background: transparent;
   border: none;
   position: absolute;
-  bottom: 25vh;
+  bottom: 20vh;
 
   @media (min-width: 768px) {
     bottom: 0;

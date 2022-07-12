@@ -71,7 +71,7 @@ const Bio = () => {
 
   return (
     <SectionWrapper id="bio_section">
-      <PageWrapper>
+      <PageWrapper position="relative">
         <BioWrapper ref={ref}>
           {!loading && (
             <>
