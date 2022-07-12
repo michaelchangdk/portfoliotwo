@@ -48,16 +48,16 @@ const Bio = () => {
     },
   };
 
-  const rightItem = {
-    hidden: { opacity: 0 },
-    visible: (i) => {
-      const delay = i * 0.5;
-      return {
-        opacity: 1,
-        transition: { duration: 0.5, delay: delay },
-      };
-    },
-  };
+  // const rightItem = {
+  //   hidden: { opacity: 0 },
+  //   visible: (i) => {
+  //     const delay = i * 0.5;
+  //     return {
+  //       opacity: 1,
+  //       transition: { duration: 0.5, delay: delay },
+  //     };
+  //   },
+  // };
 
   const rightTransform = {
     hidden: { opacity: 0 },
