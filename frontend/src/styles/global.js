@@ -129,6 +129,7 @@ export const DownButton = styled(motion.button)`
 
 // Bio Section
 export const BioWrapper = styled(motion.div)`
+  width: 100%;
   display: grid;
   gap: 24px;
   padding: 16px;
