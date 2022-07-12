@@ -6,7 +6,6 @@ import introParticlesConfig from "../../config/introParticlesConfig";
 // Function Import
 import { FetchSection } from "../../services/clientFunctions";
 // Styling Import
-import styled from "styled-components/macro";
 import {
   H1,
   P,
