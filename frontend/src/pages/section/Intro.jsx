@@ -90,7 +90,7 @@ const Intro = () => {
             width="100vw"
           />
         </div>
-        <PageWrapper>
+        <PageWrapper style={{ marginTop: "-10vh" }}>
           {!loading && (
             <>
               <KronaH1

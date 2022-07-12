@@ -150,6 +150,12 @@ table {
 /* Bungee */
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 
+/* Global */
+body {
+  background: black;
+  background-color: black;
+}
+
 @font-face {
   font-family: "BhostraLalaBold";
   src: local("BhostraLalaBold"),
@@ -172,9 +178,4 @@ table {
   font-family: "BhostraLalaRegular";
   src: local("BhostraLalaRegular"),
     url(./assets/fonts/BhostraLalaRegular.otf) format("opentype");
-}
-
-/* Global */
-body {
-  background-color: black;
 }
