@@ -60,7 +60,7 @@ const Featured = () => {
       return {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.5, delay: delay },
+        transition: { duration: 0.8, delay: delay },
       };
     },
   };
@@ -72,7 +72,7 @@ const Featured = () => {
       return {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.5, delay: delay },
+        transition: { duration: 1, delay: delay },
       };
     },
   };
@@ -155,10 +155,9 @@ const Featured = () => {
           initial="hidden"
           animate={loadControls}
           variants={leftItem}
-          custom={1}
+          custom={2}
         >
           {!loading && data[0].title}
-          {" ➞"}
         </H2>
       </PageWrapper>
       <section ref={ref}>
@@ -171,7 +170,7 @@ const Featured = () => {
           initial="hidden"
           animate={loadControls}
           variants={rightItem}
-          custom={2}
+          custom={4}
         >
           <FlashcardsContainer ref={containerRef}>
             {!loading &&

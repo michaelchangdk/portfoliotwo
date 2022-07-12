@@ -76,9 +76,9 @@ const Tech = () => {
     await loadFull(main);
   };
 
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  // const particlesLoaded = (container) => {
+  //   console.log(container);
+  // };
 
   return (
     <>
@@ -87,7 +87,7 @@ const Tech = () => {
           <Particles
             id="techtsparticles"
             init={particlesInit}
-            loaded={particlesLoaded}
+            // loaded={particlesLoaded}
             options={techParticlesConfig}
             height="100vh"
             width="100vw"

@@ -108,6 +108,10 @@ export const SectionWrapper = styled(motion.section)`
   :nth-of-type(odd) {
     background-color: black;
   }
+
+  :nth-of-type(even) {
+    background-color: white;
+  }
 `;
 
 export const DownButton = styled(motion.button)`
@@ -127,22 +131,46 @@ export const DownButton = styled(motion.button)`
 export const BioWrapper = styled(motion.div)`
   display: grid;
   gap: 24px;
+  padding: 16px;
+  border: 4px solid white;
+  background-color: rgba(255, 255, 255, 0.4);
 
   @media (min-width: 768px) {
     gap: 48px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.4fr;
   }
 `;
 
 export const ImageWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
 `;
 
 export const ProfileImage = styled(motion.img)`
   width: 100%;
+  border-radius: 50%;
+  border: 4px solid white;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  bottom: -20px;
+  right: -20px;
+
+  @media (min-width: 768px) {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    top: -20px;
+    right: -20px;
+  }
 `;
 
 // Accordion Component

@@ -13,7 +13,7 @@ import {
   SectionWrapper,
   DownButton,
 } from "../../styles/global";
-import background from "../../assets/background.jpg";
+import background from "../../assets/images/introbackground.jpg";
 // Query declarations
 const query = `*[_type == "intro" && !(_id in path('drafts.**'))]`;
 
@@ -63,9 +63,9 @@ const Intro = () => {
     await loadFull(main);
   };
 
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  // const particlesLoaded = (container) => {
+  //   console.log(container);
+  // };
 
   return (
     <>
@@ -83,7 +83,7 @@ const Intro = () => {
           <Particles
             id="tsparticles"
             init={particlesInit}
-            loaded={particlesLoaded}
+            // loaded={particlesLoaded}
             options={introParticlesConfig}
             height="100vh"
             width="100vw"
@@ -121,7 +121,7 @@ const Intro = () => {
         <DownButton
           animate="visible"
           variants={svgWrapper}
-          custom={10}
+          custom={12}
           // onHoverStart={() => setIsHovered(true)}
           // onHoverEnd={() => setIsHovered(false)}
           onClick={() =>
@@ -147,7 +147,7 @@ const Intro = () => {
               initial="hidden"
               animate="visible"
               variants={svg}
-              custom={9}
+              custom={12}
             />
           </motion.svg>
         </DownButton>
