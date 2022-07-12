@@ -6,6 +6,7 @@ import introParticlesConfig from "../../config/introParticlesConfig";
 // Function Import
 import { FetchSection } from "../../services/clientFunctions";
 // Styling Import
+import styled from "styled-components/macro";
 import {
   H1,
   P,
@@ -13,6 +14,7 @@ import {
   SectionWrapper,
   DownButton,
 } from "../../styles/global";
+import background from "../../assets/background.jpg";
 // Query declarations
 const query = `*[_type == "intro" && !(_id in path('drafts.**'))]`;
 
@@ -68,7 +70,16 @@ const Intro = () => {
 
   return (
     <>
-      <SectionWrapper>
+      <SectionWrapper
+        style={{
+          backgroundImage: `url(${background})`,
+          backgroundSize: "cover",
+          // backgroundAttachment: "fixed",
+          backgroundRepeat: "no-repeat",
+          backgroundPositionY: "bottom",
+          backgroundPositionX: "center",
+        }}
+      >
         <div style={{ position: "absolute" }}>
           <Particles
             id="tsparticles"
@@ -97,9 +108,10 @@ const Intro = () => {
                   initial="hidden"
                   animate="visible"
                   variants={item}
-                  custom={i + 4 + i}
+                  custom={i + 4 + i + i}
                   color="white"
                   align="center"
+                  weight="500"
                 >
                   {sentence}
                 </P>
@@ -110,7 +122,7 @@ const Intro = () => {
         <DownButton
           animate="visible"
           variants={svgWrapper}
-          custom={8}
+          custom={10}
           // onHoverStart={() => setIsHovered(true)}
           // onHoverEnd={() => setIsHovered(false)}
           onClick={() =>

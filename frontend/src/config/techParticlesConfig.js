@@ -1,7 +1,7 @@
 const techParticlesConfig = {
   particles: {
     number: {
-      value: 188,
+      value: 100,
       density: {
         enable: true,
         value_area: 2130.6986324071363,
@@ -16,14 +16,6 @@ const techParticlesConfig = {
         width: 0,
         color: "#000000",
       },
-      // polygon: {
-      //   nb_sides: 3,
-      // },
-      // image: {
-      //   src: "img/github.svg",
-      //   width: 100,
-      //   height: 100,
-      // },
     },
     opacity: {
       value: 0.8,
@@ -40,7 +32,7 @@ const techParticlesConfig = {
       random: true,
       anim: {
         enable: false,
-        speed: 9.59040959040959,
+        speed: 9,
         size_min: 0.1,
         sync: false,
       },
@@ -106,7 +98,7 @@ const techParticlesConfig = {
       },
     },
   },
-  retina_detect: true,
+  detectRetina: true,
   fullScreen: { enable: false },
 };
 

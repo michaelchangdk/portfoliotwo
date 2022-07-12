@@ -271,7 +271,7 @@ const Featured = () => {
 export default Featured;
 
 const FeaturedDescriptionContainer = styled.div`
-  min-height: 100px;
+  /* min-height: 100px; */
   width: 100%;
   display: grid;
   padding: 0 12px;
