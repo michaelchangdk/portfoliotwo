@@ -15,10 +15,14 @@ export const H1 = styled(motion.h1)`
 
 export const BhostraH1 = styled(motion.h1)`
   font-family: "BhostraLalaExtraBold";
-  font-size: 7rem;
+  font-size: 6rem;
   color: ${(props) => props.color || "black"};
   text-align: ${(props) => props.align || "left"};
   padding: ${(props) => props.padding || "0"};
+
+  @media (min-width: 768px) {
+    font-size: 7rem;
+  }
 `;
 
 export const KronaH1 = styled(motion.h1)`
@@ -118,11 +122,15 @@ export const P = styled(motion.p)`
 export const SpaceP = styled(motion.p)`
   font-family: "Space Grotesk", sans-serif;
   line-height: 1.75;
-  font-size: ${(props) => props.size || "18px"};
+  font-size: ${(props) => props.size || "16px"};
   color: ${(props) => props.color || "black"};
   text-align: ${(props) => props.align || "left"};
   padding: ${(props) => props.padding || "0"};
   font-weight: ${(props) => props.weight || "normal"};
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 export const TagSpan = styled(motion.div)`
@@ -148,7 +156,7 @@ export const Page = styled.main`
   overflow: hidden;
 `;
 
-export const PageWrapper = styled.main`
+export const PageWrapper = styled.div`
   position: ${(props) => props.position || "absolute"};
   max-width: 90%;
   margin: 0 auto;
