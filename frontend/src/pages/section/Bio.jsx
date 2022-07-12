@@ -63,7 +63,7 @@ const Bio = () => {
       return {
         scale: 1,
         rotate: 0,
-        borderRadius: "20%",
+        borderRadius: "10%",
         transition: { duration: 1, delay: delay },
       };
     },

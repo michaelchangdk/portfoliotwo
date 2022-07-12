@@ -160,78 +160,78 @@ const Featured = () => {
           {!loading && data[0].title}
           {" ➞"}
         </H2>
-        <section ref={ref}>
-          <Flashcards
-            onMouseDown={handleMouseDown}
-            onMouseUp={() =>
-              setDragStart((prev) => ({ ...prev, isDragging: false }))
-            }
-            onMouseMove={handleMouseMove}
-            initial="hidden"
-            animate={loadControls}
-            variants={rightItem}
-            custom={2}
-          >
-            <FlashcardsContainer ref={containerRef}>
-              {!loading &&
-                data[0].featured.map((card, i) => (
-                  <FlashCard
-                    key={card._id}
-                    ref={(el) => cardRefs.current.push(el)}
-                    onMouseUp={(e) => handleCardMouseUp(e, i + 1)}
-                    variants={cardVariants}
-                    animate={
-                      selectedCard === i + 1 ? "selected" : "notSelected"
-                    }
-                    custom={selectedCard ? selectedCard - (i + 1) : 0}
-                  >
-                    {i + 1 === selectedCard && (
-                      <CardBack>
-                        <P
-                          align="center"
-                          weight="500"
-                          padding="8px 0"
+      </PageWrapper>
+      <section ref={ref}>
+        <Flashcards
+          onMouseDown={handleMouseDown}
+          onMouseUp={() =>
+            setDragStart((prev) => ({ ...prev, isDragging: false }))
+          }
+          onMouseMove={handleMouseMove}
+          initial="hidden"
+          animate={loadControls}
+          variants={rightItem}
+          custom={2}
+        >
+          <FlashcardsContainer ref={containerRef}>
+            {!loading &&
+              data[0].featured.map((card, i) => (
+                <FlashCard
+                  key={card._id}
+                  ref={(el) => cardRefs.current.push(el)}
+                  onMouseUp={(e) => handleCardMouseUp(e, i + 1)}
+                  variants={cardVariants}
+                  animate={selectedCard === i + 1 ? "selected" : "notSelected"}
+                  custom={selectedCard ? selectedCard - (i + 1) : 0}
+                >
+                  {i + 1 === selectedCard && (
+                    <CardBack>
+                      <P
+                        align="center"
+                        weight="500"
+                        padding="8px 0"
+                        initial="hidden"
+                        animate={cardControls}
+                        variants={fadeVariants}
+                        custom={0}
+                      >
+                        {card.title}
+                      </P>
+                      <P
+                        initial="hidden"
+                        animate={cardControls}
+                        variants={fadeVariants}
+                        custom={0}
+                        padding="0 0 8px 0"
+                      >
+                        {card.shortDescription}
+                      </P>
+                      {card.stack.map((stack, i) => (
+                        <TagSpan
+                          key={i}
                           initial="hidden"
                           animate={cardControls}
                           variants={fadeVariants}
-                          custom={0}
+                          custom={i + 1}
                         >
-                          {card.title}
-                        </P>
-                        <P
-                          initial="hidden"
-                          animate={cardControls}
-                          variants={fadeVariants}
-                          custom={0}
-                          padding="0 0 8px 0"
-                        >
-                          {card.shortDescription}
-                        </P>
-                        {card.stack.map((stack, i) => (
-                          <TagSpan
-                            key={i}
-                            initial="hidden"
-                            animate={cardControls}
-                            variants={fadeVariants}
-                            custom={i + 1}
-                          >
-                            {stack}
-                          </TagSpan>
-                        ))}
-                      </CardBack>
-                    )}
-                    {i + 1 !== selectedCard && (
-                      <CardFront>
-                        <CardImage
-                          src={urlFor(card.image.asset._ref)}
-                          alt={card.title}
-                        />
-                      </CardFront>
-                    )}
-                  </FlashCard>
-                ))}
-            </FlashcardsContainer>
-          </Flashcards>
+                          {stack}
+                        </TagSpan>
+                      ))}
+                    </CardBack>
+                  )}
+                  {i + 1 !== selectedCard && (
+                    <CardFront>
+                      <CardImage
+                        src={urlFor(card.image.asset._ref)}
+                        alt={card.title}
+                      />
+                    </CardFront>
+                  )}
+                </FlashCard>
+              ))}
+          </FlashcardsContainer>
+        </Flashcards>
+        <PageWrapper>
           <FeaturedDescriptionContainer>
             <P
               initial="hidden"
@@ -246,7 +246,7 @@ const Featured = () => {
                 initial="hidden"
                 animate={cardControls}
                 variants={fadeVariants}
-                custom={2}
+                custom={1}
                 whileHover={{ scale: 1.2 }}
               >
                 <LinkImage src={link} alt="Live link" />
@@ -255,15 +255,15 @@ const Featured = () => {
                 initial="hidden"
                 animate={cardControls}
                 variants={fadeVariants}
-                custom={3}
+                custom={1}
                 whileHover={{ scale: 1.2 }}
               >
                 <LinkImage src={github} alt="Github link" />
               </LinkButton>
             </LinkWrapper>
           </FeaturedDescriptionContainer>
-        </section>
-      </PageWrapper>
+        </PageWrapper>
+      </section>
     </SectionWrapper>
   );
 };
@@ -340,7 +340,7 @@ const FlashCard = styled(motion.div)`
   width: 300px;
   background: white;
   margin: 32px 16px;
-  border-radius: 16px;
+  border-radius: 10%;
   cursor: pointer;
 
   &:first-of-type {
@@ -375,7 +375,7 @@ const CardFront = styled.div`
 const CardImage = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 16px;
+  border-radius: 10%;
   user-drag: none;
   -webkit-user-drag: none;
   user-select: none;
