@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import particlesConfig from "../../config/particlesConfig";
+import introParticlesConfig from "../../config/introParticlesConfig";
 // Function Import
 import { FetchSection } from "../../services/clientFunctions";
 // Styling Import
@@ -69,12 +69,16 @@ const Intro = () => {
   return (
     <>
       <SectionWrapper>
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          loaded={particlesLoaded}
-          options={particlesConfig}
-        />
+        <div style={{ position: "absolute" }}>
+          <Particles
+            id="tsparticles"
+            init={particlesInit}
+            loaded={particlesLoaded}
+            options={introParticlesConfig}
+            height="100vh"
+            width="100vw"
+          />
+        </div>
         <PageWrapper>
           {!loading && (
             <>

@@ -76,7 +76,8 @@ export const Page = styled.main`
 `;
 
 export const PageWrapper = styled.main`
-  width: 90%;
+  position: absolute;
+  max-width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -87,7 +88,7 @@ export const PageWrapper = styled.main`
   }
 
   @media (min-width: 1024px) {
-    width: 900px;
+    max-width: 900px;
     margin: 0 auto;
   }
 `;
@@ -113,9 +114,10 @@ export const DownButton = styled(motion.button)`
   cursor: pointer;
   background: transparent;
   border: none;
+  position: absolute;
+  bottom: 25vh;
 
   @media (min-width: 768px) {
-    position: absolute;
     bottom: 0;
   }
 `;

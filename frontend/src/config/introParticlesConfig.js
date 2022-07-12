@@ -1,4 +1,4 @@
-const particlesConfig = {
+const introParticlesConfig = {
   particles: {
     number: {
       value: 188,
@@ -16,14 +16,14 @@ const particlesConfig = {
         width: 0,
         color: "#000000",
       },
-      polygon: {
-        nb_sides: 3,
-      },
-      image: {
-        src: "img/github.svg",
-        width: 100,
-        height: 100,
-      },
+      // polygon: {
+      //   nb_sides: 3,
+      // },
+      // image: {
+      //   src: "img/github.svg",
+      //   width: 100,
+      //   height: 100,
+      // },
     },
     opacity: {
       value: 0.8,
@@ -106,7 +106,8 @@ const particlesConfig = {
       },
     },
   },
+  fullScreen: { enable: false },
   retina_detect: true,
 };
 
-export default particlesConfig;
+export default introParticlesConfig;

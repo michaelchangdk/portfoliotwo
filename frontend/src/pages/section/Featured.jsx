@@ -150,7 +150,7 @@ const Featured = () => {
 
   return (
     <SectionWrapper>
-      <PageWrapper>
+      <PageWrapper style={{ position: "relative" }}>
         <H2
           initial="hidden"
           animate={loadControls}
@@ -231,13 +231,13 @@ const Featured = () => {
               ))}
           </FlashcardsContainer>
         </Flashcards>
-        <PageWrapper>
+        <PageWrapper style={{ position: "relative" }}>
           <FeaturedDescriptionContainer>
             <P
               initial="hidden"
               animate={cardControls}
               variants={fadeVariants}
-              custom={1}
+              custom={0}
             >
               {project.description}
             </P>
