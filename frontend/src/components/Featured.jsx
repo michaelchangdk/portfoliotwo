@@ -8,8 +8,8 @@ import { BebasH3, BebasP } from "../styles/global";
 // Function imports
 import { joinString } from "../helpers/functions";
 
-const Featured = ({ project, index, inView }) => {
-  const { ref } = useInView({ threshold: 0.1 });
+const Featured = ({ project, index }) => {
+  const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
 
   useEffect(() => {
@@ -21,11 +21,10 @@ const Featured = ({ project, index, inView }) => {
   const leftItem = {
     hidden: { x: -100, opacity: 0 },
     visible: (i) => {
-      const delay = i * 0.5;
       return {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.9, delay: delay },
+        transition: { duration: 0.9, delay: 1 },
       };
     },
   };
@@ -33,11 +32,10 @@ const Featured = ({ project, index, inView }) => {
   const rightItem = {
     hidden: { x: 100, opacity: 0 },
     visible: (i) => {
-      const delay = i * 0.5;
       return {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.9, delay: delay },
+        transition: { duration: 0.9, delay: 1 },
       };
     },
   };

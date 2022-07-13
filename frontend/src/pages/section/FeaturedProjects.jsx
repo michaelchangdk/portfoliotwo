@@ -50,12 +50,7 @@ const FeaturedProjects = () => {
         <ProjectsWrapper>
           {!loading &&
             data[0].featured.map((item, i) => (
-              <Featured
-                project={item}
-                key={item._id}
-                index={i}
-                inView={inView}
-              />
+              <Featured project={item} key={item._id} index={i} />
             ))}
         </ProjectsWrapper>
       </PageWrapper>
