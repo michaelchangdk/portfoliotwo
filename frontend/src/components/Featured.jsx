@@ -9,8 +9,12 @@ import { BebasH3, BebasP } from "../styles/global";
 import { joinString } from "../helpers/functions";
 
 const Featured = ({ project, index }) => {
-  const { ref, inView } = useInView();
+  const { ref, inView, entry } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
+
+  console.log("ref", ref, "inview", inView, "entry", entry);
+
+  console.log(typeof entry);
 
   useEffect(() => {
     if (inView) {
@@ -25,7 +29,7 @@ const Featured = ({ project, index }) => {
       return {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.8, delay: delay },
+        transition: { duration: 0.9, delay: delay },
       };
     },
   };
@@ -37,42 +41,44 @@ const Featured = ({ project, index }) => {
       return {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.8, delay: delay },
+        transition: { duration: 0.9, delay: delay },
       };
     },
   };
 
-  console.log(index);
-
   return (
-    <ProjectWrapper
-      ref={ref}
-      left={!(index % 2) ? 1 : 0}
-      initial="hidden"
-      animate={controls}
-      variants={!(index % 2) ? leftItem : rightItem}
-      custom={3}
-      id={`featured_project${index}`}
-    >
-      {!(index % 2) && (
-        <ProjectText>
-          <BebasH3 align="right">{project.title}</BebasH3>
-          <BebasP align="right">{joinString(project.stack)}</BebasP>
-        </ProjectText>
-      )}
-      <ImageWrapper whileHover={{ scale: 0.95 }}>
-        <ProjectImage
-          src={urlFor(project.image.asset._ref)}
-          whileHover={{ scale: 1.3 }}
-        />
-      </ImageWrapper>
-      {!!(index % 2) && (
-        <ProjectText>
-          <BebasH3>{project.title}</BebasH3>
-          <BebasP>{joinString(project.stack)}</BebasP>
-        </ProjectText>
-      )}
-    </ProjectWrapper>
+    <>
+      <ProjectWrapper
+        ref={ref}
+        left={!(index % 2) ? 1 : 0}
+        initial="hidden"
+        animate={controls}
+        variants={!(index % 2) ? leftItem : rightItem}
+        // whileInView={!(index % 2) ? leftItem : rightItem}
+        viewport={{ once: true, amount: 0.8 }}
+        custom={3}
+        id={`featured_project${index}`}
+      >
+        {!(index % 2) && (
+          <ProjectText>
+            <BebasH3 align="right">{project.title}</BebasH3>
+            <BebasP align="right">{joinString(project.stack)}</BebasP>
+          </ProjectText>
+        )}
+        <ImageWrapper whileHover={{ scale: 0.95 }}>
+          <ProjectImage
+            src={urlFor(project.image.asset._ref)}
+            whileHover={{ scale: 1.3 }}
+          />
+        </ImageWrapper>
+        {!!(index % 2) && (
+          <ProjectText>
+            <BebasH3>{project.title}</BebasH3>
+            <BebasP>{joinString(project.stack)}</BebasP>
+          </ProjectText>
+        )}
+      </ProjectWrapper>
+    </>
   );
 };
 
@@ -92,14 +98,14 @@ const ProjectWrapper = styled(motion.div)`
 
 const ImageWrapper = styled(motion.div)`
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: 170.297px;
+  /* overflow: hidden; */
   cursor: pointer;
 `;
 
 const ProjectImage = styled(motion.img)`
   width: 100%;
-  height: 100%;
+  height: 170.297px;
 `;
 
 const ProjectText = styled(motion.div)`
