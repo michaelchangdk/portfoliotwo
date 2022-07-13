@@ -8,13 +8,9 @@ import { BebasH3, BebasP } from "../styles/global";
 // Function imports
 import { joinString } from "../helpers/functions";
 
-const Featured = ({ project, index }) => {
-  const { ref, inView, entry } = useInView({ threshold: 0.1 });
+const Featured = ({ project, index, inView }) => {
+  const { ref } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
-
-  console.log("ref", ref, "inview", inView, "entry", entry);
-
-  console.log(typeof entry);
 
   useEffect(() => {
     if (inView) {
@@ -98,14 +94,14 @@ const ProjectWrapper = styled(motion.div)`
 
 const ImageWrapper = styled(motion.div)`
   width: 100%;
-  height: 170.297px;
+  height: 100%;
   /* overflow: hidden; */
   cursor: pointer;
 `;
 
 const ProjectImage = styled(motion.img)`
   width: 100%;
-  height: 170.297px;
+  height: 100%;
 `;
 
 const ProjectText = styled(motion.div)`
