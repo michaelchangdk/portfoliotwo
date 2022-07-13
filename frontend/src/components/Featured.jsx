@@ -42,6 +42,8 @@ const Featured = ({ project, index }) => {
     },
   };
 
+  console.log(index);
+
   return (
     <ProjectWrapper
       ref={ref}
@@ -50,6 +52,7 @@ const Featured = ({ project, index }) => {
       animate={controls}
       variants={!(index % 2) ? leftItem : rightItem}
       custom={3}
+      id={`featured_project${index}`}
     >
       {!(index % 2) && (
         <ProjectText>
