@@ -25,7 +25,7 @@ const Featured = ({ project, index }) => {
       return {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.5, delay: delay },
+        transition: { duration: 0.8, delay: delay },
       };
     },
   };
@@ -37,7 +37,7 @@ const Featured = ({ project, index }) => {
       return {
         x: 0,
         opacity: 1,
-        transition: { duration: 0.5, delay: delay },
+        transition: { duration: 0.8, delay: delay },
       };
     },
   };
