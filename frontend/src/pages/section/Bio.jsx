@@ -15,7 +15,7 @@ import {
   ImageWrapper,
   ProfileImage,
 } from "../../styles/global";
-import background from "../../assets/images/biobackground.jpg";
+import background from "../../assets/images/biobackground2.jpg";
 import github from "../../assets/github.png";
 import linkedin from "../../assets/linkedin.png";
 import email from "../../assets/email.png";

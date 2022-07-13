@@ -26,10 +26,10 @@ const Featured = ({ project, index }) => {
           <BebasP align="right">{joinString(project.stack)}</BebasP>
         </ProjectText>
       )}
-      <ImageWrapper whileHover={{ scale: 0.9 }}>
+      <ImageWrapper whileHover={{ scale: 0.95 }}>
         <ProjectImage
           src={urlFor(project.image.asset._ref)}
-          whileHover={{ scale: 1.5 }}
+          whileHover={{ scale: 1.3 }}
         />
       </ImageWrapper>
       {!!(index % 2) && (
@@ -47,7 +47,7 @@ export default Featured;
 const ProjectWrapper = styled(motion.div)`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 12px;
   align-items: center;
 `;
 
