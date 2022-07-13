@@ -18,8 +18,39 @@ const Featured = ({ project, index }) => {
     }
   });
 
+  const leftItem = {
+    hidden: { x: -100, opacity: 0 },
+    visible: (i) => {
+      const delay = i * 0.5;
+      return {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.5, delay: delay },
+      };
+    },
+  };
+
+  const rightItem = {
+    hidden: { x: 100, opacity: 0 },
+    visible: (i) => {
+      const delay = i * 0.5;
+      return {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.5, delay: delay },
+      };
+    },
+  };
+
   return (
-    <ProjectWrapper ref={ref}>
+    <ProjectWrapper
+      ref={ref}
+      left={!(index % 2) ? 1 : 0}
+      initial="hidden"
+      animate={controls}
+      variants={!(index % 2) ? leftItem : rightItem}
+      custom={3}
+    >
       {!(index % 2) && (
         <ProjectText>
           <BebasH3 align="right">{project.title}</BebasH3>
@@ -46,9 +77,14 @@ export default Featured;
 
 const ProjectWrapper = styled(motion.div)`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 12px;
   align-items: center;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: ${(props) =>
+      props.left ? "1fr 1.3fr" : "1.3fr 1fr"};
+  }
 `;
 
 const ImageWrapper = styled(motion.div)`

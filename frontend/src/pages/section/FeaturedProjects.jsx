@@ -16,8 +16,6 @@ const FeaturedProjects = () => {
   const { ref, inView } = useInView();
   const controls = useAnimation();
 
-  console.log(loading, data);
-
   useEffect(() => {
     if (inView) {
       controls.start("visible");
@@ -45,6 +43,7 @@ const FeaturedProjects = () => {
           initial="hidden"
           animate={controls}
           variants={topItem}
+          custom={2}
         >
           {!loading && data[0].title}
         </BhostraH2>
