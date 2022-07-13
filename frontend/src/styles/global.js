@@ -184,7 +184,7 @@ export const SectionWrapper = styled(motion.section)`
   align-items: center;
   padding: 40px 0;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   :nth-of-type(odd) {
     background-color: black;

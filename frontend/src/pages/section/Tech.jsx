@@ -83,17 +83,15 @@ const Tech = () => {
   return (
     <>
       <SectionWrapper>
-        <div style={{ position: "absolute" }}>
-          <Particles
-            id="techtsparticles"
-            init={particlesInit}
-            // loaded={particlesLoaded}
-            options={techParticlesConfig}
-            height="100vh"
-            width="100vw"
-          />
-        </div>
-        <PageWrapper>
+        <Particles
+          id="techtsparticles"
+          init={particlesInit}
+          // loaded={particlesLoaded}
+          options={techParticlesConfig}
+          // height="100%"
+          width="100vw"
+        />
+        <PageWrapper position="relative">
           {!loading && (
             <KronaH2
               initial="hidden"
