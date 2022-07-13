@@ -50,7 +50,7 @@ export const H2 = styled(motion.h2)`
 export const BhostraH2 = styled(motion.h2)`
   font-family: "BhostraLalaExtraBold";
   font-weight: 700;
-  font-size: ${(props) => props.size || "4rem"};
+  font-size: ${(props) => props.size || "5rem"};
   line-height: 1;
   letter-spacing: 0.2rem;
   color: ${(props) => props.color || "black"};
@@ -100,6 +100,15 @@ export const H3 = styled(motion.h3)`
   padding: ${(props) => props.padding || "0"};
 `;
 
+export const BebasH3 = styled(motion.h3)`
+  font-family: "Bebas Neue", cursive;
+  font-weight: 400;
+  font-size: 3.5rem;
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
 export const H4 = styled(motion.h4)`
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -131,6 +140,16 @@ export const SpaceP = styled(motion.p)`
   @media (min-width: 768px) {
     font-size: 18px;
   }
+`;
+
+export const BebasP = styled(motion.p)`
+  font-family: "Bebas Neue", cursive;
+  line-height: 1.75;
+  font-size: ${(props) => props.size || "16px"};
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+  font-weight: ${(props) => props.weight || "normal"};
 `;
 
 export const TagSpan = styled(motion.div)`

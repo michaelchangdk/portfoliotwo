@@ -60,7 +60,7 @@ const techParticlesConfig = {
     },
   },
   interactivity: {
-    detect_on: "canvas",
+    detect_on: "window",
     events: {
       onhover: {
         enable: true,
@@ -80,14 +80,14 @@ const techParticlesConfig = {
         },
       },
       bubble: {
-        distance: 400,
+        distance: 200,
         size: 40,
         duration: 2,
         opacity: 8,
         speed: 3,
       },
       repulse: {
-        distance: 90,
+        distance: 150,
         duration: 0.4,
       },
       push: {

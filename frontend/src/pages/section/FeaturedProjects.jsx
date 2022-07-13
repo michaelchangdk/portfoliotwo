@@ -1,19 +1,59 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+// Component Import
+import Featured from "../../components/Featured";
+// Styling Imports
 import styled from "styled-components/macro";
 import { BhostraH2, SectionWrapper, PageWrapper } from "../../styles/global";
-import { motion } from "framer-motion";
+// Function imports
+import { FetchSection } from "../../services/clientFunctions";
+// Query declaration
+const query = `*[_type == "featuredprojects" && !(_id in path('drafts.**'))] {title, featured[]->}`;
 
 const FeaturedProjects = () => {
+  const [loading, data] = FetchSection(query);
+  const { ref, inView } = useInView();
+  const controls = useAnimation();
+
+  console.log(loading, data);
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  });
+
+  const topItem = {
+    hidden: { y: 100, opacity: 0 },
+    visible: (i) => {
+      const delay = i * 0.5;
+      return {
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.5, delay: delay },
+      };
+    },
+  };
+
   return (
     <SectionWrapper>
-      <PageWrapper>
-        <BhostraH2 size="5rem" align="center">
-          Featured projects
+      <PageWrapper position="relative">
+        <BhostraH2
+          align="center"
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={topItem}
+        >
+          {!loading && data[0].title}
         </BhostraH2>
-        <ProjectWrapper>
-          <ProjectImage />
-          <ProjectText></ProjectText>
-        </ProjectWrapper>
+        <ProjectsWrapper>
+          {!loading &&
+            data[0].featured.map((item, i) => (
+              <Featured project={item} key={item._id} index={i} />
+            ))}
+        </ProjectsWrapper>
       </PageWrapper>
     </SectionWrapper>
   );
@@ -21,18 +61,9 @@ const FeaturedProjects = () => {
 
 export default FeaturedProjects;
 
-const ProjectWrapper = styled(motion.div)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-`;
-
-const ProjectImage = styled(motion.img)`
-  width: 100%;
-  height: 100%;
-`;
-
-const ProjectText = styled(motion.div)`
-  width: 100%;
-  height: 100%;
+const ProjectsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+  margin: 36px 0 0 0;
 `;

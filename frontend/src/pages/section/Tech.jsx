@@ -76,19 +76,13 @@ const Tech = () => {
     await loadFull(main);
   };
 
-  // const particlesLoaded = (container) => {
-  //   console.log(container);
-  // };
-
   return (
     <>
       <SectionWrapper>
         <Particles
           id="techtsparticles"
           init={particlesInit}
-          // loaded={particlesLoaded}
           options={techParticlesConfig}
-          // height="100%"
           width="100vw"
         />
         <PageWrapper position="relative">
