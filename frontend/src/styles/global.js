@@ -62,7 +62,7 @@ export const KronaH2 = styled(motion.h2)`
   font-family: "Krona One", sans-serif;
   font-weight: 700;
   font-size: ${(props) => props.size || "1.5rem"};
-  line-height: 2;
+  line-height: 1.75;
   letter-spacing: 0.2rem;
   color: ${(props) => props.color || "black"};
   text-align: ${(props) => props.align || "left"};
@@ -83,8 +83,8 @@ export const BlackOpsH2 = styled(motion.h2)`
 export const BungeeH2 = styled(motion.h2)`
   font-family: "Bungee", cursive;
   font-weight: 400;
-  font-size: ${(props) => props.size || "1.75rem"};
-  line-height: 2;
+  font-size: ${(props) => props.size || "2.5rem"};
+  line-height: 1.5;
   letter-spacing: 0.2rem;
   color: ${(props) => props.color || "black"};
   text-align: ${(props) => props.align || "left"};

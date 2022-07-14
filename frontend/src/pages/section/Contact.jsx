@@ -50,7 +50,7 @@ const Contact = () => {
             animate={controls}
             variants={title}
             custom={1}
-            padding="0 0 32px 0"
+            padding="0 0 40px 0"
           >
             FIND ME
           </BungeeH2>

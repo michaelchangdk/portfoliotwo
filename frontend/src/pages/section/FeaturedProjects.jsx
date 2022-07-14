@@ -23,7 +23,7 @@ const FeaturedProjects = () => {
   });
 
   const topItem = {
-    hidden: { y: 100, opacity: 0 },
+    hidden: { y: -100, opacity: 0 },
     visible: (i) => {
       const delay = i * 0.5;
       return {
@@ -44,6 +44,7 @@ const FeaturedProjects = () => {
           animate={controls}
           variants={topItem}
           custom={2}
+          padding="40px 0 80px 0"
         >
           {!loading && data[0].title}
         </BungeeH2>
@@ -64,5 +65,5 @@ const ProjectsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 52px;
-  margin: 36px 0 0 0;
+  /* margin: 40px 0 0 0; */
 `;

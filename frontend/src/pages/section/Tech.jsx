@@ -92,7 +92,7 @@ const Tech = () => {
               animate={controls}
               variants={bottomItem}
               color="white"
-              padding="0 0 32px 0"
+              padding="0 0 40px 0"
             >
               {data[0].title}
             </KronaH2>
