@@ -42,7 +42,7 @@ const Featured = ({ project, index }) => {
 
   return (
     <>
-      <div>
+      <div style={{ position: "relative" }}>
         <ProjectWrapper
           ref={ref}
           left={!(index % 2) ? 1 : 0}
@@ -112,4 +112,10 @@ const ProjectText = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  :after {
+    /* This value is the OPPOSITE color of our background */
+    color: rgb(0, 255, 255);
+    mix-blend-mode: difference;
+  }
 `;

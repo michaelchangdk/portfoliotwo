@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 // Styling & Asset Imports
-import { H3, P, AccordionHeader, AccordionIcon } from "../styles/global";
+import {
+  SpaceH3,
+  SpaceP,
+  AccordionHeader,
+  AccordionIcon,
+} from "../styles/global";
 import plus from "../assets/plus_white.png";
 
 const Accordion = ({ data }) => {
@@ -46,7 +51,7 @@ const Accordion = ({ data }) => {
           animate={isOpen ? "open" : "closed"}
           variants={iconVariants}
         />
-        <H3 color="white">{data.category}</H3>
+        <SpaceH3 color="white">{data.category}</SpaceH3>
       </AccordionHeader>
       <motion.section
         initial="closed"
@@ -55,10 +60,10 @@ const Accordion = ({ data }) => {
       >
         {data.items.map((item, i) => (
           <motion.div key={i} variants={itemVariants}>
-            <P size="0.875rem" color="white">
+            <SpaceP color="white">
               {"· "}
               {item}
-            </P>
+            </SpaceP>
           </motion.div>
         ))}
       </motion.section>

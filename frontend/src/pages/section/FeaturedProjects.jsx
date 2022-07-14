@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import Featured from "../../components/Featured";
 // Styling Imports
 import styled from "styled-components/macro";
-import { BhostraH2, SectionWrapper, PageWrapper } from "../../styles/global";
+import { BungeeH2, SectionWrapper, PageWrapper } from "../../styles/global";
 // Function imports
 import { FetchSection } from "../../services/clientFunctions";
 // Query declaration
@@ -29,7 +29,7 @@ const FeaturedProjects = () => {
       return {
         y: 0,
         opacity: 1,
-        transition: { duration: 0.5, delay: delay },
+        transition: { duration: 0.9, delay: delay },
       };
     },
   };
@@ -37,7 +37,7 @@ const FeaturedProjects = () => {
   return (
     <SectionWrapper>
       <PageWrapper position="relative">
-        <BhostraH2
+        <BungeeH2
           align="center"
           ref={ref}
           initial="hidden"
@@ -46,7 +46,7 @@ const FeaturedProjects = () => {
           custom={2}
         >
           {!loading && data[0].title}
-        </BhostraH2>
+        </BungeeH2>
         <ProjectsWrapper>
           {!loading &&
             data[0].featured.map((item, i) => (

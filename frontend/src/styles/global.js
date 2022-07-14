@@ -61,7 +61,7 @@ export const BhostraH2 = styled(motion.h2)`
 export const KronaH2 = styled(motion.h2)`
   font-family: "Krona One", sans-serif;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: ${(props) => props.size || "1.5rem"};
   line-height: 2;
   letter-spacing: 0.2rem;
   color: ${(props) => props.color || "black"};
@@ -109,6 +109,15 @@ export const BebasH3 = styled(motion.h3)`
   padding: ${(props) => props.padding || "0"};
 `;
 
+export const SpaceH3 = styled(motion.h3)`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: ${(props) => props.color || "black"};
+  text-align: ${(props) => props.align || "left"};
+  padding: ${(props) => props.padding || "0"};
+`;
+
 export const H4 = styled(motion.h4)`
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -136,10 +145,6 @@ export const SpaceP = styled(motion.p)`
   text-align: ${(props) => props.align || "left"};
   padding: ${(props) => props.padding || "0"};
   font-weight: ${(props) => props.weight || "normal"};
-
-  @media (min-width: 768px) {
-    font-size: 18px;
-  }
 `;
 
 export const BebasP = styled(motion.p)`

@@ -100,6 +100,7 @@ const introParticlesConfig = {
   },
   fullScreen: { enable: false },
   detectRetina: true,
+  fpsLimit: 60,
 };
 
 export default introParticlesConfig;

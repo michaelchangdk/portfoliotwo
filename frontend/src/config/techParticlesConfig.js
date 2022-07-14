@@ -100,6 +100,7 @@ const techParticlesConfig = {
   },
   detectRetina: true,
   fullScreen: { enable: false },
+  fpsLimit: 120,
 };
 
 export default techParticlesConfig;
