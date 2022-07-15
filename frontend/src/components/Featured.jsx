@@ -45,8 +45,10 @@ const Featured = ({ project, index }) => {
   useEffect(() => {
     if (selected && selectedIndex === index) {
       document.body.style.overflow = "hidden";
+      document.body.style.position = "absolute";
     } else if (!selected && selectedIndex === index + 1) {
       document.body.style.overflow = "unset";
+      document.body.style.position = "unset";
       setSelectedIndex(null);
     }
   }, [index, selected, selectedIndex]);
@@ -64,7 +66,7 @@ const Featured = ({ project, index }) => {
                 right: 0,
                 zIndex: 10,
                 background: "rgba(0, 0, 0, 0.6)",
-                overscrollBehavior: "contain",
+                // overscrollBehavior: "contain",
               }
             : {}
         }
@@ -81,7 +83,7 @@ const Featured = ({ project, index }) => {
                   bottom: 0,
                   right: 0,
                   zIndex: 10,
-                  overscrollBehavior: "contain",
+                  // overscrollBehavior: "contain",
                   display: "grid",
                   justifyContent: "center",
                   alignItems: "center",
@@ -174,8 +176,6 @@ const ProjectWrapper = styled(motion.div)`
   flex-direction: ${(props) =>
     props.selected ? "column" : props.left ? "column-reverse" : "column"};
   gap: 12px;
-  overscroll-behavior: "contain";
-  -webkit-overflow-scrolling: none;
 
   @media (min-width: 768px) {
     flex-direction: ${(props) =>
