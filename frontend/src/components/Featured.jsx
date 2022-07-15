@@ -175,6 +175,8 @@ const ProjectWrapper = styled(motion.div)`
     props.selected ? "column" : props.left ? "column-reverse" : "column"};
   gap: 12px;
   overscroll-behavior: "contain";
+  -webkit-overflow-scrolling: none;
+
   @media (min-width: 768px) {
     flex-direction: ${(props) =>
       props.selected ? "column" : props.left ? "row-reverse" : "row"};
