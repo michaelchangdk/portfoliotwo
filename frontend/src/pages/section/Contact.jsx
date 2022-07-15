@@ -41,7 +41,7 @@ const Contact = () => {
 
   return (
     <SectionWrapper>
-      <PageWrapper>
+      <PageWrapper position="relative">
         <ContactWrapper ref={ref}>
           <BungeeH2
             // size="5rem"

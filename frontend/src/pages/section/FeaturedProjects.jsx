@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 // Component Import
 import Featured from "../../components/Featured";
@@ -48,7 +48,7 @@ const FeaturedProjects = () => {
         >
           {!loading && data[0].title}
         </BungeeH2>
-        <ProjectsWrapper>
+        <ProjectsWrapper layout>
           {!loading &&
             data[0].featured.map((item, i) => (
               <Featured project={item} key={item._id} index={i} />
@@ -61,7 +61,7 @@ const FeaturedProjects = () => {
 
 export default FeaturedProjects;
 
-const ProjectsWrapper = styled.div`
+const ProjectsWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 52px;
