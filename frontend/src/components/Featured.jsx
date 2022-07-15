@@ -4,7 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { urlFor } from "../client";
 // Styling imports
 import styled from "styled-components/macro";
-import { BebasH3, BebasP } from "../styles/global";
+import { BebasH3, BebasP, SpaceP } from "../styles/global";
 // Function imports
 import { joinString } from "../helpers/functions";
 
@@ -12,6 +12,7 @@ const Featured = ({ project, index }) => {
   const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
   const [selected, isSelected] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
   useEffect(() => {
     if (inView) {
@@ -41,7 +42,14 @@ const Featured = ({ project, index }) => {
     },
   };
 
-  console.log(!(index % 2), project.title, selected);
+  useEffect(() => {
+    if (selected && selectedIndex === index) {
+      document.body.style.overflow = "hidden";
+    } else if (!selected && selectedIndex === index - 1) {
+      document.body.style.overflow = "unset";
+      setSelectedIndex(null);
+    }
+  }, [index, selected, selectedIndex]);
 
   return (
     <>
@@ -49,7 +57,7 @@ const Featured = ({ project, index }) => {
         style={
           selected
             ? {
-                background: "rgba(0, 0, 0, 0.2)",
+                background: "rgba(0, 0, 0, 0.6)",
                 position: "fixed",
                 top: 0,
                 left: 0,
@@ -59,7 +67,7 @@ const Featured = ({ project, index }) => {
               }
             : {}
         }
-      ></div>
+      />
       <motion.div
         layout
         style={
@@ -70,7 +78,6 @@ const Featured = ({ project, index }) => {
                 left: 0,
                 bottom: 0,
                 right: 0,
-                // background: "rgba(0, 0, 0, 0.2)",
                 zIndex: 10,
               }
             : {}
@@ -95,7 +102,7 @@ const Featured = ({ project, index }) => {
                   left: "5%",
                   right: "5%",
                   padding: "16px",
-                  border: "2px solid #444",
+                  border: "2px solid black",
                 }
               : {}
           }
@@ -103,7 +110,10 @@ const Featured = ({ project, index }) => {
         >
           <ImageWrapper
             whileHover={selected ? {} : { scale: 0.95 }}
-            onClick={() => isSelected(!selected)}
+            onClick={() => {
+              isSelected(!selected);
+              setSelectedIndex(selectedIndex === null ? index : index - 1);
+            }}
           >
             <ProjectImage
               src={urlFor(project.image.asset._ref)}
@@ -125,11 +135,11 @@ const Featured = ({ project, index }) => {
               </BebasP>
             </ProjectText>
           }
-          {/* {selected && (
-            <>
-              <p>This is selected</p>
-            </>
-          )} */}
+          {selected && (
+            <ModalContainer>
+              <SpaceP>{project.description}</SpaceP>
+            </ModalContainer>
+          )}
         </ProjectWrapper>
       </motion.div>
     </>
@@ -139,16 +149,14 @@ const Featured = ({ project, index }) => {
 export default Featured;
 
 const ProjectWrapper = styled(motion.div)`
-  display: grid;
+  display: flex;
+  flex-direction: ${(props) =>
+    props.selected ? "column" : props.left ? "column-reverse" : "column"};
   gap: 12px;
-  align-items: center;
-  grid-template-rows: auto;
 
   @media (min-width: 768px) {
-    display: grid;
-    grid-template-columns: ${(props) =>
-      props.selected ? "1fr" : props.left ? "1fr 1.3fr" : "1.3fr 1fr"};
-    grid-template-rows: ${(props) => (props.selected ? "1fr" : "auto")};
+    flex-direction: ${(props) =>
+      props.selected ? "column" : props.left ? "row-reverse" : "row"};
   }
 `;
 
@@ -157,14 +165,8 @@ const ImageWrapper = styled(motion.div)`
   height: 100%;
   overflow: hidden;
   cursor: pointer;
-  grid-row-start: ${(props) => (props.selected ? "0" : props.left ? "0" : "2")};
-
-  @media (min-width: 768px) {
-    grid-row-start: ${(props) =>
-      props.selected ? "3" : props.left ? "1" : "1"};
-    /* grid-row-start: 1; */
-    grid-column-start: ${(props) => (props.left ? "1" : "0")};
-  }
+  display: flex;
+  justify-content: center;
 `;
 
 const ProjectImage = styled(motion.img)`
@@ -178,12 +180,14 @@ const ProjectText = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-row-start: ${(props) => (props.selected ? "3" : props.left ? "3" : "1")};
+  align-self: center;
 
   @media (min-width: 768px) {
-    grid-row-start: ${(props) =>
-      props.selected ? "3" : props.left ? "1" : "1"};
-    grid-column-start: ${(props) =>
-      props.selected ? "1" : props.left ? "1" : "2"};
+    flex-basis: 70%;
   }
+`;
+
+const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
