@@ -45,32 +45,17 @@ const Featured = ({ project, index }) => {
   useEffect(() => {
     if (selected && selectedIndex === index) {
       document.body.style.overflow = "hidden";
-    } else if (!selected && selectedIndex === index - 1) {
+    } else if (!selected && selectedIndex === index + 1) {
       document.body.style.overflow = "unset";
       setSelectedIndex(null);
     }
   }, [index, selected, selectedIndex]);
 
+  console.log(selected, selectedIndex, index);
+
   return (
     <>
       <div
-        style={
-          selected
-            ? {
-                background: "rgba(0, 0, 0, 0.6)",
-                position: "fixed",
-                top: 0,
-                left: 0,
-                bottom: 0,
-                right: 0,
-                zIndex: 8,
-                overscrollBehavior: "none",
-              }
-            : {}
-        }
-      />
-      <motion.div
-        layout
         style={
           selected
             ? {
@@ -80,84 +65,106 @@ const Featured = ({ project, index }) => {
                 bottom: 0,
                 right: 0,
                 zIndex: 10,
-                overscrollBehavior: "none",
-                display: "grid",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: "0px 2%",
+                background: "rgba(0, 0, 0, 0.6)",
+                overscrollBehavior: "contain",
               }
             : {}
         }
-        onClick={() => isSelected(!selected)}
       >
-        <ProjectWrapper
+        <motion.div
           layout
-          ref={ref}
-          left={!(index % 2) ? 1 : 0}
-          initial="hidden"
-          animate={controls}
-          variants={!(index % 2) ? leftItem : rightItem}
-          viewport={{ once: true, amount: 0.8 }}
-          custom={3}
-          id={`featured_project${index}`}
           style={
             selected
               ? {
-                  // position: "absolute",
-                  background: "#fff",
-                  // top: 25,
-                  // left: "5%",
-                  // right: "5%",
-                  // padding: "16px",
-                  // width: "90%",
-                  maxWidth: "900px",
-                  border: "2px solid black",
+                  // background: "rgba(0, 0, 0, 0.6)",
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  bottom: 0,
+                  right: 0,
+                  zIndex: 10,
+                  overscrollBehavior: "contain",
+                  display: "grid",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: "0px 2%",
                 }
               : {}
           }
-          selected={selected ? 1 : 0}
+          onClick={() => {
+            isSelected(!selected);
+            setSelectedIndex(selectedIndex === null ? index : index + 1);
+          }}
         >
-          <ImageWrapper
-            whileHover={selected ? {} : { scale: 0.95 }}
-            onClick={() => {
-              isSelected(!selected);
-              setSelectedIndex(selectedIndex === null ? index : index - 1);
-            }}
+          <ProjectWrapper
+            layout
+            ref={ref}
+            left={!(index % 2) ? 1 : 0}
+            initial="hidden"
+            animate={controls}
+            variants={!(index % 2) ? leftItem : rightItem}
+            viewport={{ once: true, amount: 0.8 }}
+            custom={3}
+            id={`featured_project${index}`}
+            style={
+              selected
+                ? {
+                    // position: "absolute",
+                    background: "#fff",
+                    // top: 25,
+                    // left: "5%",
+                    // right: "5%",
+                    // padding: "16px",
+                    // width: "90%",
+                    maxWidth: "900px",
+                    border: "2px solid black",
+                  }
+                : {}
+            }
+            selected={selected ? 1 : 0}
           >
-            <ProjectImage
-              src={urlFor(project.image.asset._ref)}
-              whileHover={selected ? {} : { scale: 1.3 }}
-              selected={selected ? 1 : 0}
-              left={!(index % 2) ? 1 : 0}
-            />
-          </ImageWrapper>
-          {
-            <ProjectText
-              left={!(index % 2) ? 1 : 0}
-              selected={selected ? 1 : 0}
-              onClick={(e) => {
-                e.stopPropagation();
+            <ImageWrapper
+              whileHover={selected ? {} : { scale: 0.95 }}
+              onClick={() => {
+                isSelected(!selected);
+                setSelectedIndex(selectedIndex === null ? index : index + 1);
               }}
             >
-              <BebasH3 align={!(index % 2) ? "right" : ""}>
-                {project.title}
-              </BebasH3>
-              <BebasP align={!(index % 2) ? "right" : ""}>
-                {joinString(project.stack)}
-              </BebasP>
-            </ProjectText>
-          }
-          {selected && (
-            <ModalContainer
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <SpaceP>{project.description}</SpaceP>
-            </ModalContainer>
-          )}
-        </ProjectWrapper>
-      </motion.div>
+              <ProjectImage
+                src={urlFor(project.image.asset._ref)}
+                whileHover={selected ? {} : { scale: 1.3 }}
+                selected={selected ? 1 : 0}
+                left={!(index % 2) ? 1 : 0}
+              />
+            </ImageWrapper>
+            {
+              <ProjectText
+                left={!(index % 2) ? 1 : 0}
+                selected={selected ? 1 : 0}
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                <BebasH3 align={!(index % 2) ? "right" : ""}>
+                  {project.title}
+                </BebasH3>
+                <BebasP align={!(index % 2) ? "right" : ""}>
+                  {joinString(project.stack)}
+                </BebasP>
+              </ProjectText>
+            }
+            {selected && (
+              <ModalContainer
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                <SpaceP>{project.description}</SpaceP>
+              </ModalContainer>
+            )}
+          </ProjectWrapper>
+        </motion.div>
+      </div>
     </>
   );
 };
