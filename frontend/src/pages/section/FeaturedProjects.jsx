@@ -65,5 +65,9 @@ const ProjectsWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 52px;
-  /* margin: 40px 0 0 0; */
+  margin: 20px 0 0 0;
+
+  @media (min-width: 768px) {
+    margin: 40px 0 0 0;
+  }
 `;

@@ -157,6 +157,7 @@ const Featured = ({ project, index }) => {
           <ProjectText
             left={!(index % 2) ? 1 : 0}
             selected={selected ? 1 : 0}
+            style={{ visibility: "hidden" }}
             onClick={(e) => {
               e.stopPropagation();
             }}
