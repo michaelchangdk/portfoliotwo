@@ -64,6 +64,7 @@ const Featured = ({ project, index }) => {
                 bottom: 0,
                 right: 0,
                 zIndex: 8,
+                overscrollBehavior: "none",
               }
             : {}
         }
@@ -79,9 +80,15 @@ const Featured = ({ project, index }) => {
                 bottom: 0,
                 right: 0,
                 zIndex: 10,
+                overscrollBehavior: "none",
+                display: "grid",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0px 2%",
               }
             : {}
         }
+        onClick={() => isSelected(!selected)}
       >
         <ProjectWrapper
           layout
@@ -96,12 +103,14 @@ const Featured = ({ project, index }) => {
           style={
             selected
               ? {
-                  position: "absolute",
+                  // position: "absolute",
                   background: "#fff",
-                  top: 25,
-                  left: "5%",
-                  right: "5%",
-                  padding: "16px",
+                  // top: 25,
+                  // left: "5%",
+                  // right: "5%",
+                  // padding: "16px",
+                  // width: "90%",
+                  maxWidth: "900px",
                   border: "2px solid black",
                 }
               : {}
@@ -126,6 +135,9 @@ const Featured = ({ project, index }) => {
             <ProjectText
               left={!(index % 2) ? 1 : 0}
               selected={selected ? 1 : 0}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
             >
               <BebasH3 align={!(index % 2) ? "right" : ""}>
                 {project.title}
@@ -136,7 +148,11 @@ const Featured = ({ project, index }) => {
             </ProjectText>
           }
           {selected && (
-            <ModalContainer>
+            <ModalContainer
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <SpaceP>{project.description}</SpaceP>
             </ModalContainer>
           )}
@@ -153,6 +169,7 @@ const ProjectWrapper = styled(motion.div)`
   flex-direction: ${(props) =>
     props.selected ? "column" : props.left ? "column-reverse" : "column"};
   gap: 12px;
+  overscroll-behavior: none;
 
   @media (min-width: 768px) {
     flex-direction: ${(props) =>
@@ -181,6 +198,7 @@ const ProjectText = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-self: center;
+  padding: ${(props) => (props.selected ? "0 16px" : 0)};
 
   @media (min-width: 768px) {
     flex-basis: 70%;
@@ -190,4 +208,5 @@ const ProjectText = styled(motion.div)`
 const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 16px 16px 16px;
 `;
