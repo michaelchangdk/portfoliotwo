@@ -51,8 +51,6 @@ const Featured = ({ project, index }) => {
     }
   }, [index, selected, selectedIndex]);
 
-  console.log(selected, selectedIndex, index);
-
   return (
     <>
       <div
@@ -176,8 +174,7 @@ const ProjectWrapper = styled(motion.div)`
   flex-direction: ${(props) =>
     props.selected ? "column" : props.left ? "column-reverse" : "column"};
   gap: 12px;
-  overscroll-behavior: none;
-
+  overscroll-behavior: "contain";
   @media (min-width: 768px) {
     flex-direction: ${(props) =>
       props.selected ? "column" : props.left ? "row-reverse" : "row"};
