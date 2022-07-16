@@ -7,7 +7,7 @@ import {
   AccordionHeader,
   AccordionIcon,
 } from "../styles/global";
-import plus from "../assets/plus_white.png";
+import plus from "../assets/icons/plus_white.png";
 
 const Accordion = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false);

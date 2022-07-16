@@ -142,6 +142,7 @@ const Featured = ({ project, index }) => {
               }}
             >
               <SpaceP>{project.description}</SpaceP>
+              <IconWrapper></IconWrapper>
             </ModalContainer>
           )}
         </ProjectWrapper>
@@ -155,8 +156,6 @@ const Featured = ({ project, index }) => {
             />
           </ImageWrapper>
           <ProjectText
-            left={!(index % 2) ? 1 : 0}
-            selected={selected ? 1 : 0}
             style={{ visibility: "hidden" }}
             onClick={(e) => {
               e.stopPropagation();
@@ -221,4 +220,11 @@ const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 16px 16px 16px;
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 `;

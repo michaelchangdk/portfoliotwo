@@ -16,9 +16,9 @@ import {
   ProfileImage,
 } from "../../styles/global";
 import background from "../../assets/images/biobackground2.jpg";
-import github from "../../assets/github.png";
-import linkedin from "../../assets/linkedin.png";
-import email from "../../assets/email.png";
+import github from "../../assets/icons/github.png";
+import linkedin from "../../assets/icons/linkedin.png";
+import email from "../../assets/icons/email.png";
 
 const query = `*[_type == "bio" && !(_id in path('drafts.**'))]`;
 
@@ -88,6 +88,7 @@ const Bio = () => {
                     custom={i + 4 + i + i}
                     key={i}
                     size="16px"
+                    weight="500"
                   >
                     {item}
                   </SpaceP>
