@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 // Function Imports
 import { FetchSection } from "../../services/clientFunctions";
@@ -14,6 +14,7 @@ import {
   BioWrapper,
   ImageWrapper,
   ProfileImage,
+  IconButton,
 } from "../../styles/global";
 import background from "../../assets/images/biobackground2.jpg";
 import github from "../../assets/icons/github.png";
@@ -96,7 +97,7 @@ const Bio = () => {
               </div>
               <ImageWrapper>
                 <IconsWrapper>
-                  <SocialsButton
+                  <IconButton
                     whileHover={{ scale: 1.1, y: -5 }}
                     initial="hidden"
                     variants={fadeIn}
@@ -113,8 +114,8 @@ const Bio = () => {
                         )
                       }
                     />
-                  </SocialsButton>
-                  <SocialsButton
+                  </IconButton>
+                  <IconButton
                     whileHover={{ scale: 1.1, y: -5 }}
                     initial="hidden"
                     variants={fadeIn}
@@ -130,8 +131,8 @@ const Bio = () => {
                         )
                       }
                     />
-                  </SocialsButton>
-                  <SocialsButton
+                  </IconButton>
+                  <IconButton
                     whileHover={{ scale: 1.1, y: -5 }}
                     initial="hidden"
                     variants={fadeIn}
@@ -148,7 +149,7 @@ const Bio = () => {
                         )
                       }
                     />
-                  </SocialsButton>
+                  </IconButton>
                 </IconsWrapper>
                 <ProfileImage
                   src={urlFor(data[0].image.asset._ref)}
@@ -193,12 +194,6 @@ const IconsWrapper = styled.div`
 const SocialsImage = styled.img`
   width: 44px;
   height: 44px;
-`;
-
-const SocialsButton = styled(motion.button)`
-  cursor: pointer;
-  background: transparent;
-  border: none;
 `;
 
 const ParallaxWrap = styled.div`

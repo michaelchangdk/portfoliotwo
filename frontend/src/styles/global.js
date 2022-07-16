@@ -219,6 +219,14 @@ export const SectionWrapper = styled(motion.section)`
   }
 `;
 
+// Buttons
+export const IconButton = styled(motion.button)`
+  cursor: pointer;
+  background: transparent;
+  border: none;
+`;
+
+// Intro Section
 export const DownButton = styled(motion.button)`
   margin-top: 40px;
   cursor: pointer;

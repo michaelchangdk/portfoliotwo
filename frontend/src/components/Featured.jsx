@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { urlFor } from "../client";
-// Styling imports
+// Styling & asset imports
 import styled from "styled-components/macro";
-import { BebasH3, BebasP, SpaceP } from "../styles/global";
+import { BebasH3, BebasP, SpaceP, IconButton } from "../styles/global";
+import link from "../assets/icons/link.png";
+import github from "../assets/icons/github.png";
 // Function imports
 import { joinString } from "../helpers/functions";
 
@@ -142,7 +144,20 @@ const Featured = ({ project, index }) => {
               }}
             >
               <SpaceP>{project.description}</SpaceP>
-              <IconWrapper></IconWrapper>
+              <IconWrapper>
+                <IconButton
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  onClick={() => window.open(`${project.github}`, "_blank")}
+                >
+                  <Icon src={github} alt="Github link" />
+                </IconButton>
+                <IconButton
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  onClick={() => window.open(`${project.live}`, "_blank")}
+                >
+                  <Icon src={link} alt="Live link" />
+                </IconButton>
+              </IconWrapper>
             </ModalContainer>
           )}
         </ProjectWrapper>
@@ -194,7 +209,7 @@ const ImageWrapper = styled(motion.div)`
   overflow: hidden;
   cursor: pointer;
   display: flex;
-  justify-content: center;
+  align-self: center;
 `;
 
 const ProjectImage = styled(motion.img)`
@@ -226,5 +241,11 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 24px;
+  margin-top: 12px;
+`;
+
+const Icon = styled.img`
+  height: 36px;
+  width: 36px;
 `;
