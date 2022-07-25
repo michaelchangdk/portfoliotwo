@@ -129,10 +129,16 @@ const Featured = ({ project, index }) => {
               e.stopPropagation();
             }}
           >
-            <BebasH3 align={!(index % 2) ? "right" : ""}>
+            <BebasH3
+              align={!(index % 2) ? "right" : ""}
+              color={selected ? "black" : "white"}
+            >
               {project.title}
             </BebasH3>
-            <BebasP align={!(index % 2) ? "right" : ""}>
+            <BebasP
+              align={!(index % 2) ? "right" : ""}
+              color={selected ? "black" : "white"}
+            >
               {joinString(project.stack)}
             </BebasP>
           </ProjectText>

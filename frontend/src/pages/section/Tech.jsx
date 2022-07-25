@@ -78,14 +78,33 @@ const Tech = () => {
 
   return (
     <>
-      <SectionWrapper>
+      <SectionWrapper bg="black" minHeight="80vh">
+        <div
+          style={{
+            position: "absolute",
+            background:
+              "linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .7) 5%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, .7) 95%, rgba(0, 0, 0, 1) 100%)",
+            zIndex: 3,
+            minHeight: "80vh",
+            height: "100%",
+            width: "100vw",
+          }}
+        />
         <Particles
           id="techtsparticles"
           init={particlesInit}
           options={techParticlesConfig}
           width="100vw"
         />
-        <PageWrapper position="relative">
+        <PageWrapper
+          position="relative"
+          style={{
+            minHeight: "80vh",
+            height: "100%",
+            width: "100vw",
+            zIndex: 10,
+          }}
+        >
           {!loading && (
             <KronaH2
               initial="hidden"

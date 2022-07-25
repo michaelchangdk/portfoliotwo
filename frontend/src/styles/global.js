@@ -182,41 +182,42 @@ export const Page = styled.main`
 
 export const PageWrapper = styled.div`
   position: ${(props) => props.position || "absolute"};
-  max-width: 90%;
+  /* max-width: 90%; */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 5%;
 
   @media (min-width: 768px) {
   }
 
   @media (min-width: 1024px) {
-    max-width: 900px;
+    /* max-width: 900px; */
     margin: 0 auto;
   }
 `;
 
-export const SectionWrapper = styled(motion.section)`
-  min-height: 100vh;
+export const SectionWrapper = styled.section`
+  min-height: ${(props) => props.minHeight || "100vh"};
   height: 100%;
   /* min-height: --webkit-fill-available; */
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 40px 0;
+  align-items: center; */
   position: relative;
+  background-color: ${(props) => props.bg || "white"};
   /* overflow: hidden; */
 
-  :nth-of-type(odd) {
+  /* :nth-of-type(odd) {
     background-color: black;
   }
 
   :nth-of-type(even) {
     background-color: white;
-  }
+  } */
 `;
 
 // Buttons

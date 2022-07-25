@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import introParticlesConfig from "../../config/introParticlesConfig";
@@ -12,7 +12,7 @@ import {
   SpaceP,
   PageWrapper,
   SectionWrapper,
-  DownButton,
+  // DownButton,
 } from "../../styles/global";
 import background from "../../assets/images/introbackground.jpg";
 // Query declarations
@@ -33,32 +33,32 @@ const Intro = () => {
     },
   };
 
-  const svgWrapper = {
-    visible: (i) => {
-      return {
-        // y: isHovered ? 0 : [0, 10, 0],
-        y: [0, 10, 0],
-        transition: {
-          duration: 1.5,
-          type: "spring",
-          repeat: Infinity,
-        },
-      };
-    },
-  };
+  // const svgWrapper = {
+  //   visible: (i) => {
+  //     return {
+  //       // y: isHovered ? 0 : [0, 10, 0],
+  //       y: [0, 10, 0],
+  //       transition: {
+  //         duration: 1.5,
+  //         type: "spring",
+  //         repeat: Infinity,
+  //       },
+  //     };
+  //   },
+  // };
 
-  const svg = {
-    hidden: { y: 100, pathLength: 0, opacity: 0 },
-    visible: (i) => {
-      const delay = (1 + i) * 0.5;
-      return {
-        pathLength: 1,
-        y: 0,
-        opacity: 1,
-        transition: { duration: 1.5, delay: delay },
-      };
-    },
-  };
+  // const svg = {
+  //   hidden: { y: 100, pathLength: 0, opacity: 0 },
+  //   visible: (i) => {
+  //     const delay = (1 + i) * 0.5;
+  //     return {
+  //       pathLength: 1,
+  //       y: 0,
+  //       opacity: 1,
+  //       transition: { duration: 1.5, delay: delay },
+  //     };
+  //   },
+  // };
 
   const particlesInit = async (main) => {
     await loadFull(main);
@@ -72,15 +72,30 @@ const Intro = () => {
     <>
       <SectionWrapper
         style={{
-          backgroundImage: `url(${background})`,
+          backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.6) 80%, rgba(0,0,0,1) 100%), url(${background})`,
           backgroundSize: "cover",
           // backgroundAttachment: "fixed",
           backgroundRepeat: "no-repeat",
-          backgroundPositionY: "bottom",
+          // backgroundPositionY: "bottom",
           backgroundPositionX: "center",
         }}
+        bg="black"
       >
-        <div style={{ position: "absolute" }}>
+        <div
+          style={{
+            position: "absolute",
+            background:
+              "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, .7) 95%, rgba(0, 0, 0, 1) 100%)",
+            zIndex: 3,
+            height: "100vh",
+            width: "100vw",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+          }}
+        >
           <Particles
             id="tsparticles"
             init={particlesInit}
@@ -90,7 +105,7 @@ const Intro = () => {
             width="100vw"
           />
         </div>
-        <PageWrapper style={{ marginTop: "-10vh" }}>
+        <PageWrapper style={{ height: "100vh", width: "100vw" }}>
           {!loading && (
             <>
               <KronaH1
@@ -126,6 +141,7 @@ const Intro = () => {
                   color="white"
                   align="center"
                   weight="600"
+                  size="20px"
                 >
                   {sentence}
                 </SpaceP>
@@ -133,7 +149,7 @@ const Intro = () => {
             </>
           )}
         </PageWrapper>
-        <DownButton
+        {/* <DownButton
           animate="visible"
           variants={svgWrapper}
           custom={13}
@@ -165,7 +181,7 @@ const Intro = () => {
               custom={14}
             />
           </motion.svg>
-        </DownButton>
+        </DownButton> */}
       </SectionWrapper>
     </>
   );

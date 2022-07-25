@@ -24,7 +24,7 @@ const AllProjects = () => {
   };
 
   return (
-    <SectionWrapper style={{ overflow: "hidden" }}>
+    <SectionWrapper style={{ overflow: "hidden" }} bg="black">
       <PageWrapper>
         <HeaderWrapper
           onClick={() => {
