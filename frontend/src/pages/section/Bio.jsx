@@ -34,6 +34,7 @@ const Bio = () => {
   const onLeave = (props) => {
     if (props.currentPosition === "above") {
       colorControls.start("visible");
+      //   controls.start("visible");
     }
   };
 
@@ -248,6 +249,8 @@ const Bio = () => {
                 </motion.svg>
               </SocialsButton>
 
+              <Waypoint onEnter={() => controls.start("visible")} />
+
               <SocialsButton
                 whileHover={{ scale: 1.1, y: -5 }}
                 onClick={() => window.open("", "_blank")}
@@ -362,8 +365,6 @@ const Bio = () => {
                 </motion.svg>
               </SocialsButton>
             </SocialsWrapper>
-
-            <Waypoint onEnter={() => controls.start("visible")} />
           </ContactWrapper>
         </PageWrapper>
       </SectionWrapper>
