@@ -87,7 +87,6 @@ const Tech = () => {
   };
 
   const onEnter = (props) => {
-    console.log("onenter tech", props);
     colorControls.start("initial");
     setTimeout(() => {
       setHidden(false);
@@ -95,15 +94,11 @@ const Tech = () => {
   };
 
   const onLeave = (props) => {
-    console.log("onleave tech", props);
-
     if (props.currentPosition === "above") {
       colorControls.start("hidden");
       setHidden(true);
     }
   };
-
-  console.log("hidden", hidden);
 
   return (
     <>
@@ -111,7 +106,7 @@ const Tech = () => {
         initial="initial"
         variants={section}
         animate={colorControls}
-        minHeight="80vh"
+        minheight="80vh"
       >
         {!hidden && (
           <div

@@ -80,6 +80,7 @@ const Intro = () => {
           backgroundPositionX: "center",
         }}
         bg="black"
+        minheight="100vh"
       >
         <div
           style={{

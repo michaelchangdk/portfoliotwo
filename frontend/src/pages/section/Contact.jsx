@@ -4,9 +4,14 @@ import { useInView } from "react-intersection-observer";
 import { Waypoint } from "react-waypoint";
 
 import styled from "styled-components/macro";
-import { BungeeH2, SectionWrapper, PageWrapper } from "../../styles/global";
+import {
+  BungeeH2,
+  KronaH2,
+  SectionWrapper,
+  PageWrapper,
+} from "../../styles/global";
 
-const Contact = () => {
+const Contact = ({ white }) => {
   const { ref, inView } = useInView();
   const controls = useAnimation();
   const colorControls = useAnimation();
@@ -46,6 +51,11 @@ const Contact = () => {
     visible: { backgroundColor: "#ffffff", transition: { duration: 1 } },
   };
 
+  const text = {
+    initial: { color: "#ffffff", transition: { duration: 1 } },
+    visible: { color: "#000000", transition: { duration: 1 } },
+  };
+
   const onEnter = (props) => {
     console.log(props);
     colorControls.start("visible");
@@ -55,6 +65,14 @@ const Contact = () => {
     console.log(props);
     colorControls.start("initial");
   };
+
+  // useEffect(() => {
+  //   if (white) {
+  //     colorControls.start("visible");
+  //   } else if (!white) {
+  //     colorControls.start("initial");
+  //   }
+  // });
 
   return (
     <SectionWrapper
@@ -68,17 +86,20 @@ const Contact = () => {
           onLeave={(props) => onLeave(props)}
         />
         <ContactWrapper ref={ref}>
-          <BungeeH2
+          <KronaH2
             // size="5rem"
             align="center"
-            initial="hidden"
-            animate={controls}
-            variants={title}
+            // initial="hidden"
+            // animate={controls}
+            // variants={title}
             custom={1}
             padding="0 0 40px 0"
+            initial="initial"
+            variants={text}
+            animate={colorControls}
           >
             FIND ME
-          </BungeeH2>
+          </KronaH2>
           <SocialsWrapper>
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
@@ -326,6 +347,10 @@ const SocialsWrapper = styled.div`
   gap: 16px;
   justify-content: center;
   align-items: center;
+
+  /* @media (min-width: 768px) {
+    flex-direction: row;
+  } */
 `;
 
 const SocialsButton = styled(motion.button)`

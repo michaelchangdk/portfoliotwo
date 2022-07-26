@@ -200,7 +200,7 @@ export const PageWrapper = styled.div`
 `;
 
 export const SectionWrapper = styled(motion.section)`
-  min-height: ${(props) => props.minHeight || "100vh"};
+  min-height: ${(props) => props.minheight || "100%"};
   height: 100%;
   /* min-height: --webkit-fill-available; */
   /* display: flex;
@@ -210,14 +210,6 @@ export const SectionWrapper = styled(motion.section)`
   position: relative;
   background-color: ${(props) => props.bg};
   /* overflow: hidden; */
-
-  /* :nth-of-type(odd) {
-    background-color: black;
-  }
-
-  :nth-of-type(even) {
-    background-color: white;
-  } */
 `;
 
 // Buttons
