@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Waypoint } from "react-waypoint";
 
 import styled from "styled-components/macro";
 import { BungeeH2, SectionWrapper, PageWrapper } from "../../styles/global";
@@ -8,6 +9,7 @@ import { BungeeH2, SectionWrapper, PageWrapper } from "../../styles/global";
 const Contact = () => {
   const { ref, inView } = useInView();
   const controls = useAnimation();
+  const colorControls = useAnimation();
 
   useEffect(() => {
     if (inView) {
@@ -39,9 +41,32 @@ const Contact = () => {
     },
   };
 
+  const section = {
+    initial: { backgroundColor: "#000000", transition: { duration: 1 } },
+    visible: { backgroundColor: "#ffffff", transition: { duration: 1 } },
+  };
+
+  const onEnter = (props) => {
+    console.log(props);
+    colorControls.start("visible");
+  };
+
+  const onLeave = (props) => {
+    console.log(props);
+    colorControls.start("initial");
+  };
+
   return (
-    <SectionWrapper>
+    <SectionWrapper
+      initial="initial"
+      variants={section}
+      animate={colorControls}
+    >
       <PageWrapper position="relative">
+        <Waypoint
+          onEnter={(props) => onEnter(props)}
+          onLeave={(props) => onLeave(props)}
+        />
         <ContactWrapper ref={ref}>
           <BungeeH2
             // size="5rem"
@@ -80,7 +105,6 @@ const Contact = () => {
                 />
               </motion.svg>
             </SocialsButton>
-
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>

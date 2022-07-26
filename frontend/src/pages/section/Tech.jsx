@@ -1,6 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+// Animation
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Waypoint } from "react-waypoint";
+// Particles
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import techParticlesConfig from "../../config/techParticlesConfig";
@@ -17,6 +20,8 @@ const Tech = () => {
   const [loading, data] = FetchSection(query);
   const { ref, inView } = useInView();
   const controls = useAnimation();
+  const colorControls = useAnimation();
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     if (inView) {
@@ -76,25 +81,58 @@ const Tech = () => {
     await loadFull(main);
   };
 
+  const section = {
+    initial: { backgroundColor: "#000000", transition: { duration: 1 } },
+    hidden: { backgroundColor: "#ffffff", transition: { duration: 1 } },
+  };
+
+  const onEnter = (props) => {
+    console.log("onenter tech", props);
+    colorControls.start("initial");
+    setTimeout(() => {
+      setHidden(false);
+    }, 1000);
+  };
+
+  const onLeave = (props) => {
+    console.log("onleave tech", props);
+
+    if (props.currentPosition === "above") {
+      colorControls.start("hidden");
+      setHidden(true);
+    }
+  };
+
+  console.log("hidden", hidden);
+
   return (
     <>
-      <SectionWrapper bg="black" minHeight="80vh">
-        <div
-          style={{
-            position: "absolute",
-            background:
-              "linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .7) 5%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0) 90%, rgba(0, 0, 0, .7) 95%, rgba(0, 0, 0, 1) 100%)",
-            zIndex: 3,
-            minHeight: "80vh",
-            height: "100%",
-            width: "100vw",
-          }}
-        />
+      <SectionWrapper
+        initial="initial"
+        variants={section}
+        animate={colorControls}
+        minHeight="80vh"
+      >
+        {!hidden && (
+          <div
+            style={{
+              position: "absolute",
+              background:
+                "linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .7) 10%, rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, .7) 90%, rgba(0, 0, 0, 1) 100%)",
+              zIndex: 3,
+              minHeight: "80vh",
+              height: "100%",
+              width: "100vw",
+            }}
+          />
+        )}
+
         <Particles
           id="techtsparticles"
           init={particlesInit}
           options={techParticlesConfig}
           width="100vw"
+          height="100%"
         />
         <PageWrapper
           position="relative"
@@ -103,6 +141,7 @@ const Tech = () => {
             height: "100%",
             width: "100vw",
             zIndex: 10,
+            padding: "40px 0",
           }}
         >
           {!loading && (
@@ -143,6 +182,10 @@ const Tech = () => {
               ))}
           </AccordionWrapper>
         </PageWrapper>
+        <Waypoint
+          onEnter={(props) => onEnter(props)}
+          onLeave={(props) => onLeave(props)}
+        />
       </SectionWrapper>
     </>
   );
@@ -154,10 +197,11 @@ const AccordionWrapper = styled.div`
   display: grid;
   gap: 16px;
 
-  @media (min-width: 768px) {
-  }
+  /* @media (min-width: 768px) {
+  } */
 
-  /* @media (min-width: 1024px) {
+  /* @media (min-width: 1600px) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 32px;
   } */
 `;

@@ -199,7 +199,7 @@ export const PageWrapper = styled.div`
   }
 `;
 
-export const SectionWrapper = styled.section`
+export const SectionWrapper = styled(motion.section)`
   min-height: ${(props) => props.minHeight || "100vh"};
   height: 100%;
   /* min-height: --webkit-fill-available; */
@@ -208,7 +208,7 @@ export const SectionWrapper = styled.section`
   justify-content: center;
   align-items: center; */
   position: relative;
-  background-color: ${(props) => props.bg || "white"};
+  background-color: ${(props) => props.bg};
   /* overflow: hidden; */
 
   /* :nth-of-type(odd) {

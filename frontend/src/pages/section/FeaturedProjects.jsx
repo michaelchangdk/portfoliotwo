@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Featured from "../../components/Featured";
 // Styling Imports
 import styled from "styled-components/macro";
-import { SectionWrapper, PageWrapper, BungeeH2 } from "../../styles/global";
+import { SectionWrapper, PageWrapper, KronaH2 } from "../../styles/global";
 // Function imports
 import { FetchSection } from "../../services/clientFunctions";
 // Query declaration
@@ -49,25 +49,25 @@ const FeaturedProjects = () => {
         >
           {!loading && data[0].title}
         </BungeeH2> */}
-        <ProjectsWrapper layout>
+        <ProjectsWrapper>
           {!loading &&
             data[0].featured.map((item, i) => (
               <Featured project={item} key={item._id} index={i} />
             ))}
+          <KronaH2
+            style={{ alignSelf: "flex-start" }}
+            // align="left"
+            // ref={ref}
+            // initial="hidden"
+            // animate={controls}
+            // variants={topItem}
+            custom={2}
+            padding="0 0 52px 0"
+            color="white"
+          >
+            MORE PROJECTS
+          </KronaH2>
         </ProjectsWrapper>
-        <BungeeH2
-          style={{ alignSelf: "flex-start" }}
-          // align="left"
-          // ref={ref}
-          // initial="hidden"
-          // animate={controls}
-          // variants={topItem}
-          custom={2}
-          padding="40px 0 40px 0"
-          color="white"
-        >
-          MORE PROJECTS
-        </BungeeH2>
       </PageWrapper>
     </SectionWrapper>
   );
@@ -79,9 +79,9 @@ const ProjectsWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 52px;
-  margin: 20px 0 0 0;
+  margin: 120px 0 0 0;
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     margin: 40px 0 0 0;
-  }
+  } */
 `;

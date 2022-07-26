@@ -1,21 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { PageWrapper, KronaH1, SpaceP } from "../../styles/global";
+import { PageWrapper, KronaH1 } from "../../styles/global";
 
 const Pitch = () => {
   return (
     <>
       <PageWrapper position="relative">
         <AboutSection>
-          <KronaH1 color="white">ABOUT:</KronaH1>
-          <SpaceP color="white">
-            I like science fiction. I like brutalist architecture. I like video
-            games.
-          </SpaceP>
-          <SpaceP color="white">
-            I care about accessibility. I care about diversity. I care about
-            sustainability.
-          </SpaceP>
+          <KronaH1 color="white" size="28px">
+            天下万物生于有，有生于无。
+          </KronaH1>
+          <KronaH1 color="white" align="right">
+            COPENHAGEN BASED. Raised internationally. I LOVE science fiction,
+            brutalist architecture, and video games. I'M PASSIONATE about
+            accessibility, diversity, and inclusion.
+          </KronaH1>
         </AboutSection>
       </PageWrapper>
     </>
@@ -25,9 +24,15 @@ const Pitch = () => {
 export default Pitch;
 
 const AboutSection = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   color: white;
-  align-items: center;
   padding: 0 0 40px 0;
+  gap: 32px;
+
+  @media (min-width: 900px) {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+  }
 `;
