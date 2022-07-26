@@ -113,10 +113,6 @@ const Bio = () => {
         style={{ padding: "0 5% 120px 5%" }}
       >
         <PageWrapper position="relative">
-          <Waypoint
-            onEnter={(props) => onEnter(props)}
-            onLeave={(props) => onLeave(props)}
-          />
           <ContactWrapper
           //   ref={ref}
           >
