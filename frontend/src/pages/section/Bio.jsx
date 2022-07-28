@@ -58,11 +58,21 @@ const Bio = () => {
   };
 
   return (
-    <SectionWrapper id="bio_section">
+    <SectionWrapper
+      id="bio_section"
+      minheight="60vh"
+      style={{ display: "flex" }}
+    >
       <ParallaxWrap>
         <ParallaxBackground></ParallaxBackground>
       </ParallaxWrap>
-      <PageWrapper position="relative">
+      <PageWrapper
+        position="relative"
+        style={{
+          maxWidth: "900px",
+          padding: "5%",
+        }}
+      >
         <BioWrapper
           ref={ref}
           initial="hidden"

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Waypoint } from "react-waypoint";
+// import { Waypoint } from "react-waypoint";
 
 import styled from "styled-components/macro";
 import {
@@ -11,10 +11,10 @@ import {
   PageWrapper,
 } from "../../styles/global";
 
-const Contact = ({ white }) => {
+const Contact = () => {
   const { ref, inView } = useInView();
   const controls = useAnimation();
-  const colorControls = useAnimation();
+  // const colorControls = useAnimation();
 
   useEffect(() => {
     if (inView) {
@@ -46,25 +46,25 @@ const Contact = ({ white }) => {
     },
   };
 
-  const section = {
-    initial: { backgroundColor: "#000000", transition: { duration: 1 } },
-    visible: { backgroundColor: "#ffffff", transition: { duration: 1 } },
-  };
+  // const section = {
+  //   initial: { backgroundColor: "#000000", transition: { duration: 1 } },
+  //   visible: { backgroundColor: "#ffffff", transition: { duration: 1 } },
+  // };
 
-  const text = {
-    initial: { color: "#ffffff", transition: { duration: 1 } },
-    visible: { color: "#000000", transition: { duration: 1 } },
-  };
+  // const text = {
+  //   initial: { color: "#ffffff", transition: { duration: 1 } },
+  //   visible: { color: "#000000", transition: { duration: 1 } },
+  // };
 
-  const onEnter = (props) => {
-    console.log(props);
-    colorControls.start("visible");
-  };
+  // const onEnter = (props) => {
+  //   console.log(props);
+  //   colorControls.start("visible");
+  // };
 
-  const onLeave = (props) => {
-    console.log(props);
-    colorControls.start("initial");
-  };
+  // const onLeave = (props) => {
+  //   console.log(props);
+  //   colorControls.start("initial");
+  // };
 
   // useEffect(() => {
   //   if (white) {
@@ -76,15 +76,16 @@ const Contact = ({ white }) => {
 
   return (
     <SectionWrapper
-      initial="initial"
-      variants={section}
-      animate={colorControls}
+      // initial="initial"
+      // variants={section}
+      // animate={colorControls}
+      bg="white"
     >
       <PageWrapper position="relative">
-        <Waypoint
+        {/* <Waypoint
           onEnter={(props) => onEnter(props)}
           onLeave={(props) => onLeave(props)}
-        />
+        /> */}
         <ContactWrapper ref={ref}>
           <KronaH2
             // size="5rem"
@@ -94,9 +95,10 @@ const Contact = ({ white }) => {
             // variants={title}
             custom={1}
             padding="0 0 40px 0"
-            initial="initial"
-            variants={text}
-            animate={colorControls}
+            // initial="initial"
+            // variants={text}
+            // animate={colorControls}
+            color="black"
           >
             FIND ME
           </KronaH2>
