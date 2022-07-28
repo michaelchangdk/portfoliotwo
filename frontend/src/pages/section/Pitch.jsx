@@ -64,7 +64,7 @@ const PitchSection = styled.div`
   @media (min-width: 900px) {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    /* align-items: center; */
+    align-items: center;
   }
 `;
 
