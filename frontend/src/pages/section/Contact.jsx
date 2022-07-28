@@ -5,7 +5,7 @@ import { Waypoint } from "react-waypoint";
 
 import styled from "styled-components/macro";
 import {
-  BungeeH2,
+  // BungeeH2,
   KronaH2,
   SectionWrapper,
   PageWrapper,
@@ -22,17 +22,17 @@ const Contact = ({ white }) => {
     }
   });
 
-  const title = {
-    hidden: { y: -100, opacity: 0 },
-    visible: (i) => {
-      const delay = i * 0.5;
-      return {
-        y: 0,
-        opacity: 1,
-        transition: { duration: 0.5, delay: delay },
-      };
-    },
-  };
+  // const title = {
+  //   hidden: { y: -100, opacity: 0 },
+  //   visible: (i) => {
+  //     const delay = i * 0.5;
+  //     return {
+  //       y: 0,
+  //       opacity: 1,
+  //       transition: { duration: 0.5, delay: delay },
+  //     };
+  //   },
+  // };
 
   const svg = {
     hidden: { pathLength: 0, opacity: 0 },

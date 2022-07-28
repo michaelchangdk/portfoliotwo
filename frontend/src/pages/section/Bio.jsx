@@ -89,6 +89,7 @@ const Bio = () => {
                 initial="initial"
                 variants={text}
                 animate={colorControls}
+                padding="0 0 40px 0"
               >
                 {data[0].title}
               </KronaH2>

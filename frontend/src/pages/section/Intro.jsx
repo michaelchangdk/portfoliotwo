@@ -138,7 +138,7 @@ const Intro = () => {
                   initial="hidden"
                   animate="visible"
                   variants={item}
-                  custom={i + 6 + i + i}
+                  custom={i + 6}
                   color="white"
                   align="center"
                   weight="600"
