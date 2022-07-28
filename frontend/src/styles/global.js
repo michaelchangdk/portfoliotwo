@@ -212,14 +212,6 @@ export const SectionWrapper = styled(motion.section)`
   /* overflow: hidden; */
 `;
 
-// Buttons
-export const IconButton = styled(motion.button)`
-  cursor: pointer;
-  background: transparent;
-  border: none;
-`;
-
-// Intro Section
 export const DownButton = styled(motion.button)`
   margin-top: 40px;
   cursor: pointer;
@@ -231,6 +223,12 @@ export const DownButton = styled(motion.button)`
   @media (min-width: 768px) {
     bottom: 0;
   }
+`;
+
+export const IconButton = styled(motion.button)`
+  cursor: pointer;
+  background: transparent;
+  border: none;
 `;
 
 // Bio Section
