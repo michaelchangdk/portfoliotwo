@@ -52,8 +52,6 @@ const Accordion = ({ data, position }) => {
     }
   });
 
-  console.log(position);
-
   return (
     <>
       <AccordionHeader

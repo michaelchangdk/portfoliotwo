@@ -7,7 +7,7 @@ import { urlFor } from "../../client";
 // Styling & Asset Imports
 import styled from "styled-components/macro";
 import {
-  BungeeH2,
+  KronaH2,
   SpaceP,
   PageWrapper,
   SectionWrapper,
@@ -84,14 +84,14 @@ const Bio = () => {
           {!loading && (
             <>
               <div>
-                <BungeeH2
+                <KronaH2
                   initial="hidden"
                   animate={controls}
                   variants={leftItem}
                   custom={2}
                 >
                   {data[0].title}
-                </BungeeH2>
+                </KronaH2>
                 {data[0].about.map((item, i) => (
                   <SpaceP
                     initial="hidden"

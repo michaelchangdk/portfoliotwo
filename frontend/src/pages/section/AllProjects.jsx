@@ -37,7 +37,7 @@ const AllProjects = ({ position }) => {
     <SectionWrapper
       style={{ overflow: "hidden" }}
       bg="black"
-      minheight="50vh"
+      minheight="20vh"
       initial="initial"
       variants={sectionVariants}
       animate={colorControls}

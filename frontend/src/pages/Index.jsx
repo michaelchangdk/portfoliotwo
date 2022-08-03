@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Waypoint } from "react-waypoint";
+// import { Waypoint } from "react-waypoint";
 // Component Import
 import Intro from "./section/Intro";
 // import Pitch from "./section/Pitch";
@@ -14,27 +14,32 @@ import { Page } from "../styles/global";
 const Index = () => {
   const [currentPosition, setCurrentPosition] = useState(null);
 
-  const onEnter = (props) => {
-    setCurrentPosition(props.currentPosition);
-  };
+  // const onEnter = (props) => {
+  //   console.log(props);
+  //   setCurrentPosition(props.currentPosition);
+  // };
 
-  const onLeave = (props) => {
-    setCurrentPosition(props.currentPosition);
-  };
+  // const onLeave = (props) => {
+  //   console.log(props);
+  //   setCurrentPosition(props.currentPosition);
+  // };
 
   return (
     <Page>
       <Intro />
       <Bio />
       {/* <Pitch /> */}
-      <FeaturedProjects />
+      <FeaturedProjects position={currentPosition} />
       <AllProjects position={currentPosition} />
       <Tech position={currentPosition} />
-      <Waypoint
+      {/* <Waypoint
         onEnter={(props) => onEnter(props)}
         onLeave={(props) => onLeave(props)}
+      /> */}
+      <Contact
+        position={currentPosition}
+        setCurrentPosition={setCurrentPosition}
       />
-      <Contact position={currentPosition} />
     </Page>
   );
 };

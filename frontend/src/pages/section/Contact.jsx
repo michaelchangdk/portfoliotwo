@@ -10,7 +10,7 @@ import {
   PageWrapper,
 } from "../../styles/global";
 
-const Contact = ({ position }) => {
+const Contact = ({ position, setCurrentPosition }) => {
   const controls = useAnimation();
   const colorControls = useAnimation();
 
@@ -53,7 +53,7 @@ const Contact = ({ position }) => {
   };
 
   useEffect(() => {
-    if (position === "inside") {
+    if (position === "inside" || position === "above") {
       colorControls.start("visible");
     } else if (position !== "inside") {
       colorControls.start("initial");
@@ -110,6 +110,12 @@ const Contact = ({ position }) => {
                 />
               </motion.svg>
             </SocialsButton>
+
+            <Waypoint
+              onEnter={(props) => setCurrentPosition(props.currentPosition)}
+              onLeave={(props) => setCurrentPosition(props.currentPosition)}
+            />
+
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>

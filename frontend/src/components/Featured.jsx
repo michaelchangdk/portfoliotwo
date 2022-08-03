@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { Waypoint } from "react-waypoint";
 import { urlFor } from "../client";
 // Styling imports
 import styled from "styled-components/macro";
@@ -9,16 +9,13 @@ import { BebasH3, BebasP, SpaceP } from "../styles/global";
 import { joinString } from "../helpers/functions";
 
 const Featured = ({ project, index }) => {
-  const { ref, inView } = useInView({ threshold: 0.1 });
   const controls = useAnimation();
   const [selected, isSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  });
+  const onEnter = () => {
+    controls.start("visible");
+  };
 
   const leftItem = {
     hidden: { x: -100, opacity: 0 },
@@ -78,9 +75,9 @@ const Featured = ({ project, index }) => {
           setSelectedIndex(selectedIndex === null ? index : index + 1);
         }}
       >
+        <Waypoint onEnter={onEnter} />
         <ProjectWrapper
           layout
-          ref={ref}
           left={!(index % 2) ? 1 : 0}
           initial="hidden"
           animate={controls}
