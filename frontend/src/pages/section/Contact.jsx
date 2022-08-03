@@ -145,6 +145,7 @@ const Contact = ({ position, setCurrentPosition }) => {
               </motion.svg>
             </SocialsButton>
 
+            <span />
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>
@@ -261,6 +262,7 @@ const Contact = ({ position, setCurrentPosition }) => {
               </motion.svg>
             </SocialsButton>
 
+            <span />
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>
@@ -287,6 +289,7 @@ const Contact = ({ position, setCurrentPosition }) => {
               </motion.svg>
             </SocialsButton>
 
+            <span />
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() => window.open("tel:+4542726227")}
@@ -335,7 +338,7 @@ const ContactWrapper = styled.div``;
 const SocialsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   justify-content: center;
   align-items: center;
 
