@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 // Animation
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Waypoint } from "react-waypoint";
 // Particles
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-import techParticlesConfig from "../../config/techParticlesConfig";
+// import Particles from "react-tsparticles";
+// import { loadFull } from "tsparticles";
+// import techParticlesConfig from "../../config/techParticlesConfig";
 // Component Import
 import Accordion from "../../components/Accordion";
 // Function Imports
@@ -16,18 +15,28 @@ import styled from "styled-components/macro";
 import { KronaH2, PageWrapper, SectionWrapper } from "../../styles/global";
 const query = `*[_type == "tech" && !(_id in path('drafts.**'))]`;
 
-const Tech = () => {
+const Tech = ({ position }) => {
   const [loading, data] = FetchSection(query);
   const { ref, inView } = useInView();
   const controls = useAnimation();
   const colorControls = useAnimation();
-  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
     if (inView) {
       controls.start("visible");
     }
   });
+
+  useEffect(() => {
+    if (position === "inside") {
+      colorControls.start("hidden");
+      controls.start("black");
+    } else if (position !== "inside") {
+      colorControls.start("initial");
+      controls.start("white");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [position]);
 
   const leftItem = {
     hidden: { x: -100, opacity: 0 },
@@ -51,6 +60,8 @@ const Tech = () => {
         transition: { duration: 0.5, delay: delay },
       };
     },
+    white: { color: "#ffffff" },
+    black: { color: "#000000" },
   };
 
   const topItem = {
@@ -77,27 +88,13 @@ const Tech = () => {
     },
   };
 
-  const particlesInit = async (main) => {
-    await loadFull(main);
-  };
+  // const particlesInit = async (main) => {
+  //   await loadFull(main);
+  // };
 
   const section = {
-    initial: { backgroundColor: "#000000", transition: { duration: 1 } },
-    hidden: { backgroundColor: "#ffffff", transition: { duration: 1 } },
-  };
-
-  const onEnter = (props) => {
-    colorControls.start("initial");
-    setTimeout(() => {
-      setHidden(false);
-    }, 1000);
-  };
-
-  const onLeave = (props) => {
-    if (props.currentPosition === "above") {
-      colorControls.start("hidden");
-      setHidden(true);
-    }
+    initial: { backgroundColor: "#000000" },
+    hidden: { backgroundColor: "#ffffff" },
   };
 
   return (
@@ -108,7 +105,7 @@ const Tech = () => {
         animate={colorControls}
         minheight="80vh"
       >
-        {!hidden && (
+        {/* {!hidden && (
           <div
             style={{
               position: "absolute",
@@ -120,15 +117,15 @@ const Tech = () => {
               width: "100vw",
             }}
           />
-        )}
-
-        <Particles
+        )} */}
+        {/* <Particles
           id="techtsparticles"
           init={particlesInit}
           options={techParticlesConfig}
           width="100vw"
           height="100%"
-        />
+        /> */}
+
         <PageWrapper
           position="relative"
           style={{
@@ -172,15 +169,11 @@ const Tech = () => {
                   }
                   custom={i + 1}
                 >
-                  <Accordion data={item} />
+                  <Accordion data={item} position={position} />
                 </motion.div>
               ))}
           </AccordionWrapper>
         </PageWrapper>
-        <Waypoint
-          onEnter={(props) => onEnter(props)}
-          onLeave={(props) => onLeave(props)}
-        />
       </SectionWrapper>
     </>
   );

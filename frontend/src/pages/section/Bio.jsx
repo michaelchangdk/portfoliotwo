@@ -16,7 +16,7 @@ import {
   ProfileImage,
   IconButton,
 } from "../../styles/global";
-import background from "../../assets/images/biobackground2.jpg";
+// import background from "../../assets/images/biobackground2.jpg";
 import github from "../../assets/icons/github.png";
 import linkedin from "../../assets/icons/linkedin.png";
 import email from "../../assets/icons/email.png";
@@ -62,10 +62,11 @@ const Bio = () => {
       id="bio_section"
       minheight="60vh"
       style={{ display: "flex" }}
+      bg="black"
     >
-      <ParallaxWrap>
+      {/* <ParallaxWrap>
         <ParallaxBackground></ParallaxBackground>
-      </ParallaxWrap>
+      </ParallaxWrap> */}
       <PageWrapper
         position="relative"
         style={{
@@ -206,24 +207,24 @@ const SocialsImage = styled.img`
   height: 44px;
 `;
 
-const ParallaxWrap = styled.div`
-  clip: rect(0, auto, auto, 0);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`;
-const ParallaxBackground = styled.div`
-  position: fixed;
-  display: block;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-image: url(${background});
-  transform: translateZ(0);
-  will-change: transform;
-`;
+// const ParallaxWrap = styled.div`
+//   clip: rect(0, auto, auto, 0);
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+// `;
+// const ParallaxBackground = styled.div`
+//   position: fixed;
+//   display: block;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-size: cover;
+//   background-position: center center;
+//   background-image: url(${background});
+//   transform: translateZ(0);
+//   will-change: transform;
+// `;

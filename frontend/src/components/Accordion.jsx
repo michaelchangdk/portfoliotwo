@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 // Styling & Asset Imports
 import {
   SpaceH3,
@@ -7,10 +7,12 @@ import {
   AccordionHeader,
   AccordionIcon,
 } from "../styles/global";
-import plus from "../assets/icons/plus_white.png";
+import plusWhite from "../assets/icons/plus_white.png";
+import plusBlack from "../assets/icons/plus_black.png";
 
-const Accordion = ({ data }) => {
+const Accordion = ({ data, position }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const controls = useAnimation();
 
   const contentVariants = {
     open: {
@@ -37,6 +39,21 @@ const Accordion = ({ data }) => {
     closed: { rotate: [315, -45, 0], scale: 1 },
   };
 
+  const text = {
+    initial: { color: "#ffffff" },
+    visible: { color: "#000000" },
+  };
+
+  useEffect(() => {
+    if (position === "inside") {
+      controls.start("visible");
+    } else if (position !== "inside") {
+      controls.start("initial");
+    }
+  });
+
+  console.log(position);
+
   return (
     <>
       <AccordionHeader
@@ -45,13 +62,15 @@ const Accordion = ({ data }) => {
         whileHover={{ scale: 1.1 }}
       >
         <AccordionIcon
-          src={plus}
+          src={position === "inside" ? plusBlack : plusWhite}
           alt="icon"
           initial="closed"
           animate={isOpen ? "open" : "closed"}
           variants={iconVariants}
         />
-        <SpaceH3 color="white">{data.category}</SpaceH3>
+        <SpaceH3 initial="initial" variants={text} animate={controls}>
+          {data.category}
+        </SpaceH3>
       </AccordionHeader>
       <motion.section
         initial="closed"
@@ -60,7 +79,7 @@ const Accordion = ({ data }) => {
       >
         {data.items.map((item, i) => (
           <motion.div key={i} variants={itemVariants}>
-            <SpaceP color="white">
+            <SpaceP initial="initial" variants={text} animate={controls}>
               {"· "}
               {item}
             </SpaceP>

@@ -238,7 +238,8 @@ export const BioWrapper = styled(motion.div)`
   gap: 24px;
   padding: 16px;
   border: 4px solid white;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: white;
+  /* background-color: rgba(255, 255, 255, 0.8); */
 
   @media (min-width: 768px) {
     gap: 48px;
@@ -267,15 +268,15 @@ export const ProfileImage = styled(motion.img)`
   position: absolute;
   width: 180px;
   height: 180px;
-  bottom: -12px;
-  right: -12px;
+  bottom: 8px;
+  right: 0px;
   clip-path: polygon(60% 0, 100% 40%, 85% 80%, 0 100%, 20% 15%);
 
   @media (min-width: 768px) {
     position: absolute;
     width: 260px;
     height: 260px;
-    top: -20px;
+    top: 20px;
     right: -20px;
   }
 `;

@@ -1,12 +1,18 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 // Styling Imports
 import styled from "styled-components/macro";
 import { KronaH2, SectionWrapper, PageWrapper } from "../../styles/global";
 
-const AllProjects = () => {
+const AllProjects = ({ position }) => {
   const [open, setOpen] = useState(true);
   const [bodyOpen, setBodyOpen] = useState(false);
+  const colorControls = useAnimation();
+
+  const sectionVariants = {
+    initial: { backgroundColor: "#000000" },
+    hidden: { backgroundColor: "#ffffff" },
+  };
 
   const headerVariants = {
     open: { opacity: 1, height: "auto" },
@@ -18,10 +24,24 @@ const AllProjects = () => {
     closed: { y: "120vh", height: 0 },
   };
 
-  console.log(open);
+  useEffect(() => {
+    if (position === "inside") {
+      colorControls.start("hidden");
+    } else if (position !== "inside") {
+      colorControls.start("initial");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [position]);
 
   return (
-    <SectionWrapper style={{ overflow: "hidden" }} bg="black" minheight="100vh">
+    <SectionWrapper
+      style={{ overflow: "hidden" }}
+      bg="black"
+      minheight="50vh"
+      initial="initial"
+      variants={sectionVariants}
+      animate={colorControls}
+    >
       <PageWrapper>
         <HeaderWrapper
           onClick={() => {

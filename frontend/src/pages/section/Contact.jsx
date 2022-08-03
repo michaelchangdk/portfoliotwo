@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-// import { Waypoint } from "react-waypoint";
+import { Waypoint } from "react-waypoint";
 
 import styled from "styled-components/macro";
 import {
@@ -11,16 +10,9 @@ import {
   PageWrapper,
 } from "../../styles/global";
 
-const Contact = () => {
-  const { ref, inView } = useInView();
+const Contact = ({ position }) => {
   const controls = useAnimation();
-  // const colorControls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  });
+  const colorControls = useAnimation();
 
   // const title = {
   //   hidden: { y: -100, opacity: 0 },
@@ -46,47 +38,37 @@ const Contact = () => {
     },
   };
 
-  // const section = {
-  //   initial: { backgroundColor: "#000000", transition: { duration: 1 } },
-  //   visible: { backgroundColor: "#ffffff", transition: { duration: 1 } },
-  // };
+  const section = {
+    initial: { backgroundColor: "#000000" },
+    visible: { backgroundColor: "#ffffff" },
+  };
 
-  // const text = {
-  //   initial: { color: "#ffffff", transition: { duration: 1 } },
-  //   visible: { color: "#000000", transition: { duration: 1 } },
-  // };
+  const text = {
+    initial: { color: "#ffffff" },
+    visible: { color: "#000000" },
+  };
 
-  // const onEnter = (props) => {
-  //   console.log(props);
-  //   colorControls.start("visible");
-  // };
+  const onEnter = () => {
+    controls.start("visible");
+  };
 
-  // const onLeave = (props) => {
-  //   console.log(props);
-  //   colorControls.start("initial");
-  // };
-
-  // useEffect(() => {
-  //   if (white) {
-  //     colorControls.start("visible");
-  //   } else if (!white) {
-  //     colorControls.start("initial");
-  //   }
-  // });
+  useEffect(() => {
+    if (position === "inside") {
+      colorControls.start("visible");
+    } else if (position !== "inside") {
+      colorControls.start("initial");
+    }
+  });
 
   return (
     <SectionWrapper
-      // initial="initial"
-      // variants={section}
-      // animate={colorControls}
-      bg="white"
+      initial="initial"
+      variants={section}
+      animate={colorControls}
+      style={{ padding: "40px 0" }}
     >
       <PageWrapper position="relative">
-        {/* <Waypoint
-          onEnter={(props) => onEnter(props)}
-          onLeave={(props) => onLeave(props)}
-        /> */}
-        <ContactWrapper ref={ref}>
+        <ContactWrapper>
           <KronaH2
             // size="5rem"
             align="center"
@@ -95,9 +77,9 @@ const Contact = () => {
             // variants={title}
             custom={1}
             padding="0 0 40px 0"
-            // initial="initial"
-            // variants={text}
-            // animate={colorControls}
+            initial="initial"
+            variants={text}
+            animate={colorControls}
             color="black"
           >
             FIND ME
@@ -219,6 +201,7 @@ const Contact = () => {
               </motion.svg>
             </SocialsButton>
 
+            <Waypoint onEnter={(props) => onEnter(props)} />
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() => window.open("", "_blank")}
