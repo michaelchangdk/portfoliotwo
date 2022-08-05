@@ -59,13 +59,7 @@ const MoreProjects = ({ position }) => {
           }}
         />
       </HeaderWrapper>
-      <PageWrapper
-        position="relative"
-        style={{
-          maxWidth: "900px",
-          // padding: "5%",
-        }}
-      >
+      <ProjectsWrapper>
         {!loading &&
           open &&
           data[0].allprojects.map((item, index) => (
@@ -73,7 +67,7 @@ const MoreProjects = ({ position }) => {
               {item.emoji} | {item.title}
             </SpaceP>
           ))}
-      </PageWrapper>
+      </ProjectsWrapper>
     </SectionWrapper>
   );
 };
@@ -99,4 +93,13 @@ const HeaderWrapper = styled(motion.button)`
 const ArrowIcon = styled(motion.img)`
   height: 40px;
   width: 40px;
+`;
+
+const ProjectsWrapper = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 8px 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
