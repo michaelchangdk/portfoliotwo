@@ -145,7 +145,7 @@ const Contact = ({ position, setCurrentPosition }) => {
               </motion.svg>
             </SocialsButton>
 
-            <span />
+            <Waypoint onEnter={(props) => onEnter(props)} />
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>
@@ -208,7 +208,7 @@ const Contact = ({ position, setCurrentPosition }) => {
               </motion.svg>
             </SocialsButton>
 
-            <Waypoint onEnter={(props) => onEnter(props)} />
+            <span />
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() => window.open("", "_blank")}

@@ -69,7 +69,7 @@ const MoreProjects = ({ position }) => {
         {!loading &&
           open &&
           data[0].allprojects.map((item, index) => (
-            <SpaceP color="white">
+            <SpaceP color="white" key={index}>
               {item.emoji} | {item.title}
             </SpaceP>
           ))}
