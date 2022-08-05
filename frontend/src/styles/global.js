@@ -254,8 +254,8 @@ export const ImageWrapper = styled(motion.div)`
   justify-content: center;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: flex-end;
   }
 `;
@@ -268,16 +268,17 @@ export const ProfileImage = styled(motion.img)`
   position: absolute;
   width: 180px;
   height: 180px;
-  bottom: 8px;
+  bottom: -16px;
   right: 0px;
   clip-path: polygon(60% 0, 100% 40%, 85% 80%, 0 100%, 20% 15%);
 
   @media (min-width: 768px) {
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     width: 260px;
     height: 260px;
-    top: 20px;
-    right: -20px;
+    /* top: -20px;
+    right: 40px; */
   }
 `;
 

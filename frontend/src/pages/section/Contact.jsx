@@ -93,8 +93,8 @@ const Contact = ({ position, setCurrentPosition }) => {
             >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="80"
-                height="80"
+                width="64"
+                height="64"
                 viewBox="0 -10 520 540"
               >
                 <motion.path
@@ -124,8 +124,8 @@ const Contact = ({ position, setCurrentPosition }) => {
             >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="80"
-                height="80"
+                width="64"
+                height="64"
                 viewBox="0 -10 520 540"
               >
                 <motion.path
@@ -157,8 +157,8 @@ const Contact = ({ position, setCurrentPosition }) => {
             >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="80"
-                height="80"
+                width="64"
+                height="64"
                 viewBox="0 -10 520 540"
               >
                 <motion.path
@@ -215,8 +215,8 @@ const Contact = ({ position, setCurrentPosition }) => {
             >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="80"
-                height="80"
+                width="64"
+                height="64"
                 viewBox="0 -10 520 540"
               >
                 <motion.path
@@ -271,8 +271,8 @@ const Contact = ({ position, setCurrentPosition }) => {
             >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="80"
-                height="80"
+                width="64"
+                height="64"
                 viewBox="0 -10 520 540"
               >
                 <motion.path
@@ -296,8 +296,8 @@ const Contact = ({ position, setCurrentPosition }) => {
             >
               <motion.svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="80"
-                height="80"
+                width="64"
+                height="64"
                 viewBox="0 -10 520 540"
               >
                 <motion.path
@@ -342,9 +342,10 @@ const SocialsWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  /* @media (min-width: 768px) {
+  @media (min-width: 768px) {
     flex-direction: row;
-  } */
+    gap: 16px;
+  }
 `;
 
 const SocialsButton = styled(motion.button)`

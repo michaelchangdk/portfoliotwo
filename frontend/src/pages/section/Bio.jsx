@@ -17,9 +17,10 @@ import {
   IconButton,
 } from "../../styles/global";
 // import background from "../../assets/images/biobackground2.jpg";
-import github from "../../assets/icons/github.png";
+// import github from "../../assets/icons/github.png";
 import linkedin from "../../assets/icons/linkedin.png";
 import email from "../../assets/icons/email.png";
+import download from "../../assets/icons/download.png";
 
 const query = `*[_type == "bio" && !(_id in path('drafts.**'))]`;
 
@@ -107,8 +108,34 @@ const Bio = () => {
                 ))}
               </div>
               <ImageWrapper>
+                <ProfileImage
+                  src={urlFor(data[0].image.asset._ref)}
+                  alt="Michael Chang"
+                  initial="hidden"
+                  animate={controls}
+                  variants={fadeIn}
+                  custom={9}
+                />
                 <IconsWrapper>
                   <IconButton
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    initial="hidden"
+                    variants={fadeIn}
+                    animate={controls}
+                    custom={10}
+                  >
+                    <SocialsImage
+                      src={linkedin}
+                      alt="linkedin"
+                      onClick={() =>
+                        window.open(
+                          "https://www.linkedin.com/in/michaelchangdk/",
+                          "_blank"
+                        )
+                      }
+                    />
+                  </IconButton>
+                  {/* <IconButton
                     whileHover={{ scale: 1.1, y: -5 }}
                     initial="hidden"
                     variants={fadeIn}
@@ -125,7 +152,7 @@ const Bio = () => {
                         )
                       }
                     />
-                  </IconButton>
+                  </IconButton> */}
                   <IconButton
                     whileHover={{ scale: 1.1, y: -5 }}
                     initial="hidden"
@@ -150,26 +177,9 @@ const Bio = () => {
                     animate={controls}
                     custom={12}
                   >
-                    <SocialsImage
-                      src={linkedin}
-                      alt="linkedin"
-                      onClick={() =>
-                        window.open(
-                          "https://www.linkedin.com/in/michaelchangdk/",
-                          "_blank"
-                        )
-                      }
-                    />
+                    <SocialsImage src={download} alt="download c.v." />
                   </IconButton>
                 </IconsWrapper>
-                <ProfileImage
-                  src={urlFor(data[0].image.asset._ref)}
-                  alt="Michael Chang"
-                  initial="hidden"
-                  animate={controls}
-                  variants={fadeIn}
-                  custom={9}
-                />
               </ImageWrapper>
             </>
           )}

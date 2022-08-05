@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Waypoint } from "react-waypoint";
 // import { useInView } from "react-intersection-observer";
 // Component Import
 import Featured from "../../components/Featured";
-// Styling Imports
+// Styling & Asset Imports
 import styled from "styled-components/macro";
 import { SectionWrapper, PageWrapper, KronaH2 } from "../../styles/global";
+import star from "../../assets/icons/star.png";
 // Function imports
 import { FetchSection } from "../../services/clientFunctions";
 // Query declaration
@@ -16,6 +17,7 @@ const FeaturedProjects = ({ position }) => {
   const [loading, data] = FetchSection(query);
   const controls = useAnimation();
   const colorControls = useAnimation();
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const topItem = {
     hidden: { y: -100, opacity: 0 },
@@ -47,6 +49,19 @@ const FeaturedProjects = ({ position }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position]);
 
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <SectionWrapper
       initial="initial"
@@ -55,18 +70,22 @@ const FeaturedProjects = ({ position }) => {
       style={{ padding: "84px 0 0 0" }}
     >
       <PageWrapper position="relative">
-        <KronaH2
-          align="center"
+        <Waypoint onEnter={onEnter} />
+        <HeaderWrapper
           initial="hidden"
           animate={controls}
           variants={topItem}
           custom={2}
-          color="white"
-          padding="0 0 24px 0"
         >
-          {!loading && data[0].title}
-        </KronaH2>
-        <Waypoint onEnter={onEnter} />
+          <StarIcon
+            src={star}
+            alt="rotating star"
+            animate={{ rotate: scrollPosition }}
+          />
+          <KronaH2 align="center" color="white">
+            {!loading && data[0].title}
+          </KronaH2>
+        </HeaderWrapper>
         <ProjectsWrapper>
           {!loading &&
             data[0].featured.map((item, i) => (
@@ -102,4 +121,22 @@ const ProjectsWrapper = styled(motion.div)`
   /* @media (min-width: 768px) {
     margin: 40px 0 0 0;
   } */
+`;
+
+const HeaderWrapper = styled(motion.div)`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 0 0 24px 0;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    gap: 16px;
+  }
+`;
+
+const StarIcon = styled(motion.img)`
+  height: 44px;
+  width: 44px;
 `;
