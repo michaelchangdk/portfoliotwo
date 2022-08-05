@@ -1,12 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import styled from "styled-components/macro";
-import { SectionWrapper, KronaH2 } from "../../styles/global";
+import {
+  SectionWrapper,
+  PageWrapper,
+  KronaH2,
+  SpaceP,
+} from "../../styles/global";
 import bullseye from "../../assets/icons/bullseye.png";
 import bullseyewhite from "../../assets/icons/bullseye-white.png";
+import { FetchSection } from "../../services/clientFunctions";
+
+const query = `*[_type == "allprojects" && !(_id in path('drafts.**'))] {title, allprojects[]->}`;
 
 const MoreProjects = ({ position }) => {
   const colorControls = useAnimation();
+  const [loading, data] = FetchSection(query);
+  const [open, setOpen] = useState(false);
+
+  console.log(loading, data);
 
   const sectionVariants = {
     initial: { backgroundColor: "#000000" },
@@ -29,9 +41,9 @@ const MoreProjects = ({ position }) => {
       animate={colorControls}
       style={{ padding: "56px 0 84px 0" }}
     >
-      <HeaderWrapper whileHover={{ scale: 1.1 }}>
+      <HeaderWrapper whileHover={{ scale: 1.1 }} onClick={() => setOpen(!open)}>
         <KronaH2 color="white" align="center">
-          ALL PROJECTS
+          {!loading && data[0].title}
         </KronaH2>
         <ArrowIcon
           src={position === "inside" ? bullseye : bullseyewhite}
@@ -47,6 +59,21 @@ const MoreProjects = ({ position }) => {
           }}
         />
       </HeaderWrapper>
+      <PageWrapper
+        position="relative"
+        style={{
+          maxWidth: "900px",
+          // padding: "5%",
+        }}
+      >
+        {!loading &&
+          open &&
+          data[0].allprojects.map((item, index) => (
+            <SpaceP color="white">
+              {item.emoji} | {item.title}
+            </SpaceP>
+          ))}
+      </PageWrapper>
     </SectionWrapper>
   );
 };

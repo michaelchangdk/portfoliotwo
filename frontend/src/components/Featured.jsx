@@ -50,8 +50,6 @@ const Featured = ({ project, index }) => {
     }
   }, [index, selected, selectedIndex]);
 
-  console.log(project);
-
   return (
     <>
       <Waypoint onEnter={onEnter} />
