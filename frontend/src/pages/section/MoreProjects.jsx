@@ -73,5 +73,4 @@ const HeaderWrapper = styled(motion.button)`
 const ArrowIcon = styled(motion.img)`
   height: 40px;
   width: 40px;
-  margin-top: 6px;
 `;
