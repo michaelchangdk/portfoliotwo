@@ -27,7 +27,7 @@ const MoreProjects = ({ position }) => {
       initial="initial"
       variants={sectionVariants}
       animate={colorControls}
-      style={{ padding: "0 0 84px 0" }}
+      style={{ padding: "56px 0 84px 0" }}
     >
       <HeaderWrapper whileHover={{ scale: 1.1 }}>
         <KronaH2 color="white" align="center">
@@ -57,7 +57,6 @@ const HeaderWrapper = styled(motion.button)`
   display: flex;
   flex-direction: row;
   gap: 8px;
-  padding: 56px 0 0 0;
   justify-content: center;
   align-items: center;
   margin: 0 auto;

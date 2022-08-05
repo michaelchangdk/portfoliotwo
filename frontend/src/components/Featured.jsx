@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Waypoint } from "react-waypoint";
 import { urlFor } from "../client";
-// Styling imports
+// Styling & Asset imports
 import styled from "styled-components/macro";
 import { BebasH3, BebasP, SpaceP } from "../styles/global";
+import github from "../assets/icons/github.png";
+import link from "../assets/icons/link.png";
 // Function imports
 import { joinString } from "../helpers/functions";
 
@@ -47,6 +49,8 @@ const Featured = ({ project, index }) => {
       setSelectedIndex(null);
     }
   }, [index, selected, selectedIndex]);
+
+  console.log(project);
 
   return (
     <>
@@ -145,7 +149,20 @@ const Featured = ({ project, index }) => {
               }}
             >
               <SpaceP>{project.description}</SpaceP>
-              <IconWrapper></IconWrapper>
+              <IconWrapper>
+                <IconButton
+                  onClick={() => window.open(project.github, "_blank")}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Icon src={github} alt="github link" />
+                </IconButton>
+                <IconButton
+                  onClick={() => window.open(project.live, "_blank")}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Icon src={link} alt="external link" />
+                </IconButton>
+              </IconWrapper>
             </ModalContainer>
           )}
         </ProjectWrapper>
@@ -230,4 +247,16 @@ const IconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 16px;
+  padding: 16px 0 0 0;
+`;
+
+const Icon = styled.img`
+  height: 36px;
+  width: 36px;
+`;
+
+const IconButton = styled(motion.button)`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;
