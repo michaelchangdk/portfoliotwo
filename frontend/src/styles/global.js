@@ -268,7 +268,6 @@ export const ProfileImage = styled(motion.img)`
   position: absolute;
   width: 180px;
   height: 180px;
-  bottom: -16px;
   right: 0px;
   clip-path: polygon(60% 0, 100% 40%, 85% 80%, 0 100%, 20% 15%);
 
