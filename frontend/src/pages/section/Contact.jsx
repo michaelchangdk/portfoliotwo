@@ -65,7 +65,7 @@ const Contact = ({ position, setCurrentPosition }) => {
       initial="initial"
       variants={section}
       animate={colorControls}
-      style={{ padding: "40px 0" }}
+      style={{ padding: "84px 0" }}
     >
       <PageWrapper position="relative">
         <ContactWrapper>
@@ -76,7 +76,7 @@ const Contact = ({ position, setCurrentPosition }) => {
             // animate={controls}
             // variants={title}
             custom={1}
-            padding="0 0 40px 0"
+            padding="0 0 56px 0"
             initial="initial"
             variants={text}
             animate={colorControls}

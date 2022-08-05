@@ -60,8 +60,8 @@ const Bio = () => {
   return (
     <SectionWrapper
       id="bio_section"
-      minheight="60vh"
-      style={{ display: "flex" }}
+      // minheight="60vh"
+      style={{ display: "flex", padding: "84px 0" }}
       bg="black"
     >
       {/* <ParallaxWrap>
@@ -71,7 +71,7 @@ const Bio = () => {
         position="relative"
         style={{
           maxWidth: "900px",
-          padding: "5%",
+          // padding: "5%",
         }}
       >
         <BioWrapper

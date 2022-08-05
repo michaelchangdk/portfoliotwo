@@ -6,7 +6,7 @@ import { Waypoint } from "react-waypoint";
 import Featured from "../../components/Featured";
 // Styling Imports
 import styled from "styled-components/macro";
-import { SectionWrapper, PageWrapper, BhostraH2 } from "../../styles/global";
+import { SectionWrapper, PageWrapper, KronaH2 } from "../../styles/global";
 // Function imports
 import { FetchSection } from "../../services/clientFunctions";
 // Query declaration
@@ -14,7 +14,6 @@ const query = `*[_type == "featuredprojects" && !(_id in path('drafts.**'))] {ti
 
 const FeaturedProjects = ({ position }) => {
   const [loading, data] = FetchSection(query);
-  // const { ref, inView } = useInView();
   const controls = useAnimation();
   const colorControls = useAnimation();
 
@@ -53,18 +52,20 @@ const FeaturedProjects = ({ position }) => {
       initial="initial"
       variants={sectionVariants}
       animate={colorControls}
+      style={{ padding: "84px 0 0 0" }}
     >
       <PageWrapper position="relative">
-        <BhostraH2
+        <KronaH2
           align="center"
           initial="hidden"
           animate={controls}
           variants={topItem}
           custom={2}
           color="white"
+          padding="0 0 24px 0"
         >
           {!loading && data[0].title}
-        </BhostraH2>
+        </KronaH2>
         <Waypoint onEnter={onEnter} />
         <ProjectsWrapper>
           {!loading &&
@@ -95,7 +96,7 @@ export default FeaturedProjects;
 const ProjectsWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  gap: 52px;
+  gap: 28px;
   /* margin: 120px 0 0 0; */
 
   /* @media (min-width: 768px) {

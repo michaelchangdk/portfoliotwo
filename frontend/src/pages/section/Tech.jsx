@@ -103,7 +103,8 @@ const Tech = ({ position }) => {
         initial="initial"
         variants={section}
         animate={colorControls}
-        minheight="80vh"
+        // minheight="80vh"
+        style={{ padding: "84px 0" }}
       >
         {/* {!hidden && (
           <div
@@ -129,11 +130,10 @@ const Tech = ({ position }) => {
         <PageWrapper
           position="relative"
           style={{
-            minHeight: "80vh",
+            // minHeight: "80vh",
             height: "100%",
             width: "100vw",
             zIndex: 10,
-            padding: "40px 0",
           }}
         >
           {!loading && (
@@ -142,7 +142,7 @@ const Tech = ({ position }) => {
               animate={controls}
               variants={bottomItem}
               color="white"
-              padding="0 0 40px 0"
+              padding="0 0 56px 0"
             >
               {data[0].title}
             </KronaH2>

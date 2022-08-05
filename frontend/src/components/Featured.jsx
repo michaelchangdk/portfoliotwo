@@ -50,6 +50,7 @@ const Featured = ({ project, index }) => {
 
   return (
     <>
+      <Waypoint onEnter={onEnter} />
       <motion.div
         layout
         style={
@@ -75,7 +76,6 @@ const Featured = ({ project, index }) => {
           setSelectedIndex(selectedIndex === null ? index : index + 1);
         }}
       >
-        <Waypoint onEnter={onEnter} />
         <ProjectWrapper
           layout
           left={!(index % 2) ? 1 : 0}
