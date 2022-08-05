@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { Waypoint } from "react-waypoint";
 // Function Imports
 import { FetchSection } from "../../services/clientFunctions";
 import { urlFor } from "../../client";
@@ -25,15 +25,12 @@ import download from "../../assets/icons/download.png";
 const query = `*[_type == "bio" && !(_id in path('drafts.**'))]`;
 
 const Bio = () => {
-  const { ref, inView } = useInView();
   const controls = useAnimation();
   const [loading, data] = FetchSection(query);
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  });
+  const onEnter = () => {
+    controls.start("visible");
+  };
 
   const leftItem = {
     hidden: { x: -100, opacity: 0 },
@@ -75,8 +72,8 @@ const Bio = () => {
           // padding: "5%",
         }}
       >
+        <Waypoint onEnter={onEnter} />
         <BioWrapper
-          ref={ref}
           initial="hidden"
           animate={controls}
           variants={fadeIn}
