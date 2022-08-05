@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import styled from "styled-components/macro";
-import {
-  SectionWrapper,
-  PageWrapper,
-  KronaH2,
-  SpaceP,
-} from "../../styles/global";
+import { SectionWrapper, KronaH2, SpaceP } from "../../styles/global";
 import bullseye from "../../assets/icons/bullseye.png";
 import bullseyewhite from "../../assets/icons/bullseye-white.png";
 import { FetchSection } from "../../services/clientFunctions";
