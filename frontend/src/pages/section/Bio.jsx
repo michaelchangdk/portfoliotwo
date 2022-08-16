@@ -32,28 +32,28 @@ const Bio = () => {
     controls.start("visible");
   };
 
-  const leftItem = {
-    hidden: { x: -100, opacity: 0 },
-    visible: (i) => {
-      const delay = i * 0.5;
-      return {
-        x: 0,
-        opacity: 1,
-        transition: { duration: 0.5, delay: delay },
-      };
-    },
-  };
+  // const leftItem = {
+  //   hidden: { x: -100, opacity: 0 },
+  //   visible: (i) => {
+  //     const delay = i * 0.5;
+  //     return {
+  //       x: 0,
+  //       opacity: 1,
+  //       transition: { duration: 0.5, delay: delay },
+  //     };
+  //   },
+  // };
 
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: (i) => {
-      const delay = i * 0.5;
-      return {
-        opacity: 1,
-        transition: { duration: 1, delay: delay },
-      };
-    },
-  };
+  // const fadeIn = {
+  //   hidden: { opacity: 0 },
+  //   visible: (i) => {
+  //     const delay = i * 0.5;
+  //     return {
+  //       opacity: 1,
+  //       transition: { duration: 1, delay: delay },
+  //     };
+  //   },
+  // };
 
   return (
     <SectionWrapper
@@ -74,28 +74,28 @@ const Bio = () => {
       >
         <Waypoint onEnter={onEnter} />
         <BioWrapper
-          initial="hidden"
-          animate={controls}
-          variants={fadeIn}
-          custom={1}
+        // initial="hidden"
+        // animate={controls}
+        // variants={fadeIn}
+        // custom={1}
         >
           {!loading && (
             <>
               <div>
                 <KronaH2
-                  initial="hidden"
-                  animate={controls}
-                  variants={leftItem}
-                  custom={2}
+                // initial="hidden"
+                // animate={controls}
+                // variants={leftItem}
+                // custom={2}
                 >
                   {data[0].title}
                 </KronaH2>
                 {data[0].about.map((item, i) => (
                   <SpaceP
-                    initial="hidden"
-                    animate={controls}
-                    variants={leftItem}
-                    custom={i + 4 + i + i}
+                    // initial="hidden"
+                    // animate={controls}
+                    // variants={leftItem}
+                    // custom={i + 4 + i + i}
                     key={i}
                     size="16px"
                     weight="500"
@@ -108,18 +108,18 @@ const Bio = () => {
                 <ProfileImage
                   src={urlFor(data[0].image.asset._ref)}
                   alt="Michael Chang"
-                  initial="hidden"
-                  animate={controls}
-                  variants={fadeIn}
-                  custom={9}
+                  // initial="hidden"
+                  // animate={controls}
+                  // variants={fadeIn}
+                  // custom={9}
                 />
                 <IconsWrapper>
                   <IconButton
                     whileHover={{ scale: 1.1, y: -5 }}
-                    initial="hidden"
-                    variants={fadeIn}
-                    animate={controls}
-                    custom={10}
+                    // initial="hidden"
+                    // variants={fadeIn}
+                    // animate={controls}
+                    // custom={10}
                   >
                     <SocialsImage
                       src={linkedin}
@@ -152,10 +152,10 @@ const Bio = () => {
                   </IconButton> */}
                   <IconButton
                     whileHover={{ scale: 1.1, y: -5 }}
-                    initial="hidden"
-                    variants={fadeIn}
-                    animate={controls}
-                    custom={11}
+                    // initial="hidden"
+                    // variants={fadeIn}
+                    // animate={controls}
+                    // custom={11}
                   >
                     <SocialsImage
                       src={email}
@@ -169,10 +169,10 @@ const Bio = () => {
                   </IconButton>
                   <IconButton
                     whileHover={{ scale: 1.1, y: -5 }}
-                    initial="hidden"
-                    variants={fadeIn}
-                    animate={controls}
-                    custom={12}
+                    // initial="hidden"
+                    // variants={fadeIn}
+                    // animate={controls}
+                    // custom={12}
                   >
                     <SocialsImage src={download} alt="download c.v." />
                   </IconButton>

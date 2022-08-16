@@ -5,6 +5,8 @@ import { SectionWrapper, KronaH2, SpaceP } from "../../styles/global";
 import bullseye from "../../assets/icons/bullseye.png";
 import bullseyewhite from "../../assets/icons/bullseye-white.png";
 import { FetchSection } from "../../services/clientFunctions";
+import link_white from "../../assets/icons/link_white.png";
+import github_white from "../../assets/icons/github_white.png";
 
 const query = `*[_type == "allprojects" && !(_id in path('drafts.**'))] {title, allprojects[]->}`;
 
@@ -12,8 +14,6 @@ const MoreProjects = ({ position }) => {
   const colorControls = useAnimation();
   const [loading, data] = FetchSection(query);
   const [open, setOpen] = useState(false);
-
-  console.log(loading, data);
 
   const sectionVariants = {
     initial: { backgroundColor: "#000000" },
@@ -28,6 +28,8 @@ const MoreProjects = ({ position }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position]);
+
+  console.log(data);
 
   return (
     <SectionWrapper
@@ -58,9 +60,27 @@ const MoreProjects = ({ position }) => {
         {!loading &&
           open &&
           data[0].allprojects.map((item, index) => (
-            <SpaceP color="white" key={index}>
-              {item.emoji} | {item.title}
-            </SpaceP>
+            <ProjectsRow>
+              <div>
+                <SpaceP color="white" key={index}>
+                  {item.emoji} | {item.title}
+                </SpaceP>
+              </div>
+              <LinkWrapper>
+                <LinkButton
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => window.open(item.live, "_blank")}
+                >
+                  <LinkIcon src={link_white} alt="live link" />
+                </LinkButton>
+                <LinkButton
+                  whileHover={{ scale: 1.1 }}
+                  onClick={() => window.open(item.github, "_blank")}
+                >
+                  <LinkIcon src={github_white} alt="github link" />
+                </LinkButton>
+              </LinkWrapper>
+            </ProjectsRow>
           ))}
       </ProjectsWrapper>
     </SectionWrapper>
@@ -97,4 +117,28 @@ const ProjectsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+`;
+
+const ProjectsRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const LinkWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+`;
+
+const LinkIcon = styled.img`
+  height: 32px;
+  width: 32px;
+`;
+
+const LinkButton = styled(motion.button)`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;
