@@ -29,8 +29,6 @@ const MoreProjects = ({ position }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position]);
 
-  console.log(data);
-
   return (
     <SectionWrapper
       initial="initial"
@@ -60,7 +58,7 @@ const MoreProjects = ({ position }) => {
         {!loading &&
           open &&
           data[0].allprojects.map((item, index) => (
-            <ProjectsRow>
+            <ProjectsRow key={index}>
               <div>
                 <SpaceP color="white" key={index}>
                   {item.emoji} | {item.title}
