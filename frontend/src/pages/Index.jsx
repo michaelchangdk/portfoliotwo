@@ -7,7 +7,7 @@ import Bio from "./section/Bio";
 import Tech from "./section/Tech";
 import FeaturedProjects from "./section/FeaturedProjects";
 // import AllProjects from "./section/AllProjects";
-import MoreProjects from "./section/MoreProjects";
+// import MoreProjects from "./section/MoreProjects";
 import Contact from "./section/Contact";
 // Styling Import
 import { Page } from "../styles/global";
@@ -32,7 +32,7 @@ const Index = () => {
       {/* <Pitch /> */}
       <FeaturedProjects position={currentPosition} />
       {/* <AllProjects position={currentPosition} /> */}
-      <MoreProjects position={currentPosition} />
+      {/* <MoreProjects position={currentPosition} /> */}
       <Tech position={currentPosition} />
       {/* <Waypoint
         onEnter={(props) => onEnter(props)}

@@ -262,7 +262,8 @@ const Contact = ({ position, setCurrentPosition }) => {
               </motion.svg>
             </SocialsButton>
 
-            <span />
+            {/* <span />
+
             <SocialsButton
               whileHover={{ scale: 1.1, y: -5 }}
               onClick={() =>
@@ -287,7 +288,7 @@ const Contact = ({ position, setCurrentPosition }) => {
                   custom={5}
                 />
               </motion.svg>
-            </SocialsButton>
+            </SocialsButton> */}
 
             <span />
             <SocialsButton
@@ -309,7 +310,7 @@ const Contact = ({ position, setCurrentPosition }) => {
                   initial="hidden"
                   animate={controls}
                   variants={svg}
-                  custom={6}
+                  custom={5}
                 />
                 <motion.path
                   d="m437.019531 74.980469c-48.351562-48.351563-112.636719-74.980469-181.019531-74.980469s-132.667969 26.628906-181.019531 74.980469c-48.351563 48.355469-74.980469 112.640625-74.980469 181.019531s26.628906 132.667969 74.980469 181.019531c48.351562 48.351563 112.640625 74.980469 181.019531 74.980469s132.664062-26.628906 181.019531-74.980469c48.351563-48.351562 74.980469-112.636719 74.980469-181.019531 0-68.378906-26.628906-132.664062-74.980469-181.019531zm-181.019531 407.019531c-124.617188 0-226-101.386719-226-226s101.382812-225.996094 226-226c124.617188.003906 226 101.386719 226 226-.003906 124.617188-101.386719 226-226 226zm0 0"
@@ -320,7 +321,7 @@ const Contact = ({ position, setCurrentPosition }) => {
                   initial="hidden"
                   animate={controls}
                   variants={svg}
-                  custom={6}
+                  custom={5}
                 />
               </motion.svg>
             </SocialsButton>
